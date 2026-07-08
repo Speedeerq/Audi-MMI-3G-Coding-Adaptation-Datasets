@@ -20,16 +20,26 @@ A baseline is not confirmed until required evidence is attached and cross-refere
 
 | Evidence ID | Evidence item | Required | Current status | Target path / notes |
 |---|---|---:|---|---|
-| HNAV-EV-001 | Full Auto-Scan before any changes | Yes | 🟠 TO CAPTURE | `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/autoscan_before.txt` |
-| HNAV-EV-002 | Controller identification block | Yes | 🟠 TO CAPTURE | Include address, part number, HW, SW |
-| HNAV-EV-003 | Red Engineering Menu identification | Yes | 🟠 TO CAPTURE | Photo/transcription of SW train/MU/version |
+| HNAV-EV-001 | Full Auto-Scan before any changes | Yes | 🟠 TO CAPTURE | `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/AUTOSCAN_HNAV_TEMPLATE.md` |
+| HNAV-EV-002 | Controller identification block | Yes | 🟠 TO CAPTURE | `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/controller_identification.template.md` |
+| HNAV-EV-003 | Red Engineering Menu identification | Yes | 🟠 TO CAPTURE | Photo/transcription of SW train/MU/version; file to be added when captured |
 | HNAV-EV-004 | Original long coding | Yes | 🟠 TO CAPTURE | `CODING_BACKUP.md` / raw export |
 | HNAV-EV-005 | Adaptation map/export | Recommended | 🟠 TO CAPTURE | `ADAPTATION_MAP.md` / CSV export |
-| HNAV-EV-006 | DTC before changes | Yes | 🟠 TO CAPTURE | `DTC_BASELINE.md` |
-| HNAV-EV-007 | Gateway installation list | Recommended | 🟠 TO CAPTURE | From Auto-Scan / Gateway module |
-| HNAV-EV-008 | MOST/audio status | Recommended | 🟠 TO CAPTURE | DTC and installed amplifier/source context |
+| HNAV-EV-006 | DTC before changes | Yes | 🟠 TO CAPTURE | `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/dtc_before.template.md` |
+| HNAV-EV-007 | Gateway installation list | Recommended | 🟠 TO CAPTURE | `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/gateway_installation_list.template.md` |
+| HNAV-EV-008 | MOST/audio status | Recommended | 🟠 TO CAPTURE | `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/most_audio_status.template.md` |
 | HNAV-EV-009 | Green Menu current state | Optional initially | 🟠 TO CAPTURE | Only if testing Green Menu behavior |
 | HNAV-EV-010 | Dataset/parameterization backup | Required before dataset research | 🟠 TO CAPTURE | Do not test dataset without backup |
+
+## Auto-Scan template set
+
+| Template | Purpose | Status |
+|---|---|---|
+| `AUTOSCAN_HNAV_TEMPLATE.md` | Main sanitized Auto-Scan paste area and extraction checklist | 🟠 TO CAPTURE |
+| `controller_identification.template.md` | Extract controller identity, part number, HW/SW, coding metadata | 🟠 TO CAPTURE |
+| `dtc_before.template.md` | Extract pre-existing DTC state before any change | 🟠 TO CAPTURE |
+| `gateway_installation_list.template.md` | Extract installed/reachable modules and Gateway context | 🟠 TO CAPTURE |
+| `most_audio_status.template.md` | Extract MOST/audio/amplifier/source baseline | 🟠 TO CAPTURE |
 
 ## Evidence file naming convention
 
@@ -37,6 +47,11 @@ Recommended structure:
 
 ```text
 09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/
+├── AUTOSCAN_HNAV_TEMPLATE.md
+├── controller_identification.template.md
+├── dtc_before.template.md
+├── gateway_installation_list.template.md
+├── most_audio_status.template.md
 ├── autoscan_before.txt
 ├── controller_identification.txt
 ├── red_menu_identification.md
@@ -80,6 +95,7 @@ Before publishing evidence:
 | Use case | Allowed now? | Reason |
 |---|---:|---|
 | Repository structure reference | Yes | Folder and templates exist |
+| Auto-Scan evidence intake | Yes | Templates now exist |
 | Confirm byte/bit behavior | No | No coding evidence yet |
 | Confirm adaptation behavior | No | No adaptation map yet |
 | Confirm Security Access | No | No tested operation yet |
