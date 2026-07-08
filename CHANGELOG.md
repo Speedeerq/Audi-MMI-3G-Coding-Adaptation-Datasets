@@ -4,6 +4,29 @@ All notable changes to this project will be documented in this file.
 
 This project uses evidence-based technical documentation. A version may contain research structure without confirmed technical findings.
 
+## [0.3.1] - 2026-07-08
+
+### Added
+
+- Added HNAV Auto-Scan evidence intake template set under:
+  - `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/`
+- Added templates:
+  - `AUTOSCAN_HNAV_TEMPLATE.md`
+  - `controller_identification.template.md`
+  - `dtc_before.template.md`
+  - `gateway_installation_list.template.md`
+  - `most_audio_status.template.md`
+- Updated HNAV baseline `EVIDENCE_INDEX.md` to link directly to the new Auto-Scan extraction templates.
+
+### Safety
+
+- Templates are evidence intake only.
+- No byte/bit meanings added.
+- No coding interpretation added.
+- No adaptation values added.
+- No Security Access login values added.
+- Coding/adaptation tests remain blocked until baseline evidence and rollback data are captured.
+
 ## [0.3.0] - 2026-07-08
 
 ### Added
