@@ -1,0 +1,87 @@
+# Evidence Index — HNAV 8T1 035 664 F / K0257 D1
+
+## Purpose
+
+This file tracks evidence required to use the HNAV baseline in research.
+
+A baseline is not confirmed until required evidence is attached and cross-referenced.
+
+## Evidence status legend
+
+| Status | Meaning |
+|---|---|
+| 🟢 CAPTURED | Evidence exists in repository or linked source |
+| 🟡 PARTIAL | Evidence exists but is incomplete or not sanitized |
+| 🟠 TO CAPTURE | Evidence is required but missing |
+| 🔴 INVALID | Evidence exists but cannot be used |
+| ⚫ UNKNOWN | Not assessed |
+
+## Required evidence checklist
+
+| Evidence ID | Evidence item | Required | Current status | Target path / notes |
+|---|---|---:|---|---|
+| HNAV-EV-001 | Full Auto-Scan before any changes | Yes | 🟠 TO CAPTURE | `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/autoscan_before.txt` |
+| HNAV-EV-002 | Controller identification block | Yes | 🟠 TO CAPTURE | Include address, part number, HW, SW |
+| HNAV-EV-003 | Red Engineering Menu identification | Yes | 🟠 TO CAPTURE | Photo/transcription of SW train/MU/version |
+| HNAV-EV-004 | Original long coding | Yes | 🟠 TO CAPTURE | `CODING_BACKUP.md` / raw export |
+| HNAV-EV-005 | Adaptation map/export | Recommended | 🟠 TO CAPTURE | `ADAPTATION_MAP.md` / CSV export |
+| HNAV-EV-006 | DTC before changes | Yes | 🟠 TO CAPTURE | `DTC_BASELINE.md` |
+| HNAV-EV-007 | Gateway installation list | Recommended | 🟠 TO CAPTURE | From Auto-Scan / Gateway module |
+| HNAV-EV-008 | MOST/audio status | Recommended | 🟠 TO CAPTURE | DTC and installed amplifier/source context |
+| HNAV-EV-009 | Green Menu current state | Optional initially | 🟠 TO CAPTURE | Only if testing Green Menu behavior |
+| HNAV-EV-010 | Dataset/parameterization backup | Required before dataset research | 🟠 TO CAPTURE | Do not test dataset without backup |
+
+## Evidence file naming convention
+
+Recommended structure:
+
+```text
+09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/
+├── autoscan_before.txt
+├── controller_identification.txt
+├── red_menu_identification.md
+├── coding_before.txt
+├── adaptation_map_before.csv
+├── dtc_before.txt
+├── gateway_installation_list.txt
+├── most_audio_status.txt
+└── media/
+    ├── red_menu_001.jpg
+    ├── coding_before_001.jpg
+    └── green_menu_001.jpg
+```
+
+## Privacy/sanitization requirements
+
+Before publishing evidence:
+
+| Data | Action |
+|---|---|
+| Full VIN | Redact to partial VIN |
+| License plate | Remove or blur |
+| Owner/customer data | Remove |
+| Location data | Remove |
+| Personal device paths/usernames | Remove |
+| Full scan notes with personal data | Sanitize |
+
+## Evidence acceptance rules
+
+| Evidence type | Accepted when |
+|---|---|
+| Auto-Scan | Includes controller, part number, SW version, DTC state |
+| Screenshot/photo | Shows enough context and date/test relation |
+| Coding export | Contains original value and controller metadata |
+| Adaptation map | Contains channel/value data and controller metadata |
+| DTC log | Shows before/after state and controller context |
+| Video | Linked to specific test ID and behavior |
+
+## Current baseline usability
+
+| Use case | Allowed now? | Reason |
+|---|---:|---|
+| Repository structure reference | Yes | Folder and templates exist |
+| Confirm byte/bit behavior | No | No coding evidence yet |
+| Confirm adaptation behavior | No | No adaptation map yet |
+| Confirm Security Access | No | No tested operation yet |
+| Dataset research | No | No backup/source yet |
+| Compatibility hypothesis | Limited | Unit context exists but requires evidence |
