@@ -4,6 +4,41 @@ All notable changes to this project will be documented in this file.
 
 This project uses evidence-based technical documentation. A version may contain research structure without confirmed technical findings.
 
+## [0.3.0] - 2026-07-08
+
+### Added
+
+- Added first MMI 3G High HNAV baseline package:
+  - `01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/README.md`
+  - `01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/UNIT_PROFILE.md`
+  - `01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/EVIDENCE_INDEX.md`
+  - `01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/CODING_BACKUP.md`
+  - `01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/ADAPTATION_MAP.md`
+  - `01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/DTC_BASELINE.md`
+  - `01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/TEST_PLAN.md`
+- Added evidence folder placeholder:
+  - `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/`
+- Added backup folder placeholder:
+  - `10_BACKUPS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/`
+
+### Baseline context
+
+- Initial HNAV context recorded as `🟠 TO VERIFY` / `⚫ UNKNOWN` until scan evidence is attached:
+  - `8T1 035 664 F`
+  - `HNav_EU_K0257_5_D1` / `HNav_EU_K0257_6_D1`
+  - `Variant 9307`
+  - `RadioUnit 9471`
+  - `MU 0187`
+  - `Sample d1`
+
+### Safety
+
+- No byte/bit meanings added.
+- No adaptation values added.
+- No Security Access login values added.
+- No binary datasets added.
+- Baseline marked as incomplete until Auto-Scan, coding backup, adaptation map and DTC baseline are attached.
+
 ## [0.2.0] - 2026-07-08
 
 ### Added
