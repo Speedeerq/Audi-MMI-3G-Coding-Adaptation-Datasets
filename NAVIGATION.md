@@ -12,6 +12,7 @@ This file provides cross-links between the main project documents, MMI 3G High r
 | Roadmap | [ROADMAP.md](ROADMAP.md) | 🟠 TO VERIFY |
 | Changelog | [CHANGELOG.md](CHANGELOG.md) | 🟠 TO VERIFY |
 | MMI 3G High Index | [01_MMI_3G_HIGH/MMI_3G_HIGH_INDEX.md](01_MMI_3G_HIGH/MMI_3G_HIGH_INDEX.md) | 🟠 TO VERIFY |
+| Evidence Pack Checklist | [13_RELEASE/EVIDENCE_PACK_CHECKLIST.md](13_RELEASE/EVIDENCE_PACK_CHECKLIST.md) | 🟠 TO VERIFY |
 | Final Progress Report | [13_RELEASE/FINAL_PROGRESS_REPORT.md](13_RELEASE/FINAL_PROGRESS_REPORT.md) | 🟠 TO VERIFY |
 
 ## Governance documents
@@ -76,6 +77,7 @@ This file provides cross-links between the main project documents, MMI 3G High r
 | MMI light menu matrix | [11_LIGHT_CODING/MMI_CAR_LIGHT_MENU_DEPENDENCY.md](11_LIGHT_CODING/MMI_CAR_LIGHT_MENU_DEPENDENCY.md) | 🟠 TO VERIFY |
 | Light protocol | [11_LIGHT_CODING/LIGHT_CODING_TEST_PROTOCOL.md](11_LIGHT_CODING/LIGHT_CODING_TEST_PROTOCOL.md) | 🟠 TO VERIFY |
 | Compatibility matrix | [12_COMPATIBILITY/MMI_3G_HIGH_COMPATIBILITY_MATRIX.md](12_COMPATIBILITY/MMI_3G_HIGH_COMPATIBILITY_MATRIX.md) | 🟠 TO VERIFY |
+| Evidence pack checklist | [13_RELEASE/EVIDENCE_PACK_CHECKLIST.md](13_RELEASE/EVIDENCE_PACK_CHECKLIST.md) | 🟠 TO VERIFY |
 
 ## Current decision
 
