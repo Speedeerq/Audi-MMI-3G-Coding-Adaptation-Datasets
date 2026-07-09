@@ -10,6 +10,7 @@
 | Changelog | [../CHANGELOG.md](../CHANGELOG.md) |
 | MMI 3G High index | [../01_MMI_3G_HIGH/MMI_3G_HIGH_INDEX.md](../01_MMI_3G_HIGH/MMI_3G_HIGH_INDEX.md) |
 | Offline research layer | [../01_MMI_3G_HIGH/OFFLINE_RESEARCH/README.md](../01_MMI_3G_HIGH/OFFLINE_RESEARCH/README.md) |
+| Evidence pack checklist | [EVIDENCE_PACK_CHECKLIST.md](EVIDENCE_PACK_CHECKLIST.md) |
 | Compatibility matrix | [../12_COMPATIBILITY/MMI_3G_HIGH_COMPATIBILITY_MATRIX.md](../12_COMPATIBILITY/MMI_3G_HIGH_COMPATIBILITY_MATRIX.md) |
 | Light research shell | [../11_LIGHT_CODING/LIGHT_CODING_RESEARCH_OVERVIEW.md](../11_LIGHT_CODING/LIGHT_CODING_RESEARCH_OVERVIEW.md) |
 
@@ -27,7 +28,7 @@
 
 The repository has been expanded with an offline research layer for MMI 3G High.
 
-This work prepares structure, matrices, evidence gates, source review rules, blocked-item tracking and release criteria. It does not add confirmed technical values.
+This work prepares structure, matrices, evidence gates, source review rules, blocked-item tracking, release criteria and a dedicated evidence-pack checklist. It does not add confirmed technical values.
 
 ## Important safety statement
 
@@ -54,6 +55,7 @@ All offline material remains `⚫ UNKNOWN`, `🔴 HYPOTHESIS` or `🟠 TO VERIFY
 | Source Review Queue | [../01_MMI_3G_HIGH/OFFLINE_RESEARCH/SOURCE_REVIEW_QUEUE.md](../01_MMI_3G_HIGH/OFFLINE_RESEARCH/SOURCE_REVIEW_QUEUE.md) | ⚫ UNKNOWN | external sources to review | MEDIUM/HIGH | populate only with reviewed sources |
 | Evidence Case Library | [../01_MMI_3G_HIGH/OFFLINE_RESEARCH/TEST_CASE_LIBRARY.md](../01_MMI_3G_HIGH/OFFLINE_RESEARCH/TEST_CASE_LIBRARY.md) | 🟠 TO VERIFY | evidence per case | HIGH | use as review-case templates |
 | Blocked Items Register | [../01_MMI_3G_HIGH/OFFLINE_RESEARCH/BLOCKED_ITEMS_REGISTER.md](../01_MMI_3G_HIGH/OFFLINE_RESEARCH/BLOCKED_ITEMS_REGISTER.md) | 🟠 TO VERIFY | evidence to unblock | HIGH | keep blocked until proof |
+| Evidence Pack Checklist | [EVIDENCE_PACK_CHECKLIST.md](EVIDENCE_PACK_CHECKLIST.md) | 🟠 TO VERIFY | future evidence files/photos/logs | MEDIUM | use when collecting evidence |
 | Final Structure Index | [../01_MMI_3G_HIGH/MMI_3G_HIGH_INDEX.md](../01_MMI_3G_HIGH/MMI_3G_HIGH_INDEX.md) | 🟠 TO VERIFY | evidence state updates | LOW | maintain as repo map |
 | Roadmap Update | [../ROADMAP.md](../ROADMAP.md) | 🟠 TO VERIFY | project progress review | LOW | update per milestone |
 | Changelog Update | [../CHANGELOG.md](../CHANGELOG.md) | 🟠 TO VERIFY | commit history | LOW | update per stage |
@@ -73,7 +75,7 @@ All offline material remains `⚫ UNKNOWN`, `🔴 HYPOTHESIS` or `🟠 TO VERIFY
 |---|---|---|---|---|---|
 | Documentation QA | all Markdown files | 🟠 TO VERIFY | none | LOW | normalize headings/tables |
 | Cross-linking | [../NAVIGATION.md](../NAVIGATION.md) | 🟢 DONE | none | LOW | maintain as files change |
-| Release checklist | [../13_RELEASE/](../13_RELEASE/) | 🟠 TO VERIFY | none | LOW | prepare public-safe package template |
+| Release checklist | [EVIDENCE_PACK_CHECKLIST.md](EVIDENCE_PACK_CHECKLIST.md) | 🟢 DONE | none | LOW | maintain as evidence model changes |
 | Source queue structure | [../01_MMI_3G_HIGH/OFFLINE_RESEARCH/SOURCE_REVIEW_QUEUE.md](../01_MMI_3G_HIGH/OFFLINE_RESEARCH/SOURCE_REVIEW_QUEUE.md) | ⚫ UNKNOWN | none until sources provided | LOW | add empty review IDs |
 | CSV/JSON mirror planning | future files | ⚫ UNKNOWN | none | LOW | define schema only |
 
@@ -120,12 +122,11 @@ All offline material remains `⚫ UNKNOWN`, `🔴 HYPOTHESIS` or `🟠 TO VERIFY
 |---|---|
 | `DODAJ CSV JSON SCHEMA` | prepare non-operational table schemas for future exports |
 | `DODAJ PUBLIC README QA` | polish README for public portfolio safety |
-| `DODAJ EVIDENCE PACK CHECKLIST` | create final checklist for collecting Auto-Scan/photos later |
 | `PRZETWÓRZ RED MENU FALLBACK` | use later when photos are available |
 | `WKLEJ AUTOSCAN HNAV` | use later when Auto-Scan is available |
 
 ## Final decision
 
-Offline research structure is ready and cross-linked.
+Offline research structure is ready, cross-linked and supported by an evidence-pack checklist.
 
 The repository is prepared to receive evidence but remains intentionally conservative. No confirmed technical values have been added.
