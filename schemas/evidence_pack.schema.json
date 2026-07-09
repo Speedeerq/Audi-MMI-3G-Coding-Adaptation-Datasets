@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets/schemas/evidence_pack.schema.json",
+  "title": "Evidence Pack",
+  "description": "Non-operational metadata schema for an evidence package. Does not define coding/adaptation/Security Access/dataset values.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["evidencePackId", "scope", "status", "createdAt", "items"],
+  "properties": {
+    "evidencePackId": {"type": "string", "pattern": "^[A-Z0-9_-]+$"},
+    "scope": {"type": "string"},
+    "campaignId": {"type": "string"},
+    "baselineId": {"type": "string"},
+    "status": {"$ref": "#/$defs/evidenceStatus"},
+    "createdAt": {"type": "string", "format": "date-time"},
+    "createdBy": {"type": "string"},
+    "sanitized": {"type": "boolean", "default": false},
+    "privacyNotes": {"type": "string"},
+    "items": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/evidenceItem"}
+    },
+    "blockedClaims": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "notes": {"type": "string"}
+  },
+  "$defs": {
+    "evidenceStatus": {
+      "type": "string",
+      "enum": ["TO_CAPTURE", "PARTIAL", "CAPTURED", "BLOCKED", "UNKNOWN"]
+    },
+    "riskLevel": {
+      "type": "string",
+      "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
+    },
+    "evidenceItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidenceId", "name", "status", "risk"],
+      "properties": {
+        "evidenceId": {"type": "string"},
+        "name": {"type": "string"},
+        "targetFile": {"type": "string"},
+        "sourceFile": {"type": "string"},
+        "status": {"$ref": "#/$defs/evidenceStatus"},
+        "risk": {"$ref": "#/$defs/riskLevel"},
+        "requiredBefore": {"type": "string"},
+        "sanitized": {"type": "boolean"},
+        "notes": {"type": "string"}
+      }
+    }
+  }
+}
