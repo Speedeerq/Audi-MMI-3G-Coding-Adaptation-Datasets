@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 
 This project uses evidence-based technical documentation. A version may contain research structure without confirmed technical findings.
 
+## [0.3.3] - 2026-07-09
+
+### Added
+
+- Added dedicated Red Menu fallback capture package under:
+  - `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/`
+- Added Red Menu fallback files:
+  - `RED_MENU_FALLBACK_CAPTURE_GUIDE.md`
+  - `red_menu_photo_checklist.md`
+  - `red_menu_transcription_worksheet.md`
+  - `red_menu_evidence_status.md`
+- Updated `EVIDENCE_INDEX.md` to link the Red Menu fallback package and media naming convention.
+
+### Safety
+
+- Red Menu workflow is read-only.
+- SWDL/update/dataset/parameterization/security/coding/adaptation actions remain blocked.
+- Red Menu fallback evidence can only support provisional identification until Auto-Scan or equivalent diagnostic evidence exists.
+
 ## [0.3.2] - 2026-07-08
 
 ### Added
