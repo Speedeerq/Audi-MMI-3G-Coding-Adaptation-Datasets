@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets/schemas/e3_campaign.schema.json",
+  "title": "E3 Evidence Collection Campaign",
+  "description": "Non-operational schema for E3 evidence collection campaign records.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["campaignId", "title", "status", "modules", "requiredTools", "evidenceOutputs", "safety"],
+  "properties": {
+    "campaignId": {"type": "string", "pattern": "^C-[0-9]{3}$"},
+    "title": {"type": "string"},
+    "purpose": {"type": "string"},
+    "status": {"$ref": "#/$defs/status"},
+    "modules": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/moduleRef"}
+    },
+    "requiredTools": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "filesToGenerate": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "photosToCapture": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "logsToSave": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "autoscanData": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "controlModuleMaps": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "adaptationMaps": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "p1TaskGroups": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "executionOrder": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "risks": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/risk"}
+    },
+    "doNotClick": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "safety": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "expectedResult": {"type": "string"}
+  },
+  "$defs": {
+    "status": {
+      "type": "string",
+      "enum": ["TO_CAPTURE", "PARTIAL", "CAPTURED", "BLOCKED", "UNKNOWN"]
+    },
+    "riskLevel": {
+      "type": "string",
+      "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
+    },
+    "moduleRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["address", "name"],
+      "properties": {
+        "address": {"type": "string"},
+        "name": {"type": "string"},
+        "purpose": {"type": "string"}
+      }
+    },
+    "risk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "level"],
+      "properties": {
+        "name": {"type": "string"},
+        "level": {"$ref": "#/$defs/riskLevel"},
+        "control": {"type": "string"}
+      }
+    }
+  }
+}
