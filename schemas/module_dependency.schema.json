@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets/schemas/module_dependency.schema.json",
+  "title": "Module Dependency Record",
+  "description": "Schema for provisional module dependency records. Does not confirm technical behavior.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["dependencyId", "primaryModule", "relatedModules", "status", "risk", "evidenceRequired"],
+  "properties": {
+    "dependencyId": {"type": "string"},
+    "area": {"type": "string"},
+    "primaryModule": {"$ref": "#/$defs/moduleRef"},
+    "relatedModules": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/moduleRef"}
+    },
+    "relationshipDescription": {"type": "string"},
+    "possibleEffect": {"type": "string"},
+    "evidenceRequired": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "blockedActions": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "status": {"$ref": "#/$defs/claimStatus"},
+    "risk": {"$ref": "#/$defs/riskLevel"},
+    "notes": {"type": "string"}
+  },
+  "$defs": {
+    "claimStatus": {
+      "type": "string",
+      "enum": ["UNKNOWN", "HYPOTHESIS", "TO_VERIFY", "VARIANT", "CONFIRMED", "BLOCKED"]
+    },
+    "riskLevel": {
+      "type": "string",
+      "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
+    },
+    "moduleRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["address", "name"],
+      "properties": {
+        "address": {"type": "string"},
+        "name": {"type": "string"},
+        "partNumber": {"type": "string"},
+        "softwareVersion": {"type": "string"},
+        "evidenceStatus": {
+          "type": "string",
+          "enum": ["TO_CAPTURE", "PARTIAL", "CAPTURED", "BLOCKED", "UNKNOWN"]
+        }
+      }
+    }
+  }
+}
