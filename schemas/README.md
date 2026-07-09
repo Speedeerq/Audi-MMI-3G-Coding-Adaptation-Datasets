@@ -19,7 +19,6 @@ They do not contain coding values, adaptation values, Security Access values, bi
 | [dtc_baseline.schema.json](dtc_baseline.schema.json) | DTC-before baseline record |
 | [ui_observation.schema.json](ui_observation.schema.json) | MMI/UI observation record |
 | [module_dependency.schema.json](module_dependency.schema.json) | Module dependency matrix record |
-| [source_review.schema.json](source_review.schema.json) | External/community source review record |
 
 ## Status policy
 
