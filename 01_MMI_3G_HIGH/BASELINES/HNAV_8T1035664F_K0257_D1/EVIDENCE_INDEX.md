@@ -22,7 +22,7 @@ A baseline is not confirmed until required evidence is attached and cross-refere
 |---|---|---:|---|---|
 | HNAV-EV-001 | Full Auto-Scan before any changes | Yes | 🟠 TO CAPTURE | `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/AUTOSCAN_HNAV_TEMPLATE.md` |
 | HNAV-EV-002 | Controller identification block | Yes | 🟠 TO CAPTURE | `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/controller_identification.template.md` |
-| HNAV-EV-003 | Red Engineering Menu identification | Yes | 🟠 TO CAPTURE | `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/red_menu_identification.template.md` |
+| HNAV-EV-003 | Red Engineering Menu identification | Yes | 🟠 TO CAPTURE | Red Menu fallback evidence package |
 | HNAV-EV-004 | Original long coding | Yes | 🟠 TO CAPTURE | `CODING_BACKUP.md` / raw export |
 | HNAV-EV-005 | Adaptation map/export | Recommended | 🟠 TO CAPTURE | `ADAPTATION_MAP.md` / CSV export |
 | HNAV-EV-006 | DTC before changes | Yes | 🟠 TO CAPTURE | `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/dtc_before.template.md` |
@@ -30,6 +30,18 @@ A baseline is not confirmed until required evidence is attached and cross-refere
 | HNAV-EV-008 | MOST/audio status | Recommended | 🟠 TO CAPTURE | `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/most_audio_status.template.md` |
 | HNAV-EV-009 | Green Menu current state | Optional initially | 🟠 TO CAPTURE | `ui_observation_log.template.md` or dedicated media notes |
 | HNAV-EV-010 | Dataset/parameterization backup | Required before dataset research | 🟠 TO CAPTURE | Do not test dataset without backup |
+
+## Red Menu fallback package
+
+Use this when Auto-Scan is unavailable and Red Engineering Menu can be photographed/transcribed safely.
+
+| File | Purpose | Maximum evidence status |
+|---|---|---|
+| `RED_MENU_FALLBACK_CAPTURE_GUIDE.md` | Exact read-only capture workflow | N/A |
+| `red_menu_identification.template.md` | Main Red Menu identity capture form | 🟠 TO VERIFY |
+| `red_menu_photo_checklist.md` | Required and recommended photo list | 🟠 TO VERIFY |
+| `red_menu_transcription_worksheet.md` | Exact text transcription sheet | 🟠 TO VERIFY |
+| `red_menu_evidence_status.md` | Usability and status decision sheet | 🟠 TO VERIFY |
 
 ## No Auto-Scan fallback set
 
@@ -64,7 +76,11 @@ Recommended structure:
 ├── dtc_before.template.md
 ├── gateway_installation_list.template.md
 ├── most_audio_status.template.md
+├── RED_MENU_FALLBACK_CAPTURE_GUIDE.md
 ├── red_menu_identification.template.md
+├── red_menu_photo_checklist.md
+├── red_menu_transcription_worksheet.md
+├── red_menu_evidence_status.md
 ├── mmi_version_screen.template.md
 ├── manual_controller_capture.template.md
 ├── ui_observation_log.template.md
@@ -77,7 +93,12 @@ Recommended structure:
 ├── gateway_installation_list.txt
 ├── most_audio_status.txt
 └── media/
-    ├── red_menu_001.jpg
+    ├── red_menu_001_main.jpg
+    ├── red_menu_002_sw_train.jpg
+    ├── red_menu_003_mu_version.jpg
+    ├── red_menu_004_region_database.jpg
+    ├── red_menu_005_map_database.jpg
+    ├── red_menu_006_variant_radiounit_sample.jpg
     ├── mmi_version_001.jpg
     ├── unit_label_001.jpg
     ├── coding_before_001.jpg
@@ -114,7 +135,8 @@ Before publishing evidence:
 | Use case | Allowed now? | Reason |
 |---|---:|---|
 | Repository structure reference | Yes | Folder and templates exist |
-| No-Auto-Scan fallback evidence intake | Yes | Fallback templates now exist |
+| Red Menu fallback capture | Yes | Dedicated package exists |
+| No-Auto-Scan fallback evidence intake | Yes | Fallback templates exist |
 | Auto-Scan evidence intake | Yes | Templates exist for when scan becomes available |
 | Read-only Red Menu/MMI version capture | Yes | Allowed as provisional evidence |
 | UI menu observation without changes | Yes | Allowed as provisional evidence |
