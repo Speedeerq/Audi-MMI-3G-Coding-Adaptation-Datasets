@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets/schemas/autoscan_summary.schema.json",
+  "title": "Sanitized Auto-Scan Summary",
+  "description": "Schema for sanitized Auto-Scan summary metadata. Raw private data must not be published.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["autoscanId", "capturedAt", "sanitized", "controllers"],
+  "properties": {
+    "autoscanId": {"type": "string"},
+    "campaignId": {"type": "string"},
+    "baselineId": {"type": "string"},
+    "capturedAt": {"type": "string", "format": "date-time"},
+    "tool": {"type": "string"},
+    "toolVersion": {"type": "string"},
+    "vehicleContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "model": {"type": "string"},
+        "modelYear": {"type": "string"},
+        "market": {"type": "string"},
+        "vinPartial": {"type": "string"}
+      }
+    },
+    "sanitized": {"type": "boolean"},
+    "privacyReview": {"type": "string"},
+    "controllers": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/controllerSummary"}
+    },
+    "globalNotes": {"type": "string"}
+  },
+  "$defs": {
+    "evidenceStatus": {
+      "type": "string",
+      "enum": ["TO_CAPTURE", "PARTIAL", "CAPTURED", "BLOCKED", "UNKNOWN"]
+    },
+    "controllerSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["address", "moduleName", "status"],
+      "properties": {
+        "address": {"type": "string"},
+        "moduleName": {"type": "string"},
+        "reachable": {"type": "boolean"},
+        "partNumber": {"type": "string"},
+        "softwareVersion": {"type": "string"},
+        "dtcCount": {"type": "integer", "minimum": 0},
+        "status": {"$ref": "#/$defs/evidenceStatus"},
+        "notes": {"type": "string"}
+      }
+    }
+  }
+}
