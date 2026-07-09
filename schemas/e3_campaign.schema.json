@@ -5,7 +5,7 @@
   "description": "Non-operational schema for E3 evidence collection campaign records.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["campaignId", "title", "status", "modules", "requiredTools", "evidenceOutputs", "safety"],
+  "required": ["campaignId", "title", "status", "modules", "requiredTools", "safety"],
   "properties": {
     "campaignId": {"type": "string", "pattern": "^C-[0-9]{3}$"},
     "title": {"type": "string"},
