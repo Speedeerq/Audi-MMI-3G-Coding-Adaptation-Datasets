@@ -27,9 +27,14 @@ Everything here remains `⚫ UNKNOWN`, `🔴 HYPOTHESIS` or `🟠 TO VERIFY` unt
 | `HYPOTHESIS_REGISTER.md` | Hypotheses that must not be used as facts |
 | `EVIDENCE_QUEUE.md` | Evidence still required before confirmation |
 | `MODULE_DEPENDENCY_MATRIX.md` | Dependency matrix between MMI 3G High and related vehicle modules |
+| `CAR_MENU_DEPENDENCY_MATRIX.md` | CAR menu dependency planning matrix |
+| `AUDIO_MOST_DEPENDENCY_MATRIX.md` | Audio/MOST dependency planning matrix |
 | `SOURCE_REVIEW_PROTOCOL.md` | How to evaluate external/community sources |
+| `SOURCE_REVIEW_QUEUE.md` | Queue for future source review |
 | `RISK_REGISTER.md` | Risk register for MMI 3G High research areas |
 | `RELEASE_GATE.md` | Conditions required before publishing confirmed findings |
+| `TEST_CASE_LIBRARY.md` | Evidence review case templates |
+| `BLOCKED_ITEMS_REGISTER.md` | Items blocked until evidence exists |
 
 ## Allowed work here
 
@@ -41,6 +46,9 @@ Everything here remains `⚫ UNKNOWN`, `🔴 HYPOTHESIS` or `🟠 TO VERIFY` unt
 | Create hypothesis entries | Yes | Must remain hypothesis |
 | Review source quality | Yes | No copying unsupported values as facts |
 | Build module dependency matrix | Yes | Dependency claims remain unconfirmed until evidence exists |
+| Build CAR menu matrix | Yes | UI/module relationships remain provisional |
+| Build Audio/MOST matrix | Yes | audio relationships remain provisional |
+| Build blocked register | Yes | records evidence gates only |
 | Confirm byte/bit/adaptation behavior | No | Requires test evidence |
 | Publish login/dataset values | No | Requires strict evidence and safety review |
 
