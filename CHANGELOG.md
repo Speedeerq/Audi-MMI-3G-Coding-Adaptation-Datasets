@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 
 This project uses evidence-based technical documentation. A version may contain research structure without confirmed technical findings.
 
+## [0.3.2] - 2026-07-08
+
+### Added
+
+- Added no-Auto-Scan fallback workflow for HNAV baseline:
+  - `01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/NO_AUTOSCAN_FALLBACK.md`
+- Added fallback evidence templates:
+  - `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/red_menu_identification.template.md`
+  - `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/mmi_version_screen.template.md`
+  - `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/manual_controller_capture.template.md`
+  - `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/ui_observation_log.template.md`
+- Updated `EVIDENCE_INDEX.md` with the fallback evidence set.
+- Updated `TEST_PLAN.md` with `Phase A0 — No Auto-Scan fallback capture`.
+
+### Safety
+
+- Fallback evidence cannot replace full Auto-Scan.
+- Fallback evidence cannot confirm byte/bit/adaptation/Security Access/dataset behavior.
+- Allowed work without Auto-Scan is limited to read-only identification, UI observation and provisional research notes.
+- Coding/adaptation/dataset tests remain blocked until baseline scan, coding backup, DTC state and rollback path are captured.
+
 ## [0.3.1] - 2026-07-08
 
 ### Added
