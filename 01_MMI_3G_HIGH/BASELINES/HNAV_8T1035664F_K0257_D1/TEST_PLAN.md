@@ -6,7 +6,20 @@ This file defines the first controlled research plan for the HNAV baseline.
 
 The first phase is evidence capture only. No unknown bit/channel/login/dataset test is allowed until the baseline is complete.
 
-## Phase A — Baseline capture
+## Phase A0 — No Auto-Scan fallback capture
+
+Use this phase only when full Auto-Scan is temporarily unavailable.
+
+| Test ID | Area | Goal | Change allowed? | Status |
+|---|---|---|---:|---|
+| T-20260708-5F-FALLBACK-REDMENU-001 | Red Menu | Capture SW train, MU/SW, region/database fields from Red Engineering Menu | No | 🟠 TO CAPTURE |
+| T-20260708-5F-FALLBACK-VERSION-001 | MMI Version | Capture user-visible MMI software/map/version screen | No | 🟠 TO CAPTURE |
+| T-20260708-5F-FALLBACK-CTRL-001 | Manual controller capture | Capture single-controller ID screen if any diagnostic tool is available | No | 🟠 TO CAPTURE |
+| T-20260708-5F-FALLBACK-UI-001 | UI observation | Capture CAR/audio/nav/menu behavior without changing values | No | 🟠 TO CAPTURE |
+
+Fallback evidence may support provisional identification only. It does not replace Auto-Scan.
+
+## Phase A — Full baseline capture
 
 | Test ID | Area | Goal | Change allowed? | Status |
 |---|---|---|---:|---|
@@ -49,6 +62,9 @@ Only after Phase A and Phase B are complete.
 | EEPROM-like operations | 🔴 BLOCKED | Recovery path required |
 | Security Access guessing | 🔴 BLOCKED | No guessing allowed |
 | Unknown Green Menu destructive options | 🔴 BLOCKED | Risk not classified |
+| Any coding/adaptation change without Auto-Scan or coding backup | 🔴 BLOCKED | No DTC baseline and no rollback evidence |
+| Gateway installation changes without Gateway backup | 🔴 BLOCKED | Network/module communication risk |
+| MOST/audio configuration changes without MOST baseline | 🔴 BLOCKED | Audio loss / MOST DTC risk |
 
 ## Baseline completion criteria
 
@@ -66,7 +82,18 @@ Baseline is complete when:
 | MOST/audio state captured | Recommended |
 | Backup folder created | Yes |
 
-## First safe manual workflow
+## Fallback workflow when Auto-Scan is unavailable
+
+1. Capture Red Engineering Menu identification photos.
+2. Capture user-visible MMI version screen.
+3. Capture physical unit label if accessible.
+4. Capture single-controller diagnostic identity if any tool access exists.
+5. Capture UI observations only; do not change values.
+6. Mark all findings as `🟠 TO VERIFY`, `🔴 HYPOTHESIS`, or `⚫ UNKNOWN`.
+7. Do not promote findings to `🟢 CONFIRMED`.
+8. Return to full Auto-Scan baseline when available.
+
+## First safe manual workflow with Auto-Scan
 
 1. Connect stable charger/power support.
 2. Run full Auto-Scan.
