@@ -4,6 +4,50 @@ All notable changes to this project will be documented in this file.
 
 This project uses evidence-based technical documentation. A version may contain research structure without confirmed technical findings.
 
+## [0.3.5] - 2026-07-09
+
+### Added
+
+- Added and/or completed full offline package for MMI 3G High:
+  - `01_MMI_3G_HIGH/OFFLINE_RESEARCH/MODULE_DEPENDENCY_MATRIX.md`
+  - `01_MMI_3G_HIGH/OFFLINE_RESEARCH/CAR_MENU_DEPENDENCY_MATRIX.md`
+  - `01_MMI_3G_HIGH/OFFLINE_RESEARCH/AUDIO_MOST_DEPENDENCY_MATRIX.md`
+  - `01_MMI_3G_HIGH/OFFLINE_RESEARCH/SOURCE_REVIEW_QUEUE.md`
+  - `01_MMI_3G_HIGH/OFFLINE_RESEARCH/TEST_CASE_LIBRARY.md`
+  - `01_MMI_3G_HIGH/OFFLINE_RESEARCH/BLOCKED_ITEMS_REGISTER.md`
+  - `01_MMI_3G_HIGH/MMI_3G_HIGH_INDEX.md`
+  - `12_COMPATIBILITY/MMI_3G_HIGH_COMPATIBILITY_MATRIX.md`
+  - `13_RELEASE/FINAL_PROGRESS_REPORT.md`
+- Added light research shell files:
+  - `11_LIGHT_CODING/LIGHT_CODING_RESEARCH_OVERVIEW.md`
+  - `11_LIGHT_CODING/BCM1_J519_LIGHT_DEPENDENCY_MATRIX.md`
+  - `11_LIGHT_CODING/MMI_CAR_LIGHT_MENU_DEPENDENCY.md`
+  - `11_LIGHT_CODING/LIGHT_CODING_TEST_PROTOCOL.md`
+
+### Updated
+
+- Updated `01_MMI_3G_HIGH/OFFLINE_RESEARCH/README.md` with new offline files.
+- Updated `ROADMAP.md` with:
+  - completed offline research stages,
+  - waiting-for-evidence section,
+  - blocked Security Access/dataset/behavior-confirmation gates.
+
+### Safety
+
+- Offline matrices are planning documents only.
+- Module, CAR, Audio/MOST, Light and Compatibility dependencies remain `🟠 TO VERIFY`, `🔴 HYPOTHESIS` or `⚫ UNKNOWN` until evidence exists.
+- Release-gate and blocked-item structures prevent unsupported technical claims.
+
+### Not Added
+
+- No byte/bit meanings.
+- No adaptation values.
+- No Security Access values.
+- No binary datasets.
+- No coding instructions.
+- No retrofit instructions.
+- No confirmed vehicle behavior.
+
 ## [0.3.4] - 2026-07-09
 
 ### Added
