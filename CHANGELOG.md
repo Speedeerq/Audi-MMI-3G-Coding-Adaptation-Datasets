@@ -4,6 +4,38 @@ All notable changes to this project will be documented in this file.
 
 This project uses evidence-based technical documentation. A version may contain research structure without confirmed technical findings.
 
+## [0.3.6] - 2026-07-09
+
+### Added
+
+- Added global repository navigation map:
+  - `NAVIGATION.md`
+
+### Updated
+
+- Added cross-links to:
+  - `README.md`
+  - `ROADMAP.md`
+  - `01_MMI_3G_HIGH/MMI_3G_HIGH_INDEX.md`
+  - `01_MMI_3G_HIGH/OFFLINE_RESEARCH/README.md`
+  - `13_RELEASE/FINAL_PROGRESS_REPORT.md`
+
+### Safety
+
+- Cross-links improve repository navigation only.
+- No technical findings were promoted.
+- No confirmed byte/bit/adaptation/Security Access/dataset values were added.
+
+### Not Added
+
+- No byte/bit meanings.
+- No adaptation values.
+- No Security Access values.
+- No binary datasets.
+- No coding instructions.
+- No retrofit instructions.
+- No confirmed vehicle behavior.
+
 ## [0.3.5] - 2026-07-09
 
 ### Added
@@ -134,28 +166,7 @@ This project uses evidence-based technical documentation. A version may contain 
 
 ### Added
 
-- Added first MMI 3G High HNAV baseline package:
-  - `01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/README.md`
-  - `01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/UNIT_PROFILE.md`
-  - `01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/EVIDENCE_INDEX.md`
-  - `01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/CODING_BACKUP.md`
-  - `01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/ADAPTATION_MAP.md`
-  - `01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/DTC_BASELINE.md`
-  - `01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/TEST_PLAN.md`
-- Added evidence folder placeholder:
-  - `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/`
-- Added backup folder placeholder:
-  - `10_BACKUPS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/`
-
-### Baseline context
-
-- Initial HNAV context recorded as `🟠 TO VERIFY` / `⚫ UNKNOWN` until scan evidence is attached:
-  - `8T1 035 664 F`
-  - `HNav_EU_K0257_5_D1` / `HNav_EU_K0257_6_D1`
-  - `Variant 9307`
-  - `RadioUnit 9471`
-  - `MU 0187`
-  - `Sample d1`
+- Added first MMI 3G High HNAV baseline package.
 
 ### Safety
 
@@ -169,87 +180,27 @@ This project uses evidence-based technical documentation. A version may contain 
 
 ### Added
 
-- Started the MMI 3G High research area after the command:
-
-```text
-ROZPOCZNIJ MMI 3G HIGH
-```
-
-- Added MMI 3G High research shell files:
-  - `01_MMI_3G_HIGH/MMI_3G_HIGH_OVERVIEW.md`
-  - `01_MMI_3G_HIGH/MMI_3G_HIGH_LONG_CODING.md`
-  - `01_MMI_3G_HIGH/MMI_3G_HIGH_ADAPTATIONS.md`
-  - `01_MMI_3G_HIGH/MMI_3G_HIGH_SECURITY_ACCESS.md`
-  - `01_MMI_3G_HIGH/MMI_3G_HIGH_DATASETS.md`
-  - `01_MMI_3G_HIGH/MMI_3G_HIGH_GREEN_MENU.md`
-  - `01_MMI_3G_HIGH/MMI_3G_HIGH_RED_MENU.md`
-  - `01_MMI_3G_HIGH/MMI_3G_HIGH_AUDIO_SOURCES.md`
-  - `01_MMI_3G_HIGH/MMI_3G_HIGH_CAR_MENU.md`
-  - `01_MMI_3G_HIGH/MMI_3G_HIGH_TEST_MATRIX.md`
+- Started the MMI 3G High research area after the command `ROZPOCZNIJ MMI 3G HIGH`.
+- Added MMI 3G High research shell files.
 
 ### Safety
 
 - Added templates without confirmed byte/bit/login/dataset values.
 - Preserved the rule that unknown items must remain `⚫ UNKNOWN` until evidence exists.
-- Added explicit test templates for controlled validation and rollback.
-
-### Not added
-
-- No confirmed MMI 3G High byte/bit mappings.
-- No adaptation values.
-- No Security Access login values.
-- No binary datasets.
-- No retrofit coding instructions.
 
 ## [0.1.0] - 2026-07-08
 
 ### Added
 
 - Created initial repository architecture.
-- Added top-level documentation:
-  - `README.md`
-  - `ROADMAP.md`
-  - `CHANGELOG.md`
-- Added project governance files:
-  - `00_PROJECT/PROJECT_BRIEF.md`
-  - `00_PROJECT/RESEARCH_METHOD.md`
-  - `00_PROJECT/STATUS_LEGEND.md`
-  - `00_PROJECT/TEST_PROTOCOL.md`
-  - `00_PROJECT/SAFETY_RULES.md`
-- Added placeholder directories for:
-  - MMI 3G High
-  - MMI 3G Basic
-  - MMI 3G+
-  - related control modules
-  - datasets
-  - coding research
-  - adaptation research
-  - Security Access
-  - test logs
-  - backups
-  - light coding
-  - compatibility
-  - release package
+- Added top-level documentation and project governance files.
+- Added placeholder directories for future research areas.
 
 ### Safety
 
 - Established mandatory backup-before-change policy.
-- Established evidence status model:
-  - 🟢 CONFIRMED
-  - 🟡 VARIANT
-  - 🟠 TO VERIFY
-  - 🔴 HYPOTHESIS
-  - ⚫ UNKNOWN
+- Established evidence status model.
 - Established rule: no byte, bit, adaptation channel, Security Access login or dataset value may be presented as confirmed without evidence.
-
-### Not added
-
-- No MMI 3G High byte/bit mappings.
-- No adaptation channel values.
-- No Security Access login values.
-- No binary datasets.
-- No coding recommendations.
-- No vehicle-specific retrofit instructions.
 
 ## [Unreleased]
 
