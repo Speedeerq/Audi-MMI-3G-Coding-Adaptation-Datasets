@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets/schemas/controller_identification.schema.json",
+  "title": "Controller Identification",
+  "description": "Metadata schema for sanitized controller identification records.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["recordId", "address", "moduleName", "evidenceStatus"],
+  "properties": {
+    "recordId": {"type": "string"},
+    "campaignId": {"type": "string"},
+    "baselineId": {"type": "string"},
+    "address": {"type": "string"},
+    "moduleName": {"type": "string"},
+    "partNumber": {"type": "string"},
+    "component": {"type": "string"},
+    "softwareVersion": {"type": "string"},
+    "hardwareVersion": {"type": "string"},
+    "codingPresent": {"type": "boolean"},
+    "codingValueStored": {"type": "boolean", "description": "True only if a backup exists. This schema does not define coding meanings."},
+    "sourceTool": {"type": "string"},
+    "sourceFile": {"type": "string"},
+    "capturedAt": {"type": "string", "format": "date-time"},
+    "sanitized": {"type": "boolean"},
+    "evidenceStatus": {"$ref": "#/$defs/evidenceStatus"},
+    "notes": {"type": "string"}
+  },
+  "$defs": {
+    "evidenceStatus": {
+      "type": "string",
+      "enum": ["TO_CAPTURE", "PARTIAL", "CAPTURED", "BLOCKED", "UNKNOWN"]
+    }
+  }
+}
