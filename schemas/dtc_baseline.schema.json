@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets/schemas/dtc_baseline.schema.json",
+  "title": "DTC Baseline",
+  "description": "Schema for DTC-before baseline records.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["dtcBaselineId", "capturedAt", "status", "modules"],
+  "properties": {
+    "dtcBaselineId": {"type": "string"},
+    "campaignId": {"type": "string"},
+    "baselineId": {"type": "string"},
+    "capturedAt": {"type": "string", "format": "date-time"},
+    "sourceTool": {"type": "string"},
+    "sourceFile": {"type": "string"},
+    "status": {"$ref": "#/$defs/evidenceStatus"},
+    "modules": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/moduleDtcBlock"}
+    },
+    "notes": {"type": "string"}
+  },
+  "$defs": {
+    "evidenceStatus": {
+      "type": "string",
+      "enum": ["TO_CAPTURE", "PARTIAL", "CAPTURED", "BLOCKED", "UNKNOWN"]
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["INFO", "LOW", "MEDIUM", "HIGH", "CRITICAL", "UNKNOWN"]
+    },
+    "moduleDtcBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["address", "moduleName", "dtcs"],
+      "properties": {
+        "address": {"type": "string"},
+        "moduleName": {"type": "string"},
+        "partNumber": {"type": "string"},
+        "dtcs": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/dtcRecord"}
+        },
+        "notes": {"type": "string"}
+      }
+    },
+    "dtcRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "status"],
+      "properties": {
+        "code": {"type": "string"},
+        "description": {"type": "string"},
+        "status": {"type": "string"},
+        "frequency": {"type": "integer", "minimum": 0},
+        "priority": {"type": "string"},
+        "severity": {"$ref": "#/$defs/severity"},
+        "rawText": {"type": "string"},
+        "notes": {"type": "string"}
+      }
+    }
+  }
+}
