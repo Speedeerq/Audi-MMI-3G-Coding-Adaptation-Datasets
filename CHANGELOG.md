@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 
 This project uses evidence-based technical documentation. A version may contain research structure without confirmed technical findings.
 
+## [0.3.4] - 2026-07-09
+
+### Added
+
+- Added MMI 3G High offline research layer:
+  - `01_MMI_3G_HIGH/OFFLINE_RESEARCH/README.md`
+  - `01_MMI_3G_HIGH/OFFLINE_RESEARCH/RESEARCH_BACKLOG.md`
+  - `01_MMI_3G_HIGH/OFFLINE_RESEARCH/HYPOTHESIS_REGISTER.md`
+  - `01_MMI_3G_HIGH/OFFLINE_RESEARCH/EVIDENCE_QUEUE.md`
+  - `01_MMI_3G_HIGH/OFFLINE_RESEARCH/SOURCE_REVIEW_PROTOCOL.md`
+  - `01_MMI_3G_HIGH/OFFLINE_RESEARCH/RISK_REGISTER.md`
+  - `01_MMI_3G_HIGH/OFFLINE_RESEARCH/RELEASE_GATE.md`
+
+### Safety
+
+- Offline research layer cannot confirm technical behavior.
+- Hypotheses, backlog items and external-source notes must remain `⚫ UNKNOWN`, `🔴 HYPOTHESIS` or `🟠 TO VERIFY` until evidence exists.
+- Added release-gate rules to prevent unsupported byte/bit/adaptation/Security Access/dataset claims.
+
 ## [0.3.3] - 2026-07-09
 
 ### Added
