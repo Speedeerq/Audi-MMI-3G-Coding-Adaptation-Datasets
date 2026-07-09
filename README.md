@@ -1,6 +1,22 @@
 # Audi MMI 3G Coding / Adaptation / Dataset Research
 
-> Research repository for documenting Audi MMI 3G High coding, adaptations, Security Access, datasets, hidden functions, test evidence, and cross-module dependencies.
+> Evidence-based research repository for Audi MMI 3G High coding, adaptations, Security Access, datasets, hidden functions, test evidence, and cross-module dependencies.
+
+## Navigation
+
+| Area | Link |
+|---|---|
+| Repository navigation map | [NAVIGATION.md](NAVIGATION.md) |
+| Roadmap | [ROADMAP.md](ROADMAP.md) |
+| Changelog | [CHANGELOG.md](CHANGELOG.md) |
+| MMI 3G High index | [01_MMI_3G_HIGH/MMI_3G_HIGH_INDEX.md](01_MMI_3G_HIGH/MMI_3G_HIGH_INDEX.md) |
+| Offline research layer | [01_MMI_3G_HIGH/OFFLINE_RESEARCH/README.md](01_MMI_3G_HIGH/OFFLINE_RESEARCH/README.md) |
+| Module dependency matrix | [01_MMI_3G_HIGH/OFFLINE_RESEARCH/MODULE_DEPENDENCY_MATRIX.md](01_MMI_3G_HIGH/OFFLINE_RESEARCH/MODULE_DEPENDENCY_MATRIX.md) |
+| CAR menu dependency matrix | [01_MMI_3G_HIGH/OFFLINE_RESEARCH/CAR_MENU_DEPENDENCY_MATRIX.md](01_MMI_3G_HIGH/OFFLINE_RESEARCH/CAR_MENU_DEPENDENCY_MATRIX.md) |
+| Audio/MOST dependency matrix | [01_MMI_3G_HIGH/OFFLINE_RESEARCH/AUDIO_MOST_DEPENDENCY_MATRIX.md](01_MMI_3G_HIGH/OFFLINE_RESEARCH/AUDIO_MOST_DEPENDENCY_MATRIX.md) |
+| Light research shell | [11_LIGHT_CODING/LIGHT_CODING_RESEARCH_OVERVIEW.md](11_LIGHT_CODING/LIGHT_CODING_RESEARCH_OVERVIEW.md) |
+| Compatibility matrix | [12_COMPATIBILITY/MMI_3G_HIGH_COMPATIBILITY_MATRIX.md](12_COMPATIBILITY/MMI_3G_HIGH_COMPATIBILITY_MATRIX.md) |
+| Final progress report | [13_RELEASE/FINAL_PROGRESS_REPORT.md](13_RELEASE/FINAL_PROGRESS_REPORT.md) |
 
 ## Project purpose
 
@@ -16,6 +32,12 @@ Primary focus:
 The goal is not to publish a quick coding guide.  
 The goal is to document **what is known, what is unknown, what is variant-dependent, and how each finding can be verified safely**.
 
+## Current repository phase
+
+Current phase: **v0.3.5 — Offline research package complete / waiting for evidence**.
+
+No confirmed MMI 3G High byte/bit/adaptation/Security Access/dataset values are included.
+
 ## Scope
 
 The repository will document:
@@ -27,17 +49,15 @@ The repository will document:
 | Security Access | Login requirements, verified use cases, risk classification | No guessing allowed |
 | Datasets | Address/function/value mapping, source, checksum notes, backup requirements | No binary datasets without source |
 | Green Menu / Red Menu | Hidden engineering menus, observed functions, dependencies | Unknown options must be marked |
-| Light Coding | BCM/J519, DRL, CH/LH, USA/EU/Scandinavian lights, front/rear lamps | High-risk changes require test matrix |
+| Light Coding | BCM/J519, DRL, CH/LH, market/equipment light context, front/rear lamps | High-risk areas require evidence and release gate review |
 | Compatibility | HW/SW version, market, PR-code and equipment dependencies | Variant matrix required |
 | Test Logs | Controlled experiments and rollback verification | Required for confirmation |
 
 ## Supported systems
 
-Initial target:
-
 | System | Priority | Repository status |
 |---|---:|---|
-| MMI 3G High | P0 | Foundation prepared |
+| MMI 3G High | P0 | Offline research structure ready / waiting for evidence |
 | MMI 3G Basic | P2 | Placeholder only |
 | MMI 3G+ | P3 | Placeholder only |
 
@@ -69,66 +89,29 @@ Every claim must use one of the following statuses:
 | 🔴 HYPOTHESIS | Research hypothesis only | Do not apply without controlled test |
 | ⚫ UNKNOWN | Function currently unknown | Must include a test plan or open question |
 
-Full definition: [`00_PROJECT/STATUS_LEGEND.md`](00_PROJECT/STATUS_LEGEND.md)
+Full definition: [00_PROJECT/STATUS_LEGEND.md](00_PROJECT/STATUS_LEGEND.md)
 
 ## Safety warning
 
-Coding, adaptation and dataset changes may affect:
-
-- infotainment boot behavior,
-- MOST bus configuration,
-- gateway installation list,
-- audio routing,
-- camera behavior,
-- lighting behavior,
-- battery drain,
-- diagnostic communication,
-- DTC generation,
-- component protection-related behavior,
-- immobilizer-adjacent vehicle configuration areas,
-- legal compliance of exterior lighting.
-
 This repository must not be used as a blind-click coding list.
 
-Before any test, create:
+Before any technical claim can be promoted, the repository must capture relevant evidence such as:
 
 1. full Auto-Scan,
-2. original long coding backup,
-3. adaptation channel backup where applicable,
-4. dataset/parameterization backup where applicable,
-5. controller part number record,
-6. software version record,
-7. DTC report before modification,
-8. rollback plan.
+2. original backup data,
+3. adaptation export where applicable,
+4. controller identification,
+5. software version,
+6. DTC context,
+7. rollback evidence where applicable.
 
-Detailed rules: [`00_PROJECT/SAFETY_RULES.md`](00_PROJECT/SAFETY_RULES.md)
-
-## Required tools
-
-Tooling depends on the test type. The repository should record the tool used for every finding.
-
-Typical tools:
-
-| Tool class | Examples | Purpose |
-|---|---|---|
-| Diagnostic scan | VCDS, ODIS, VCP, OBDeleven | Auto-Scan, coding, adaptations, DTC |
-| Engineering access | ODIS Engineering, VCP where applicable | Parameterization/dataset research |
-| Evidence capture | screenshots, photos, exported logs | Reproducibility |
-| Version tracking | Git, Markdown, CSV, JSON | Traceability |
-| Power support | stable battery charger/power supply | Safe diagnostic session |
-
-No tool output should be trusted without recording controller part number, software version, market and vehicle context.
+Detailed rules: [00_PROJECT/SAFETY_RULES.md](00_PROJECT/SAFETY_RULES.md)
 
 ## Repository layout
 
 ```text
 Audi-MMI-3G-Coding-Adaptation-Datasets/
 ├── 00_PROJECT/
-│   ├── PROJECT_BRIEF.md
-│   ├── RESEARCH_METHOD.md
-│   ├── STATUS_LEGEND.md
-│   ├── TEST_PROTOCOL.md
-│   └── SAFETY_RULES.md
 ├── 01_MMI_3G_HIGH/
 ├── 02_MMI_3G_BASIC/
 ├── 03_MMI_3G_PLUS/
@@ -142,109 +125,11 @@ Audi-MMI-3G-Coding-Adaptation-Datasets/
 ├── 11_LIGHT_CODING/
 ├── 12_COMPATIBILITY/
 ├── 13_RELEASE/
+├── NAVIGATION.md
 ├── README.md
 ├── CHANGELOG.md
 └── ROADMAP.md
 ```
-
-## Documentation rules
-
-### Long Coding entry format
-
-```markdown
-## Byte XX / Bit Y — <Label or UNKNOWN>
-
-| Field | Value |
-|---|---|
-| Byte |  |
-| Bit |  |
-| Label |  |
-| Known behavior |  |
-| Observed effect |  |
-| Dependencies |  |
-| Risk |  |
-| Rollback |  |
-| Status | ⚫ UNKNOWN |
-| Tested on |  |
-| Controller part number |  |
-| Software version |  |
-| Market |  |
-| Vehicle |  |
-| Evidence |  |
-| Notes |  |
-```
-
-Unknown bits must not be skipped.  
-They must be documented as `⚫ UNKNOWN` with a controlled test plan.
-
-### Adaptation entry format
-
-```markdown
-## Channel <ID> — <Name or UNKNOWN>
-
-| Field | Value |
-|---|---|
-| Channel |  |
-| Name |  |
-| Value range |  |
-| Default value |  |
-| Observed value |  |
-| Effect |  |
-| Dependencies |  |
-| Security Access |  |
-| Risk |  |
-| Rollback |  |
-| Status | ⚫ UNKNOWN |
-| Evidence |  |
-```
-
-### Dataset entry format
-
-```markdown
-## Dataset entry — <Function or UNKNOWN>
-
-| Field | Value |
-|---|---|
-| Address |  |
-| Function |  |
-| System |  |
-| Possible values |  |
-| Checksum |  |
-| Source |  |
-| Risk |  |
-| Backup required | Yes |
-| Status | ⚫ UNKNOWN |
-```
-
-## How to document tests
-
-Every test must be written as a traceable experiment:
-
-```markdown
-## Test ID: T-YYYYMMDD-MODULE-AREA-001
-
-| Field | Value |
-|---|---|
-| Test ID |  |
-| Date |  |
-| Vehicle |  |
-| VIN partial |  |
-| Controller |  |
-| Part number |  |
-| SW version |  |
-| Original coding |  |
-| Modified coding |  |
-| Changed byte/bit |  |
-| Expected result |  |
-| Observed result |  |
-| DTC before |  |
-| DTC after |  |
-| Rollback successful |  |
-| Status |  |
-| Notes |  |
-```
-
-Full protocol: [`00_PROJECT/TEST_PROTOCOL.md`](00_PROJECT/TEST_PROTOCOL.md)
 
 ## How to submit new observations
 
@@ -257,23 +142,11 @@ A new observation should include:
 | Controller | Address and controller name |
 | Part number | Hardware/software identification |
 | SW version | Software train/version |
-| Original value | Coding/adaptation/dataset before change |
-| Modified value | Coding/adaptation/dataset after change |
+| Original value | Original data where relevant |
+| Modified value | Only when controlled evidence exists |
 | Effect | What changed in vehicle/MMI behavior |
-| DTC before/after | Full diagnostic context |
+| DTC context | Before/after where relevant |
 | Evidence | Logs, screenshots, photos |
-| Rollback result | Whether original behavior returned |
+| Rollback result | Whether original behavior returned where applicable |
 
 Submissions without evidence stay `🟠 TO VERIFY`, `🔴 HYPOTHESIS`, or `⚫ UNKNOWN`.
-
-## Current repository phase
-
-Current phase: **Foundation / Repository Architecture**
-
-No MMI 3G High byte/bit/login/dataset content is included yet.
-
-The MMI 3G High research files will be created only after the command:
-
-```text
-ROZPOCZNIJ MMI 3G HIGH
-```
