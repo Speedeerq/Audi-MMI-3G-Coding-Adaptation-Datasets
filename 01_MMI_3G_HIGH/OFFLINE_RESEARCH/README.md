@@ -26,6 +26,7 @@ Everything here remains `⚫ UNKNOWN`, `🔴 HYPOTHESIS` or `🟠 TO VERIFY` unt
 | `RESEARCH_BACKLOG.md` | Prioritized research backlog for MMI 3G High |
 | `HYPOTHESIS_REGISTER.md` | Hypotheses that must not be used as facts |
 | `EVIDENCE_QUEUE.md` | Evidence still required before confirmation |
+| `MODULE_DEPENDENCY_MATRIX.md` | Dependency matrix between MMI 3G High and related vehicle modules |
 | `SOURCE_REVIEW_PROTOCOL.md` | How to evaluate external/community sources |
 | `RISK_REGISTER.md` | Risk register for MMI 3G High research areas |
 | `RELEASE_GATE.md` | Conditions required before publishing confirmed findings |
@@ -39,6 +40,7 @@ Everything here remains `⚫ UNKNOWN`, `🔴 HYPOTHESIS` or `🟠 TO VERIFY` unt
 | Define test templates | Yes | No change to vehicle |
 | Create hypothesis entries | Yes | Must remain hypothesis |
 | Review source quality | Yes | No copying unsupported values as facts |
+| Build module dependency matrix | Yes | Dependency claims remain unconfirmed until evidence exists |
 | Confirm byte/bit/adaptation behavior | No | Requires test evidence |
 | Publish login/dataset values | No | Requires strict evidence and safety review |
 
