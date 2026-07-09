@@ -12,6 +12,7 @@
     "primaryModule": {"$ref": "#/$defs/moduleRef"},
     "relatedModules": {
       "type": "array",
+      "description": "May be an empty list when status is UNKNOWN, TO_VERIFY or BLOCKED.",
       "items": {"$ref": "#/$defs/moduleRef"}
     },
     "relationshipDescription": {"type": "string"},
