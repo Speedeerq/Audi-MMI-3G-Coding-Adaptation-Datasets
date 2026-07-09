@@ -22,14 +22,26 @@ A baseline is not confirmed until required evidence is attached and cross-refere
 |---|---|---:|---|---|
 | HNAV-EV-001 | Full Auto-Scan before any changes | Yes | 🟠 TO CAPTURE | `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/AUTOSCAN_HNAV_TEMPLATE.md` |
 | HNAV-EV-002 | Controller identification block | Yes | 🟠 TO CAPTURE | `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/controller_identification.template.md` |
-| HNAV-EV-003 | Red Engineering Menu identification | Yes | 🟠 TO CAPTURE | Photo/transcription of SW train/MU/version; file to be added when captured |
+| HNAV-EV-003 | Red Engineering Menu identification | Yes | 🟠 TO CAPTURE | `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/red_menu_identification.template.md` |
 | HNAV-EV-004 | Original long coding | Yes | 🟠 TO CAPTURE | `CODING_BACKUP.md` / raw export |
 | HNAV-EV-005 | Adaptation map/export | Recommended | 🟠 TO CAPTURE | `ADAPTATION_MAP.md` / CSV export |
 | HNAV-EV-006 | DTC before changes | Yes | 🟠 TO CAPTURE | `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/dtc_before.template.md` |
 | HNAV-EV-007 | Gateway installation list | Recommended | 🟠 TO CAPTURE | `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/gateway_installation_list.template.md` |
 | HNAV-EV-008 | MOST/audio status | Recommended | 🟠 TO CAPTURE | `09_TEST_LOGS/2026/2026-07-08/HNAV-8T1035664F-K0257-D1/most_audio_status.template.md` |
-| HNAV-EV-009 | Green Menu current state | Optional initially | 🟠 TO CAPTURE | Only if testing Green Menu behavior |
+| HNAV-EV-009 | Green Menu current state | Optional initially | 🟠 TO CAPTURE | `ui_observation_log.template.md` or dedicated media notes |
 | HNAV-EV-010 | Dataset/parameterization backup | Required before dataset research | 🟠 TO CAPTURE | Do not test dataset without backup |
+
+## No Auto-Scan fallback set
+
+Use this only when full Auto-Scan is unavailable.
+
+| Template | Purpose | Maximum evidence status |
+|---|---|---|
+| `NO_AUTOSCAN_FALLBACK.md` | Defines allowed and blocked work without Auto-Scan | N/A |
+| `red_menu_identification.template.md` | Capture Red Engineering Menu read-only identification | 🟠 TO VERIFY |
+| `mmi_version_screen.template.md` | Capture user-visible MMI version screen | 🟠 TO VERIFY |
+| `manual_controller_capture.template.md` | Capture single-controller metadata from screenshot/tool screen | 🟡 VARIANT if complete |
+| `ui_observation_log.template.md` | Capture CAR/audio/nav/menu UI observations without changes | 🟠 TO VERIFY |
 
 ## Auto-Scan template set
 
@@ -52,6 +64,10 @@ Recommended structure:
 ├── dtc_before.template.md
 ├── gateway_installation_list.template.md
 ├── most_audio_status.template.md
+├── red_menu_identification.template.md
+├── mmi_version_screen.template.md
+├── manual_controller_capture.template.md
+├── ui_observation_log.template.md
 ├── autoscan_before.txt
 ├── controller_identification.txt
 ├── red_menu_identification.md
@@ -62,8 +78,11 @@ Recommended structure:
 ├── most_audio_status.txt
 └── media/
     ├── red_menu_001.jpg
+    ├── mmi_version_001.jpg
+    ├── unit_label_001.jpg
     ├── coding_before_001.jpg
-    └── green_menu_001.jpg
+    ├── green_menu_001.jpg
+    └── car_menu_001.jpg
 ```
 
 ## Privacy/sanitization requirements
@@ -95,9 +114,12 @@ Before publishing evidence:
 | Use case | Allowed now? | Reason |
 |---|---:|---|
 | Repository structure reference | Yes | Folder and templates exist |
-| Auto-Scan evidence intake | Yes | Templates now exist |
-| Confirm byte/bit behavior | No | No coding evidence yet |
-| Confirm adaptation behavior | No | No adaptation map yet |
-| Confirm Security Access | No | No tested operation yet |
-| Dataset research | No | No backup/source yet |
+| No-Auto-Scan fallback evidence intake | Yes | Fallback templates now exist |
+| Auto-Scan evidence intake | Yes | Templates exist for when scan becomes available |
+| Read-only Red Menu/MMI version capture | Yes | Allowed as provisional evidence |
+| UI menu observation without changes | Yes | Allowed as provisional evidence |
+| Confirm byte/bit behavior | No | No coding evidence + no DTC before/after |
+| Confirm adaptation behavior | No | No adaptation map + no rollback |
+| Confirm Security Access | No | No tested operation and no baseline |
+| Dataset research | No | No backup/source/recovery path |
 | Compatibility hypothesis | Limited | Unit context exists but requires evidence |
