@@ -1,0 +1,54 @@
+{
+  "campaignId": "SAMPLE_CAMPAIGN_ID",
+  "title": "SAMPLE_CAMPAIGN_TITLE",
+  "purpose": "SAMPLE_CAMPAIGN_PURPOSE",
+  "status": "TO_CAPTURE",
+  "modules": [
+    {
+      "address": "SAMPLE_MODULE_ADDRESS",
+      "name": "SAMPLE_MODULE_NAME",
+      "purpose": "SAMPLE_MODULE_PURPOSE"
+    }
+  ],
+  "requiredTools": [
+    "SAMPLE_TOOL_NAME"
+  ],
+  "filesToGenerate": [
+    "SAMPLE_FILE_TO_GENERATE"
+  ],
+  "photosToCapture": [
+    "SAMPLE_PHOTO_TO_CAPTURE"
+  ],
+  "logsToSave": [
+    "SAMPLE_LOG_TO_SAVE"
+  ],
+  "autoscanData": [
+    "SAMPLE_AUTOSCAN_DATA_FIELD"
+  ],
+  "controlModuleMaps": [
+    "SAMPLE_CONTROL_MODULE_MAP"
+  ],
+  "adaptationMaps": [
+    "SAMPLE_ADAPTATION_MAP_FILE"
+  ],
+  "p1TaskGroups": [
+    "SAMPLE_P1_TASK_GROUP"
+  ],
+  "executionOrder": [
+    "SAMPLE_EXECUTION_STEP"
+  ],
+  "risks": [
+    {
+      "name": "SAMPLE_RISK_NAME",
+      "level": "LOW",
+      "control": "SAMPLE_RISK_CONTROL"
+    }
+  ],
+  "doNotClick": [
+    "SAMPLE_DO_NOT_CLICK_ITEM"
+  ],
+  "safety": [
+    "SAMPLE_SAFETY_RULE"
+  ],
+  "expectedResult": "SAMPLE_EXPECTED_RESULT"
+}

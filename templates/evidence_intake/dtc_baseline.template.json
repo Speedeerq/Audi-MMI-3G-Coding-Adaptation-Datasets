@@ -1,0 +1,30 @@
+{
+  "dtcBaselineId": "SAMPLE_DTC_BASELINE_ID",
+  "campaignId": "SAMPLE_CAMPAIGN_ID",
+  "baselineId": "SAMPLE_BASELINE_ID",
+  "capturedAt": "SAMPLE_CAPTURED_AT_ISO8601",
+  "sourceTool": "SAMPLE_SOURCE_TOOL",
+  "sourceFile": "SAMPLE_SOURCE_FILE",
+  "status": "TO_CAPTURE",
+  "modules": [
+    {
+      "address": "SAMPLE_MODULE_ADDRESS",
+      "moduleName": "SAMPLE_MODULE_NAME",
+      "partNumber": "SAMPLE_PART_NUMBER",
+      "dtcs": [
+        {
+          "code": "SAMPLE_DTC_CODE",
+          "description": "SAMPLE_DTC_DESCRIPTION",
+          "status": "SAMPLE_DTC_STATUS",
+          "frequency": 0,
+          "priority": "SAMPLE_PRIORITY",
+          "severity": "UNKNOWN",
+          "rawText": "SAMPLE_RAW_TEXT",
+          "notes": "SAMPLE_NOTES"
+        }
+      ],
+      "notes": "SAMPLE_NOTES"
+    }
+  ],
+  "notes": "SAMPLE_NOTES"
+}

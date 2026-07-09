@@ -1,0 +1,2 @@
+observationId,campaignId,baselineId,area,menuPath,visible,selectable,functionalEffectObserved,interpretationStatus,relatedModulesSuspected,capturedAt,evidenceType,evidencePath,sanitized,status,notes
+SAMPLE_OBSERVATION_ID,SAMPLE_CAMPAIGN_ID,SAMPLE_BASELINE_ID,SAMPLE_UI_AREA,SAMPLE_MENU_PATH,false,false,false,UNKNOWN,SAMPLE_RELATED_MODULE,SAMPLE_CAPTURED_AT_ISO8601,PHOTO,SAMPLE_EVIDENCE_PATH,false,TO_CAPTURE,SAMPLE_NOTES

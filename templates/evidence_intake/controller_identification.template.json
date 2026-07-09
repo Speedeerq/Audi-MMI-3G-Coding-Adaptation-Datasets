@@ -1,0 +1,19 @@
+{
+  "recordId": "SAMPLE_RECORD_ID",
+  "campaignId": "SAMPLE_CAMPAIGN_ID",
+  "baselineId": "SAMPLE_BASELINE_ID",
+  "address": "SAMPLE_MODULE_ADDRESS",
+  "moduleName": "SAMPLE_MODULE_NAME",
+  "partNumber": "SAMPLE_PART_NUMBER",
+  "component": "SAMPLE_COMPONENT_NAME",
+  "softwareVersion": "SAMPLE_SOFTWARE_VERSION",
+  "hardwareVersion": "SAMPLE_HARDWARE_VERSION",
+  "codingPresent": false,
+  "codingValueStored": false,
+  "sourceTool": "SAMPLE_SOURCE_TOOL",
+  "sourceFile": "SAMPLE_SOURCE_FILE",
+  "capturedAt": "SAMPLE_CAPTURED_AT_ISO8601",
+  "sanitized": false,
+  "evidenceStatus": "TO_CAPTURE",
+  "notes": "SAMPLE_NOTES"
+}

@@ -1,0 +1,29 @@
+{
+  "autoscanId": "SAMPLE_AUTOSCAN_ID",
+  "campaignId": "SAMPLE_CAMPAIGN_ID",
+  "baselineId": "SAMPLE_BASELINE_ID",
+  "capturedAt": "SAMPLE_CAPTURED_AT_ISO8601",
+  "tool": "SAMPLE_TOOL_NAME",
+  "toolVersion": "SAMPLE_TOOL_VERSION",
+  "vehicleContext": {
+    "model": "SAMPLE_MODEL",
+    "modelYear": "SAMPLE_MODEL_YEAR",
+    "market": "SAMPLE_MARKET",
+    "vinPartial": "REDACTED_VIN_PARTIAL"
+  },
+  "sanitized": false,
+  "privacyReview": "SAMPLE_PRIVACY_REVIEW",
+  "controllers": [
+    {
+      "address": "SAMPLE_CONTROLLER_ADDRESS",
+      "moduleName": "SAMPLE_MODULE_NAME",
+      "reachable": false,
+      "partNumber": "SAMPLE_PART_NUMBER",
+      "softwareVersion": "SAMPLE_SOFTWARE_VERSION",
+      "dtcCount": 0,
+      "status": "TO_CAPTURE",
+      "notes": "SAMPLE_NOTES"
+    }
+  ],
+  "globalNotes": "SAMPLE_GLOBAL_NOTES"
+}

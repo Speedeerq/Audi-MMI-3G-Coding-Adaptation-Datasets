@@ -1,0 +1,28 @@
+{
+  "evidencePackId": "SAMPLE_EVIDENCE_PACK_ID",
+  "scope": "SAMPLE_SCOPE",
+  "campaignId": "SAMPLE_CAMPAIGN_ID",
+  "baselineId": "SAMPLE_BASELINE_ID",
+  "status": "TO_CAPTURE",
+  "createdAt": "SAMPLE_CREATED_AT_ISO8601",
+  "createdBy": "SAMPLE_REVIEWER_ID",
+  "sanitized": false,
+  "privacyNotes": "SAMPLE_PRIVACY_NOTES",
+  "items": [
+    {
+      "evidenceId": "SAMPLE_EVIDENCE_ID",
+      "name": "SAMPLE_EVIDENCE_NAME",
+      "targetFile": "SAMPLE_TARGET_FILE",
+      "sourceFile": "SAMPLE_SOURCE_FILE",
+      "status": "TO_CAPTURE",
+      "risk": "LOW",
+      "requiredBefore": "SAMPLE_REQUIRED_BEFORE",
+      "sanitized": false,
+      "notes": "SAMPLE_NOTES"
+    }
+  ],
+  "blockedClaims": [
+    "SAMPLE_BLOCKED_CLAIM"
+  ],
+  "notes": "SAMPLE_NOTES"
+}

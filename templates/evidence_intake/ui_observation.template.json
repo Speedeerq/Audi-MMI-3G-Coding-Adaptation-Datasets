@@ -1,0 +1,25 @@
+{
+  "observationId": "SAMPLE_OBSERVATION_ID",
+  "campaignId": "SAMPLE_CAMPAIGN_ID",
+  "baselineId": "SAMPLE_BASELINE_ID",
+  "area": "SAMPLE_UI_AREA",
+  "menuPath": "SAMPLE_MENU_PATH",
+  "visible": false,
+  "selectable": false,
+  "functionalEffectObserved": false,
+  "interpretationStatus": "UNKNOWN",
+  "relatedModulesSuspected": [
+    "SAMPLE_RELATED_MODULE"
+  ],
+  "capturedAt": "SAMPLE_CAPTURED_AT_ISO8601",
+  "evidence": [
+    {
+      "type": "PHOTO",
+      "path": "SAMPLE_EVIDENCE_PATH",
+      "sanitized": false,
+      "notes": "SAMPLE_NOTES"
+    }
+  ],
+  "status": "TO_CAPTURE",
+  "notes": "SAMPLE_NOTES"
+}

@@ -1,0 +1,23 @@
+{
+  "dependencyId": "SAMPLE_DEPENDENCY_ID",
+  "area": "SAMPLE_AREA",
+  "primaryModule": {
+    "address": "SAMPLE_PRIMARY_MODULE_ADDRESS",
+    "name": "SAMPLE_PRIMARY_MODULE_NAME",
+    "partNumber": "SAMPLE_PART_NUMBER",
+    "softwareVersion": "SAMPLE_SOFTWARE_VERSION",
+    "evidenceStatus": "TO_CAPTURE"
+  },
+  "relatedModules": [],
+  "relationshipDescription": "SAMPLE_RELATIONSHIP_DESCRIPTION",
+  "possibleEffect": "SAMPLE_POSSIBLE_EFFECT",
+  "evidenceRequired": [
+    "SAMPLE_EVIDENCE_REQUIRED"
+  ],
+  "blockedActions": [
+    "SAMPLE_BLOCKED_ACTION"
+  ],
+  "status": "UNKNOWN",
+  "risk": "LOW",
+  "notes": "SAMPLE_NOTES"
+}
