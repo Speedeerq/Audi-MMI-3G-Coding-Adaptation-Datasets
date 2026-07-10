@@ -7,6 +7,7 @@
 | Area | Link |
 |---|---|
 | Repository navigation map | [NAVIGATION.md](NAVIGATION.md) |
+| Evidence intake workflow | [docs/evidence_intake/README.md](docs/evidence_intake/README.md) |
 | Roadmap | [ROADMAP.md](ROADMAP.md) |
 | Changelog | [CHANGELOG.md](CHANGELOG.md) |
 | MMI 3G High index | [01_MMI_3G_HIGH/MMI_3G_HIGH_INDEX.md](01_MMI_3G_HIGH/MMI_3G_HIGH_INDEX.md) |
