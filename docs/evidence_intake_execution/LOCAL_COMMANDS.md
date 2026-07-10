@@ -7,8 +7,16 @@ These commands are for review preparation. They do not prove technical claims.
 ## 1. Enter the repository
 
 ```powershell
-cd "F:\VAG Engineering\Audi-MMI-3G-Coding-Adaptation-Datasets"
+cd "<LOCAL_REPOSITORY_PATH>"
 ```
+
+Example placeholder meaning:
+
+```text
+<LOCAL_REPOSITORY_PATH> = local clone path controlled by the operator
+```
+
+Do not commit private local paths into public repository records.
 
 ## 2. Fetch remote state
 
