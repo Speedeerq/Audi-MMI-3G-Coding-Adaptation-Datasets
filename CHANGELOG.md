@@ -4,6 +4,37 @@ All notable changes to this project will be documented in this file.
 
 This project uses evidence-based technical documentation. A version may contain research structure without confirmed technical findings.
 
+## [0.3.8] - 2026-07-10
+
+### Added
+
+- Added evidence intake workflow documentation and navigation:
+  - `schemas/`
+  - `templates/evidence_intake/`
+  - `validation/evidence_intake/`
+  - `docs/evidence_intake_execution/`
+  - `docs/evidence_intake/README.md`
+- Linked the evidence intake workflow from the root README navigation:
+  - `README.md`
+
+### Safety
+
+- Evidence intake workflow documents are review-first controls and operator guidance only.
+- No evidence record was accepted by this changelog entry.
+- No technical claim was promoted.
+- No confirmed byte/bit/adaptation/Security Access/dataset values were added.
+- Local command results, template existence, parser success and checklist completion remain insufficient to confirm technical behavior.
+
+### Not Added
+
+- No byte/bit meanings.
+- No adaptation values.
+- No Security Access values.
+- No binary datasets.
+- No coding instructions.
+- No retrofit instructions.
+- No confirmed vehicle behavior.
+
 ## [0.3.7] - 2026-07-09
 
 ### Added
