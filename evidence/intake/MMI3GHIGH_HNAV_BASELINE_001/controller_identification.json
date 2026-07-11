@@ -1,0 +1,15 @@
+{
+  "recordId": "HNAV-CTRL-5F-001",
+  "campaignId": "C-004",
+  "baselineId": "HNAV-8T1035664F-K0257-D1",
+  "address": "5F",
+  "moduleName": "Information Electronics",
+  "partNumber": "8T1 035 664 F",
+  "component": "Audi MMI 3G High HNAV",
+  "softwareVersion": "HNav_EU_K0257_5_D1",
+  "sourceTool": "Project notes supplied by unit owner",
+  "sourceFile": "RAW_SOURCE_NOT_ATTACHED",
+  "sanitized": true,
+  "evidenceStatus": "PARTIAL",
+  "notes": "Additional observed identifiers from project notes: Variant 9307; RadioUnit 9471; MU 0187; Sample d1. No raw diagnostic export, screenshot, coding value, VIN or original capture timestamp is attached. Treat every identifier as pending corroboration."
+}
