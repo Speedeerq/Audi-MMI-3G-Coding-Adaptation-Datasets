@@ -1,0 +1,99 @@
+{
+  "evidencePackId": "MMI3GHIGH_HNAV_BASELINE_001",
+  "scope": "Sanitized first-pass identity intake for Audi MMI 3G High HNAV baseline HNAV-8T1035664F-K0257-D1.",
+  "campaignId": "C-004",
+  "baselineId": "HNAV-8T1035664F-K0257-D1",
+  "status": "PARTIAL",
+  "createdAt": "2026-07-12T00:00:00+02:00",
+  "createdBy": "repository-maintainer",
+  "sanitized": true,
+  "privacyNotes": "No VIN, plate, customer data, private path, access code, proprietary URL or binary package is included.",
+  "items": [
+    {
+      "evidenceId": "HNAV-EV-002",
+      "name": "Controller identification assembled from project notes",
+      "targetFile": "controller_identification.json",
+      "sourceFile": "RAW_SOURCE_NOT_ATTACHED",
+      "status": "PARTIAL",
+      "risk": "LOW",
+      "requiredBefore": "Controller identity claim review",
+      "sanitized": true,
+      "notes": "Part number and software identifiers are recorded, but no raw diagnostic export, screenshot or original capture timestamp is attached."
+    },
+    {
+      "evidenceId": "HNAV-EV-001",
+      "name": "Full Auto-Scan before changes",
+      "targetFile": "autoscan_before_sanitized.txt",
+      "sourceFile": "TO_CAPTURE",
+      "status": "TO_CAPTURE",
+      "risk": "MEDIUM",
+      "requiredBefore": "Network and module-context review",
+      "sanitized": false,
+      "notes": "Capture read-only and sanitize before publication."
+    },
+    {
+      "evidenceId": "HNAV-EV-003",
+      "name": "Red Engineering Menu identification",
+      "targetFile": "red_menu_identification.md",
+      "sourceFile": "TO_CAPTURE",
+      "status": "TO_CAPTURE",
+      "risk": "MEDIUM",
+      "requiredBefore": "Software train and variant corroboration",
+      "sanitized": false,
+      "notes": "Identity pages only; no update, emergency or SWDL actions."
+    },
+    {
+      "evidenceId": "HNAV-EV-006",
+      "name": "DTC baseline before changes",
+      "targetFile": "dtc_before_sanitized.txt",
+      "sourceFile": "TO_CAPTURE",
+      "status": "TO_CAPTURE",
+      "risk": "HIGH",
+      "requiredBefore": "Fault attribution or controlled testing",
+      "sanitized": false,
+      "notes": "Do not clear DTCs before capture."
+    },
+    {
+      "evidenceId": "HNAV-EV-004",
+      "name": "Original coding backup",
+      "targetFile": "coding_before_sanitized.txt",
+      "sourceFile": "TO_CAPTURE",
+      "status": "TO_CAPTURE",
+      "risk": "HIGH",
+      "requiredBefore": "Any coding research",
+      "sanitized": false,
+      "notes": "No coding value is included in this intake."
+    },
+    {
+      "evidenceId": "HNAV-EV-005",
+      "name": "Read-only adaptation map",
+      "targetFile": "adaptation_map_before_sanitized.csv",
+      "sourceFile": "TO_CAPTURE",
+      "status": "TO_CAPTURE",
+      "risk": "HIGH",
+      "requiredBefore": "Any adaptation research",
+      "sanitized": false,
+      "notes": "No adaptation value is included in this intake."
+    },
+    {
+      "evidenceId": "HNAV-EV-010",
+      "name": "Dataset and recovery backup",
+      "targetFile": "PRIVATE_BACKUP_REFERENCE_ONLY",
+      "sourceFile": "NOT_PUBLIC",
+      "status": "BLOCKED",
+      "risk": "CRITICAL",
+      "requiredBefore": "Any dataset, parameterization or SWDL research",
+      "sanitized": false,
+      "notes": "Binary packages, access material and private recovery assets must not be published in this intake."
+    }
+  ],
+  "blockedClaims": [
+    "Controller identity is confirmed.",
+    "Software train, variant, RadioUnit, MU version or sample is confirmed.",
+    "Coding or adaptation behavior is confirmed.",
+    "Security Access is known, valid or required for a specific operation.",
+    "Dataset, parameterization, emergency update or SWDL operations are safe.",
+    "HNAV to HN+ conversion feasibility or barrier location is established."
+  ],
+  "notes": "This package records a real project unit context but remains PARTIAL until raw read-only evidence is attached and reviewed."
+}

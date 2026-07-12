@@ -1,0 +1,103 @@
+{
+  "campaignId": "C-004",
+  "title": "MMI 3G High / HNAV first real evidence intake",
+  "purpose": "Collect read-only identity, UI, DTC and module-context evidence for baseline HNAV-8T1035664F-K0257-D1 without performing configuration or software-write operations.",
+  "status": "PARTIAL",
+  "modules": [
+    {"address": "5F", "name": "Information Electronics", "purpose": "Primary HNAV identity and DTC context"},
+    {"address": "56", "name": "Radio", "purpose": "Variant-dependent radio/MMI exposure"},
+    {"address": "07", "name": "Control Head", "purpose": "Variant-dependent user-interface exposure"},
+    {"address": "19", "name": "CAN Gateway", "purpose": "Module presence and network context"},
+    {"address": "47", "name": "Sound System", "purpose": "Audio and MOST dependency context"},
+    {"address": "6C/10", "name": "Camera / Park Assist", "purpose": "Reverse-camera and OPS context if present"}
+  ],
+  "requiredTools": [
+    "VCDS, ODIS or VCP for read-only identification and DTC capture",
+    "Camera or screenshot tool for MMI version and Red Menu identity pages",
+    "Stable power support for diagnostic session",
+    "Separate raw and sanitized storage locations"
+  ],
+  "filesToGenerate": [
+    "controller_identification_raw.txt",
+    "controller_identification.json",
+    "autoscan_before_raw.txt",
+    "autoscan_before_sanitized.txt",
+    "dtc_before_raw.txt",
+    "dtc_before_sanitized.txt",
+    "red_menu_identification.md",
+    "mmi_version_screen.md",
+    "photo_index.md"
+  ],
+  "photosToCapture": [
+    "MMI version screen",
+    "Red Engineering Menu software train page",
+    "Red Engineering Menu variant, RadioUnit, MU and sample page",
+    "Controller identification screen if diagnostic export is unavailable",
+    "Unit label with private identifiers excluded or redacted"
+  ],
+  "logsToSave": [
+    "Full Auto-Scan before changes",
+    "5F, 56 or 07 controller identification block",
+    "5F, 56 or 07 DTC-before block",
+    "Gateway installation-list context",
+    "Read-only UI observation notes"
+  ],
+  "autoscanData": [
+    "5F, 56 and 07 presence or absence",
+    "Controller part number, component and software version",
+    "Coding field presence without publishing a value in this intake",
+    "DTC-before context",
+    "Related 19, 47, 6C and 10 context"
+  ],
+  "controlModuleMaps": [
+    "5F, 56 or 07 read-only map if supported",
+    "47 read-only map if needed for audio context",
+    "6C or 10 read-only map if needed for camera or OPS context"
+  ],
+  "adaptationMaps": [
+    "Read-only export only after raw baseline and stable power are available; do not change values"
+  ],
+  "p1TaskGroups": [
+    "HNAV identity evidence gaps",
+    "MMI UI and Red Menu evidence gaps",
+    "Infotainment DTC context gaps",
+    "5F, 56 and 07 addressing uncertainty"
+  ],
+  "executionOrder": [
+    "Preserve a clean pre-change state and stable power",
+    "Capture MMI version screen",
+    "Capture Red Menu identity pages only",
+    "Run read-only controller identification and DTC capture",
+    "Run full Auto-Scan if available",
+    "Save raw evidence privately",
+    "Create sanitized public copies",
+    "Validate JSON, CSV and public-safety controls",
+    "Submit for manual review without promoting claims"
+  ],
+  "risks": [
+    {"name": "Engineering-menu write action", "level": "HIGH", "control": "Identity and read-only pages only; do not enter update or emergency paths"},
+    {"name": "Accidental coding or adaptation change", "level": "HIGH", "control": "No write operations and no value changes"},
+    {"name": "Weak voltage during diagnostic session", "level": "MEDIUM", "control": "Use stable power support"},
+    {"name": "Publication of private identifiers or paths", "level": "MEDIUM", "control": "Keep raw and sanitized copies separate and run public-safety review"},
+    {"name": "Unsupported inference from project notes", "level": "HIGH", "control": "Keep status PARTIAL until raw evidence corroborates identifiers"}
+  ],
+  "doNotClick": [
+    "SWDL or update actions",
+    "Emergency-update paths",
+    "Green Menu value changes",
+    "Region-conversion actions",
+    "Security Access or login entry",
+    "Dataset or parameterization write actions",
+    "Coding or adaptation write actions",
+    "DTC clear before baseline capture"
+  ],
+  "safety": [
+    "Read-only capture only",
+    "No technical claim promotion",
+    "No full VIN, plate, customer data or private paths in public files",
+    "No coding, adaptation, Security Access, dataset or SWDL values in this intake",
+    "Raw evidence preserved privately and sanitized copies reviewed separately",
+    "Any unclear field remains UNKNOWN, TO_CAPTURE or PARTIAL"
+  ],
+  "expectedResult": "A sanitized PARTIAL evidence package that records the known HNAV unit context, identifies missing raw evidence and supports later baseline review without confirming coding, adaptation, Security Access, dataset or conversion behavior."
+}
