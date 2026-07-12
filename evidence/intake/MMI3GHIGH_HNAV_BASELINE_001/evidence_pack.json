@@ -1,35 +1,35 @@
 {
   "evidencePackId": "MMI3GHIGH_HNAV_BASELINE_001",
-  "scope": "Sanitized first-pass identity intake for Audi MMI 3G High HNAV baseline HNAV-8T1035664F-K0257-D1.",
+  "scope": "Sanitized identity, historical Auto-Scan and UI-observation intake for Audi MMI 3G High HNAV baseline HNAV-8T1035664F-K0257-D1.",
   "campaignId": "C-004",
   "baselineId": "HNAV-8T1035664F-K0257-D1",
   "status": "PARTIAL",
   "createdAt": "2026-07-12T00:00:00+02:00",
   "createdBy": "repository-maintainer",
   "sanitized": true,
-  "privacyNotes": "No VIN, plate, customer data, private path, access code, proprietary URL or binary package is included.",
+  "privacyNotes": "No full VIN, plate, customer data, private path, access code, serial number, coding value, WSC, VCID, proprietary URL or binary package is included.",
   "items": [
     {
       "evidenceId": "HNAV-EV-002",
-      "name": "Controller identification assembled from project notes",
+      "name": "5F diagnostic controller identification",
       "targetFile": "controller_identification.json",
-      "sourceFile": "PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
-      "status": "PARTIAL",
+      "sourceFile": "autoscan_sanitized_extract_2026-05-12.md",
+      "status": "CAPTURED",
       "risk": "LOW",
       "requiredBefore": "Controller identity claim review",
       "sanitized": true,
-      "notes": "Part number and software identifiers are supported by recovered prior-chat screenshot readings, but the original screenshot files and original capture timestamp are not attached."
+      "notes": "The 2026-05-12 Auto-Scan directly captures 5F part number, hardware identifier, component and software level for that scan. Engineering-menu firmware train, Variant, RadioUnit and Sample remain PARTIAL."
     },
     {
       "evidenceId": "HNAV-EV-001",
-      "name": "Full Auto-Scan before changes",
-      "targetFile": "autoscan_before_sanitized.txt",
-      "sourceFile": "EXTERNAL_USER_FILE_AVAILABLE_SANITIZATION_PENDING",
+      "name": "Historical full Auto-Scan context",
+      "targetFile": "autoscan_summary_2026-05-12.json",
+      "sourceFile": "PRIVATE_RAW_AUTOSCAN_2026-05-12",
       "status": "PARTIAL",
       "risk": "MEDIUM",
       "requiredBefore": "Network and module-context review",
-      "sanitized": false,
-      "notes": "A prior uploaded Auto-Scan exists outside this branch, but a sanitized repository copy has not been reviewed or attached."
+      "sanitized": true,
+      "notes": "A reviewed public-safe summary and extract are attached. The raw full scan remains private and this historical scan does not replace a fresh pre-experiment scan."
     },
     {
       "evidenceId": "HNAV-EV-003",
@@ -40,7 +40,7 @@
       "risk": "MEDIUM",
       "requiredBefore": "Software train and variant corroboration",
       "sanitized": true,
-      "notes": "Recovered prior-chat readings exist, but the original image files and exact menu path are not attached. No update, emergency or SWDL action is authorized."
+      "notes": "Recovered prior-chat readings exist, but original image files and exact menu path are not attached. No update, emergency or SWDL action is authorized."
     },
     {
       "evidenceId": "HNAV-EV-009",
@@ -77,14 +77,25 @@
     },
     {
       "evidenceId": "HNAV-EV-006",
-      "name": "DTC baseline before changes",
-      "targetFile": "dtc_before_sanitized.txt",
-      "sourceFile": "EXTERNAL_USER_FILE_AVAILABLE_SANITIZATION_PENDING",
+      "name": "Historical DTC-before context",
+      "targetFile": "dtc_baseline_2026-05-12.json",
+      "sourceFile": "PRIVATE_RAW_AUTOSCAN_2026-05-12",
       "status": "PARTIAL",
       "risk": "HIGH",
       "requiredBefore": "Fault attribution or controlled testing",
-      "sanitized": false,
-      "notes": "Prior Auto-Scan material contains DTC context, but a sanitized baseline file has not been reviewed or attached to this branch."
+      "sanitized": true,
+      "notes": "DTCs for 19, 5F and 6C were extracted and reviewed. A fresh current DTC-before capture remains required before any controlled experiment."
+    },
+    {
+      "evidenceId": "HNAV-EV-013",
+      "name": "Auto-Scan sanitization and provenance review",
+      "targetFile": "AUTOSCAN_SANITIZATION_REVIEW_2026-07-12.md",
+      "sourceFile": "PRIVATE_RAW_AUTOSCAN_2026-05-12",
+      "status": "CAPTURED",
+      "risk": "LOW",
+      "requiredBefore": "Public repository intake",
+      "sanitized": true,
+      "notes": "Records selection, exclusions, privacy review, source limitations and the distinction between the directly available 265250 km scan and the report-only 268420 km EP-001 scan."
     },
     {
       "evidenceId": "HNAV-EV-004",
@@ -95,7 +106,7 @@
       "risk": "HIGH",
       "requiredBefore": "Any coding research",
       "sanitized": false,
-      "notes": "No coding value is included in this intake."
+      "notes": "The Auto-Scan showed that a coding field exists, but the coding value is intentionally not stored in this public intake."
     },
     {
       "evidenceId": "HNAV-EV-005",
@@ -121,15 +132,16 @@
     }
   ],
   "blockedClaims": [
-    "Controller identity is confirmed.",
-    "Software train, variant, RadioUnit, MU version or sample is confirmed.",
+    "The 5F diagnostic identity applies unchanged outside the 2026-05-12 scan context.",
+    "The engineering-menu firmware train, Variant, RadioUnit or Sample is confirmed by the Auto-Scan.",
     "Sample d1 is proven to be equivalent to hwSample.",
+    "The historical Auto-Scan represents the current pre-experiment state.",
     "Green Menu visibility proves feature availability or functionality.",
-    "Green Menu diagnostic strings establish a confirmed root cause.",
+    "Green Menu or Auto-Scan DTC strings establish a confirmed root cause.",
     "Coding or adaptation behavior is confirmed.",
     "Security Access is known, valid or required for a specific operation.",
     "Dataset, parameterization, emergency update or SWDL operations are safe.",
     "HNAV to HN+ conversion feasibility or barrier location is established."
   ],
-  "notes": "This package records a real project unit context and recovered prior-chat screenshot observations, but remains PARTIAL until original images, sanitized diagnostic exports and timestamps are attached and reviewed."
+  "notes": "The package now contains a directly sourced sanitized historical Auto-Scan summary and DTC extract. It remains PARTIAL because original Red/Green Menu images, a fresh current scan, coding backup, adaptation map and recovery assets are still missing."
 }

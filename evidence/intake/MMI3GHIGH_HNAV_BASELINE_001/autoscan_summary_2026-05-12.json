@@ -1,0 +1,86 @@
+{
+  "autoscanId": "HNAV-AUTOSCAN-20260512-001",
+  "campaignId": "C-004",
+  "baselineId": "HNAV-8T1035664F-K0257-D1",
+  "capturedAt": "2026-05-12T19:00:02+02:00",
+  "tool": "VCDS with HEX-V2",
+  "toolVersion": "AKP 25.3.1.1; interface CB 0.4672.4; data 20250602 DS365.0",
+  "vehicleContext": {
+    "model": "Audi A4 B8",
+    "modelYear": "2012",
+    "market": "USA-origin vehicle with later EU-context modifications; market state not established by this scan",
+    "vinPartial": "REDACTED"
+  },
+  "sanitized": true,
+  "privacyReview": "PASS: full VIN, VINID, registration, serial numbers, coding values, WSC, VCID and unrelated safety-module details omitted.",
+  "controllers": [
+    {
+      "address": "07",
+      "moduleName": "Control Head / display control context",
+      "reachable": false,
+      "status": "CAPTURED",
+      "notes": "Auto-Scan reported not reachable. This does not establish whether the address should be installed for the current architecture."
+    },
+    {
+      "address": "10",
+      "moduleName": "Park/Steer Assist",
+      "reachable": true,
+      "partNumber": "8K0 919 475 T",
+      "softwareVersion": "PARKHILFE 4K H01 0081",
+      "dtcCount": 0,
+      "status": "CAPTURED",
+      "notes": "Auto-Scan summary reported UNREGISTERED 0001 although the controller identification block was readable."
+    },
+    {
+      "address": "19",
+      "moduleName": "CAN Gateway / J533",
+      "reachable": true,
+      "partNumber": "8T0 907 468 AJ",
+      "softwareVersion": "GW-BEM 5CAN-M H10 0120",
+      "dtcCount": 2,
+      "status": "CAPTURED",
+      "notes": "Hardware identifier 8T0 907 468 L. Coding, serial, WSC and VCID intentionally omitted."
+    },
+    {
+      "address": "47",
+      "moduleName": "Sound System / J525",
+      "reachable": true,
+      "partNumber": "8T0 035 223 AN",
+      "softwareVersion": "DSP Prem H10 0190",
+      "dtcCount": 0,
+      "status": "CAPTURED",
+      "notes": "Hardware identifier 8T0 035 223 AK. Supports presence of the premium external amplifier in this scan only."
+    },
+    {
+      "address": "56",
+      "moduleName": "Radio",
+      "reachable": true,
+      "partNumber": "4G0 035 082 B",
+      "softwareVersion": "Radio U SIRIU H53 0076",
+      "dtcCount": 0,
+      "status": "CAPTURED",
+      "notes": "Hardware identifier 4G0 035 082. Coding, serial, WSC and VCID intentionally omitted."
+    },
+    {
+      "address": "5F",
+      "moduleName": "Information Electronics / J794",
+      "reachable": true,
+      "partNumber": "8T1 035 664 F",
+      "softwareVersion": "H-BN-NA H52 0187",
+      "dtcCount": 3,
+      "status": "CAPTURED",
+      "notes": "Hardware identifier 8T1 035 664 B. Navigation DB 8R0 060 884 KL / EUR 2023 3600; display 8R0 919 604 / DU7 High H41 0104; control panel 8T0 919 609 G / E0380 Bedient H08 0100; CD database 8R0 060 961 A / 2712."
+    },
+    {
+      "address": "6C",
+      "moduleName": "Rear View Camera",
+      "reachable": true,
+      "partNumber": "8T0 907 441 C",
+      "softwareVersion": "J772__Rearview 0040",
+      "dtcCount": 1,
+      "status": "CAPTURED",
+      "notes": "Hardware identifier 4L0 907 441 B. Coding, serial, WSC and VCID intentionally omitted."
+    }
+  ],
+  "globalNotes": "Historical read-only scan at 265250 km. Battery voltage was 11.7 V at start and end, VIgn 11.9 V. This is usable for historical module and DTC context, but it is not a substitute for a fresh pre-experiment scan or direct Gateway Installation List export."
+}
