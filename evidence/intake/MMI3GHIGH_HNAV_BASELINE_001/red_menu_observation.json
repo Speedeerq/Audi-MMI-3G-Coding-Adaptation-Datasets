@@ -2,22 +2,28 @@
   "observationId": "HNAV-UI-RED-001",
   "campaignId": "C-004",
   "baselineId": "HNAV-8T1035664F-K0257-D1",
-  "area": "Red/engineering identity information recovered from prior screenshot discussions",
+  "area": "Red/engineering identity information from owner-supplied screenshots",
   "menuPath": "Engineering identity/version pages; exact page path not preserved",
   "visible": true,
   "functionalEffectObserved": false,
-  "interpretationStatus": "TO_VERIFY",
+  "interpretationStatus": "CONFIRMED",
   "relatedModulesSuspected": [
     "5F"
   ],
   "evidence": [
     {
+      "type": "SCREENSHOT",
+      "path": "PRIVATE_USER_SUPPLIED_RED_MENU_SCREENSHOT_SET",
+      "sanitized": false,
+      "notes": "Screenshots were supplied by the vehicle/unit owner in prior conversations. The owner confirmed on 2026-07-12 that the extracted readings are accurate and require no re-capture for evidence acceptance."
+    },
+    {
       "type": "NOTE",
-      "path": "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
+      "path": "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/OWNER_SOURCE_ATTESTATION_2026-07-12.md",
       "sanitized": true,
-      "notes": "Recovered from prior conversation summaries. Original screenshot files are not attached to this repository record."
+      "notes": "Owner provenance and transcription attestation."
     }
   ],
-  "status": "PARTIAL",
-  "notes": "Recovered readings: HNav_EU_K0257_5_D1, Variant 9307, RadioUnit 9471, MU 0187, Sample d1. The original images and capture timestamp are missing. Sample d1 must not be treated as proven hwSample equivalence."
+  "status": "CAPTURED",
+  "notes": "Captured owner-attested readings: HNav_EU_K0257_5_D1, Variant 9307, RadioUnit 9471, MU 0187 and Sample d1. CONFIRMED applies to the visible/transcribed readings only. Sample d1 is not proven to be equivalent to hwSample."
 }

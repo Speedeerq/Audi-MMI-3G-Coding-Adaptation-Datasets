@@ -1,10 +1,26 @@
 # Current Baseline Capture Handoff — Gateway / MMI — 2026-07-12
 
-## Objective
+## Superseding status notice
+
+```text
+EVIDENCE-CONFIRMATION SESSION: NO LONGER REQUIRED
+OWNER SOURCE ATTESTATION: ACCEPTED
+```
+
+On 2026-07-12 the owner confirmed that the previously supplied files, Auto-Scans and screenshot-derived values are authentic and correctly transcribed. This handoff is therefore **not required to validate or accept those existing evidence items**.
+
+Retain the procedure below only for either:
+
+1. an optional future current-state refresh, or
+2. a mandatory same-session pre-write safety snapshot if a write-capable experiment is later approved.
+
+A future safety snapshot would protect rollback capability; it would not re-verify the accepted source evidence.
+
+## Optional future objective
 
 Create a fresh current-state package without changing coding, adaptations, DTCs or the Gateway Installation List.
 
-## Required session conditions
+## Session conditions
 
 ```text
 mode: READ ONLY
@@ -21,7 +37,7 @@ Output Tests: NO
 SWDL/flash: NO
 ```
 
-## Capture order
+## Optional capture order
 
 1. Record date, time, mileage, tool version, interface and voltage.
 2. Run and save a complete Auto-Scan before clearing anything.
@@ -36,7 +52,7 @@ SWDL/flash: NO
 11. Photograph Red Menu identity pages only, if already accessible.
 12. End the session without clearing DTCs or writing changes.
 
-## Required files
+## Optional file layout
 
 ```text
 CURRENT_BASELINE_YYYY-MM-DD/
@@ -54,33 +70,6 @@ CURRENT_BASELINE_YYYY-MM-DD/
 └── SESSION_NOTES.md
 ```
 
-Use as many Installation List or Red Menu images as needed; do not omit lower pages.
-
-## SESSION_NOTES minimum
-
-```text
-capture date:
-start time:
-end time:
-odometer:
-tool/version:
-interface:
-voltage before:
-voltage during:
-battery support:
-ignition state:
-engine state:
-DTC cleared: NO
-coding changed: NO
-adaptation changed: NO
-Installation List changed: NO
-Security Access used: NO
-Basic Settings used: NO
-Output Tests used: NO
-flash/SWDL used: NO
-anomalies:
-```
-
 ## Installation List safety
 
 Do not click:
@@ -93,13 +82,11 @@ Do It!
 
 Do not alter any checkbox. If the tool asks whether to save, select `No` or `Cancel`.
 
-## Acceptance condition
+## Current decision
 
-The current baseline can enter review only when:
-
-- the Auto-Scan and Installation List come from the same documented session,
-- all list pages are readable,
-- timestamps/session metadata are present,
-- no write action occurred,
-- raw evidence remains private,
-- sanitized copies are prepared separately.
+```text
+RE-CAPTURE FOR EVIDENCE ACCEPTANCE: NOT REQUIRED
+OPTIONAL CURRENT-STATE REFRESH: AVAILABLE
+PRE-WRITE SAFETY SNAPSHOT: REQUIRED ONLY IF A WRITE EXPERIMENT IS LATER APPROVED
+WRITE-CAPABLE EXPERIMENTS: NOT AUTHORIZED
+```

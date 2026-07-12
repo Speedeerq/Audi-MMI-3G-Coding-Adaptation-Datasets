@@ -1,34 +1,39 @@
 # Prior-Chat Screenshot Recovery — Red Menu and Green Menu
 
-## Purpose
+## Status notice — owner attestation
 
-This record recovers read-only observations from earlier conversations in which the unit owner supplied Red Engineering Menu and Green Menu photos.
+On 2026-07-12 the vehicle/unit owner confirmed that the previously supplied screenshots are authentic and that the extracted readings in this record are accurate.
 
-The original image files are not attached to this repository record. The recovered values therefore remain `PARTIAL` and must not be promoted to confirmed technical claims.
+The observations listed below are therefore accepted as `CAPTURED`. Re-upload or re-capture is not required for evidence acceptance.
+
+The attestation is recorded in:
+
+```text
+evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/OWNER_SOURCE_ATTESTATION_2026-07-12.md
+```
 
 ## Evidence class
 
 ```text
-SOURCE CLASS: PRIOR CONVERSATION / SCREENSHOT INTERPRETATION RECOVERY
-ORIGINAL IMAGE ATTACHED: NO
-SANITIZED: YES
-MAXIMUM CURRENT STATUS: PARTIAL
+SOURCE CLASS: OWNER-SUPPLIED SCREENSHOTS / PRIOR-CONVERSATION RECOVERY
+ORIGINAL IMAGE COPIED TO PUBLIC REPOSITORY: NO
+OWNER PROVENANCE ATTESTATION: YES
+SANITIZED TRANSCRIPTION: YES
+OBSERVATION STATUS: CAPTURED
 ```
 
-## Recovered identity readings
+## Accepted identity readings
 
-| Field | Recovered reading | Current status | Boundary |
+| Field | Accepted reading | Status | Boundary |
 |---|---|---|---|
-| MMI family | Audi MMI 3G High / HNAV | `PARTIAL` | Consistent with project baseline; direct image not attached |
-| Software train | `HNav_EU_K0257_5_D1` | `PARTIAL` | Recovered from prior version/engineering-menu discussion |
-| Variant | `9307` | `PARTIAL` | Original screenshot not attached |
-| RadioUnit | `9471` | `PARTIAL` | Original screenshot not attached |
-| MU version | `0187` | `PARTIAL` | Also consistent with sanitized diagnostic metadata available outside this branch |
-| Sample | `d1` | `PARTIAL` | Do not treat as proven equivalence to `hwSample` |
+| MMI family | Audi MMI 3G High / HNAV | `CAPTURED` | Owner-attested visible identification |
+| Software train | `HNav_EU_K0257_5_D1` | `CAPTURED` | Confirms displayed train string |
+| Variant | `9307` | `CAPTURED` | Confirms displayed value |
+| RadioUnit | `9471` | `CAPTURED` | Confirms displayed value |
+| MU version | `0187` | `CAPTURED` | Also consistent with diagnostic metadata |
+| Sample | `d1` | `CAPTURED` | Does not prove equivalence to `hwSample` |
 
-## Recovered Green Menu structure
-
-The prior Green Menu photo discussion recorded:
+## Accepted Green Menu structure
 
 ```text
 main
@@ -37,7 +42,7 @@ main
     └── settings
 ```
 
-The `settings` view was recorded as containing:
+The `settings` view contained:
 
 ```text
 AMI/AUX
@@ -47,7 +52,7 @@ Tel settings
 HDD Nav DB
 ```
 
-The same capture did not record the commonly expected entries:
+The same captured state did not show:
 
 ```text
 coding
@@ -56,32 +61,28 @@ cardevicelist
 car_function_list
 ```
 
-Absence from that capture does not prove permanent absence from every configuration or software state.
+This confirms visibility in the captured state only. It does not prove permanent absence or functional availability in every software/configuration state.
 
-## Recovered Green Menu diagnostic observations
-
-The prior photo interpretation recorded these visible strings:
+## Accepted Green Menu diagnostic observations
 
 ```text
 0x3ff60e / CONTROL_UNIT_HDD_D
 0xc5500 / FUNCTION_RESTRICTION
 ```
 
-These are display observations only. They do not establish a root cause, affected partition, recovery method or HNAV-to-HN+ barrier location.
+The strings are accepted as displayed observations. Their root cause, affected partition, recovery method and relationship to HNAV-to-HN+ barriers remain unconfirmed.
 
-## Recovered NADPhone observation
-
-A prior Green Menu screenshot discussion recorded:
+## Accepted NADPhone observation
 
 ```text
 NADPhone version column: $ERROR$
 ```
 
-This does not prove whether a telephone module is installed, reachable, correctly configured or defective.
+The displayed value is accepted. It does not prove the cause, module presence, configuration state or telephone functionality.
 
-## Independent diagnostic corroboration located in prior uploads
+## Independent diagnostic corroboration
 
-A prior Auto-Scan upload contains sanitized-useful 5F metadata that is consistent with part of the recovered screen context:
+The supplied Auto-Scan evidence is consistent with part of the screen context:
 
 ```text
 5F software part number: 8T1 035 664 F
@@ -93,11 +94,9 @@ Control panel: 8T0 919 609 G / E0380 Bedient H08 0100
 CD database: 8R0 060 961 A / 2712
 ```
 
-The raw Auto-Scan is not copied into this branch because it requires a separate sanitization and provenance review.
-
 ## Excluded ambiguous material
 
-The following prior-chat values were not imported into this baseline because the recovered context does not establish that they belong to the same unit state or screenshot sequence:
+The following values remain excluded because the recovered context does not establish that they belong to the same unit state or screenshot sequence:
 
 ```text
 HNav_US_K0133_3_D1
@@ -105,13 +104,16 @@ IOC U654
 8R0 906 961 CP
 ```
 
-They remain outside this evidence package until their original screenshots and unit context are recovered.
+The owner attestation does not silently associate these ambiguous values with the accepted HNAV baseline.
 
 ## Decision
 
 ```text
-PRIOR-CHAT SCREENSHOT RECOVERY: USABLE AS PARTIAL NOTE EVIDENCE
-ORIGINAL SCREENSHOT CORROBORATION: STILL REQUIRED
-TECHNICAL CLAIM PROMOTION: BLOCKED
+OWNER-SUPPLIED SCREENSHOT PROVENANCE: ACCEPTED
+RED MENU READINGS: CAPTURED
+GREEN MENU STRUCTURE: CAPTURED
+GREEN MENU DISPLAY STRINGS: CAPTURED
+RE-CAPTURE FOR THESE OBSERVATIONS: NOT REQUIRED
+ROOT-CAUSE INTERPRETATION: NOT PROMOTED
 WRITE-CAPABLE EXPERIMENT ENTRY: BLOCKED
 ```

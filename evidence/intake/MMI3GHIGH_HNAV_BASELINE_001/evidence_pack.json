@@ -1,6 +1,6 @@
 {
   "evidencePackId": "MMI3GHIGH_HNAV_BASELINE_001",
-  "scope": "Sanitized identity, historical Auto-Scan, Gateway Installation List and UI-observation intake for Audi MMI 3G High HNAV baseline HNAV-8T1035664F-K0257-D1.",
+  "scope": "Sanitized identity, accepted historical Auto-Scan, owner-attested Gateway Installation List and UI-observation intake for Audi MMI 3G High HNAV baseline HNAV-8T1035664F-K0257-D1.",
   "campaignId": "C-004",
   "baselineId": "HNAV-8T1035664F-K0257-D1",
   "status": "PARTIAL",
@@ -18,117 +18,128 @@
       "risk": "LOW",
       "requiredBefore": "Controller identity claim review",
       "sanitized": true,
-      "notes": "The 2026-05-12 Auto-Scan directly captures 5F part number, hardware identifier, component and software level for that scan. Engineering-menu firmware train, Variant, RadioUnit and Sample remain PARTIAL."
+      "notes": "The supplied Auto-Scan captures 5F part number, hardware identifier, component and software level for its recorded session."
     },
     {
       "evidenceId": "HNAV-EV-001",
-      "name": "Historical full Auto-Scan context",
+      "name": "Owner-accepted historical full Auto-Scan context",
       "targetFile": "autoscan_summary_2026-05-12.json",
-      "sourceFile": "PRIVATE_RAW_AUTOSCAN_2026-05-12",
-      "status": "PARTIAL",
+      "sourceFile": "PRIVATE_OWNER_SUPPLIED_AUTOSCAN_SET",
+      "status": "CAPTURED",
       "risk": "MEDIUM",
       "requiredBefore": "Network and module-context review",
       "sanitized": true,
-      "notes": "A reviewed public-safe summary and extract are attached. The raw full scan remains private and this historical scan does not replace a fresh pre-experiment scan."
+      "notes": "The owner confirmed the supplied diagnostic files as authentic and accurate. The record is time-bounded to its capture session; no re-scan is required to validate this evidence."
     },
     {
       "evidenceId": "HNAV-EV-014",
-      "name": "Gateway Installation List reconstructed from photographed VCDS screens",
+      "name": "Owner-accepted Gateway Installation List reconstructed from photographed VCDS screens",
       "targetFile": "gateway_installation_list_reconstructed_2026-07-10.md",
       "sourceFile": "EP001_GATEWAY_INSTALLATION_LIST_SCREENSHOT_INTAKE.md",
-      "status": "PARTIAL",
+      "status": "CAPTURED",
       "risk": "MEDIUM",
       "requiredBefore": "Installed-versus-possible address and infotainment dependency review",
       "sanitized": true,
-      "notes": "Three photographed VCDS list pages were identified and a complete address 01-8C transcription exists. This is visual reconstructed evidence, not a native VCDS export. No checkbox or list write is authorized."
+      "notes": "The owner confirmed the three supplied screenshot pages and the complete address 01-8C transcription as accurate. A native export is not required for evidence acceptance. Checkbox state does not prove physical hardware presence."
     },
     {
       "evidenceId": "HNAV-EV-003",
-      "name": "Red Engineering Menu identification",
+      "name": "Owner-attested Red Engineering Menu identification",
       "targetFile": "red_menu_observation.json",
-      "sourceFile": "PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
-      "status": "PARTIAL",
+      "sourceFile": "OWNER_SOURCE_ATTESTATION_2026-07-12.md",
+      "status": "CAPTURED",
       "risk": "MEDIUM",
-      "requiredBefore": "Software train and variant corroboration",
+      "requiredBefore": "Software train and variant review",
       "sanitized": true,
-      "notes": "Recovered prior-chat readings exist, but original image files and exact menu path are not attached. No update, emergency or SWDL action is authorized."
+      "notes": "The owner accepted the visible readings HNav_EU_K0257_5_D1, Variant 9307, RadioUnit 9471, MU 0187 and Sample d1. No re-capture is required."
     },
     {
       "evidenceId": "HNAV-EV-009",
-      "name": "Green Menu structure observation",
+      "name": "Owner-attested Green Menu structure observation",
       "targetFile": "green_menu_structure_observation.json",
-      "sourceFile": "PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
-      "status": "PARTIAL",
+      "sourceFile": "OWNER_SOURCE_ATTESTATION_2026-07-12.md",
+      "status": "CAPTURED",
       "risk": "LOW",
       "requiredBefore": "Green Menu structure review",
       "sanitized": true,
-      "notes": "Recovered from prior user-supplied screenshot discussions. Visibility does not confirm function."
+      "notes": "The visible structure and listed menu entries are accepted as captured observations. Visibility does not confirm function."
     },
     {
       "evidenceId": "HNAV-EV-011",
-      "name": "Green Menu diagnostic fault observations",
+      "name": "Owner-attested Green Menu diagnostic display observations",
       "targetFile": "green_menu_diagnostic_observation.json",
-      "sourceFile": "PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
-      "status": "PARTIAL",
+      "sourceFile": "OWNER_SOURCE_ATTESTATION_2026-07-12.md",
+      "status": "CAPTURED",
       "risk": "MEDIUM",
       "requiredBefore": "HDD and function-restriction interpretation",
       "sanitized": true,
-      "notes": "Recovered display strings are observations only and do not establish root cause."
+      "notes": "The displayed strings are accepted as captured. Their root cause and technical meaning are not promoted."
     },
     {
       "evidenceId": "HNAV-EV-012",
-      "name": "Green Menu NADPhone version observation",
+      "name": "Owner-attested Green Menu NADPhone display observation",
       "targetFile": "green_menu_nadphone_observation.json",
-      "sourceFile": "PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
-      "status": "PARTIAL",
+      "sourceFile": "OWNER_SOURCE_ATTESTATION_2026-07-12.md",
+      "status": "CAPTURED",
       "risk": "LOW",
       "requiredBefore": "Telephone/NADPhone context review",
       "sanitized": true,
-      "notes": "The recovered $ERROR$ display does not prove module presence, failure mode or telephone functionality."
+      "notes": "The displayed $ERROR$ value is accepted as captured. Cause and module interpretation remain unknown."
     },
     {
       "evidenceId": "HNAV-EV-006",
-      "name": "Historical DTC-before context",
+      "name": "Owner-accepted historical DTC context",
       "targetFile": "dtc_baseline_2026-05-12.json",
-      "sourceFile": "PRIVATE_RAW_AUTOSCAN_2026-05-12",
-      "status": "PARTIAL",
+      "sourceFile": "PRIVATE_OWNER_SUPPLIED_AUTOSCAN_SET",
+      "status": "CAPTURED",
       "risk": "HIGH",
       "requiredBefore": "Fault attribution or controlled testing",
       "sanitized": true,
-      "notes": "DTCs for 19, 5F and 6C were extracted and reviewed. A fresh current DTC-before capture remains required before any controlled experiment."
+      "notes": "DTCs extracted from the supplied scans are accepted as time-bounded captured observations. Their root cause is not confirmed."
     },
     {
       "evidenceId": "HNAV-EV-013",
       "name": "Auto-Scan sanitization and provenance review",
       "targetFile": "AUTOSCAN_SANITIZATION_REVIEW_2026-07-12.md",
-      "sourceFile": "PRIVATE_RAW_AUTOSCAN_2026-05-12",
+      "sourceFile": "PRIVATE_OWNER_SUPPLIED_AUTOSCAN_SET",
       "status": "CAPTURED",
       "risk": "LOW",
       "requiredBefore": "Public repository intake",
       "sanitized": true,
-      "notes": "Records selection, exclusions, privacy review, source limitations and the distinction between the directly available 265250 km scan and the report-only 268420 km EP-001 scan."
+      "notes": "Records selection, exclusions, privacy review and source limitations."
+    },
+    {
+      "evidenceId": "HNAV-EV-015",
+      "name": "Owner source and transcription attestation",
+      "targetFile": "OWNER_SOURCE_ATTESTATION_2026-07-12.md",
+      "sourceFile": "OWNER_DECLARATION_2026-07-12",
+      "status": "CAPTURED",
+      "risk": "LOW",
+      "requiredBefore": "Acceptance of supplied private files and screenshot transcriptions",
+      "sanitized": true,
+      "notes": "Supersedes prior re-capture and re-export requirements for the accepted source observations."
     },
     {
       "evidenceId": "HNAV-EV-004",
-      "name": "Original coding backup",
+      "name": "5F coding backup",
       "targetFile": "coding_before_sanitized.txt",
-      "sourceFile": "TO_CAPTURE",
+      "sourceFile": "TO_CAPTURE_IF_WRITE_RESEARCH_IS_PROPOSED",
       "status": "TO_CAPTURE",
       "risk": "HIGH",
-      "requiredBefore": "Any coding research",
+      "requiredBefore": "Any future 5F coding write research",
       "sanitized": false,
-      "notes": "The Auto-Scan showed that a coding field exists, but the coding value is intentionally not stored in this public intake."
+      "notes": "Not required to accept existing evidence. Required only as a rollback/safety control before future write-capable work."
     },
     {
       "evidenceId": "HNAV-EV-005",
-      "name": "Read-only adaptation map",
+      "name": "5F read-only adaptation map",
       "targetFile": "adaptation_map_before_sanitized.csv",
-      "sourceFile": "TO_CAPTURE",
+      "sourceFile": "TO_CAPTURE_IF_ADAPTATION_RESEARCH_IS_PROPOSED",
       "status": "TO_CAPTURE",
       "risk": "HIGH",
-      "requiredBefore": "Any adaptation research",
+      "requiredBefore": "Any future 5F adaptation research",
       "sanitized": false,
-      "notes": "No adaptation value is included in this intake."
+      "notes": "Not required to accept existing evidence. Required only before adaptation-specific analysis or write-capable work."
     },
     {
       "evidenceId": "HNAV-EV-010",
@@ -137,24 +148,21 @@
       "sourceFile": "NOT_PUBLIC",
       "status": "BLOCKED",
       "risk": "CRITICAL",
-      "requiredBefore": "Any dataset, parameterization or SWDL research",
+      "requiredBefore": "Any dataset, parameterization, EEPROM, HDD or SWDL experiment",
       "sanitized": false,
-      "notes": "Binary packages, access material and private recovery assets must not be published in this intake."
+      "notes": "Binary packages, access material and private recovery assets must not be published. Recovery readiness remains unproven."
     }
   ],
   "blockedClaims": [
-    "The 5F diagnostic identity applies unchanged outside the 2026-05-12 scan context.",
-    "The reconstructed Gateway Installation List is a native VCDS export or proves physical module presence.",
-    "An unchecked Installation List address proves that related hardware is physically absent.",
-    "The engineering-menu firmware train, Variant, RadioUnit or Sample is confirmed by the Auto-Scan.",
     "Sample d1 is proven to be equivalent to hwSample.",
-    "The historical Auto-Scan represents the current pre-experiment state.",
-    "Green Menu visibility proves feature availability or functionality.",
-    "Green Menu or Auto-Scan DTC strings establish a confirmed root cause.",
-    "Coding or adaptation behavior is confirmed.",
+    "The owner-attested screenshot readings establish the root cause of displayed diagnostic strings.",
+    "The visual Gateway Installation List is a native VCDS export or proves physical module presence.",
+    "An unchecked Installation List address proves that related hardware is physically absent.",
+    "The captured historical state is guaranteed unchanged at a later date.",
+    "Coding or adaptation behavior not contained in the accepted evidence is confirmed.",
     "Security Access is known, valid or required for a specific operation.",
     "Dataset, parameterization, emergency update or SWDL operations are safe.",
     "HNAV to HN+ conversion feasibility or barrier location is established."
   ],
-  "notes": "The package now contains a directly sourced sanitized historical Auto-Scan summary, DTC extract and a reconstructed visual Gateway Installation List. It remains PARTIAL because a fresh current scan, a native/direct Installation List export or new screenshots, original Red/Green Menu images, coding backup, adaptation map and recovery assets are still missing."
+  "notes": "Source authenticity and transcription accuracy are accepted by owner attestation. No additional vehicle session is required to validate the supplied Auto-Scans, Gateway Installation List screenshots or Red/Green Menu readings. The package remains PARTIAL only because write-specific 5F backups, recovery assets and matched comparison evidence are not yet available."
 }

@@ -12,12 +12,18 @@
   ],
   "evidence": [
     {
+      "type": "SCREENSHOT",
+      "path": "PRIVATE_USER_SUPPLIED_GREEN_MENU_DIAGNOSTIC_SCREENSHOT_SET",
+      "sanitized": false,
+      "notes": "The owner confirmed on 2026-07-12 that the extracted visible strings are accurate and require no re-capture for evidence acceptance."
+    },
+    {
       "type": "NOTE",
-      "path": "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
+      "path": "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/OWNER_SOURCE_ATTESTATION_2026-07-12.md",
       "sanitized": true,
-      "notes": "Recovered from a prior conversation interpretation of user-supplied Green Menu photos."
+      "notes": "Owner provenance and transcription attestation."
     }
   ],
-  "status": "PARTIAL",
-  "notes": "Recovered visible entries: 0x3ff60e / CONTROL_UNIT_HDD_D and 0xc5500 / FUNCTION_RESTRICTION. These are observations only and are not mapped to a confirmed fault cause."
+  "status": "CAPTURED",
+  "notes": "Captured visible entries: 0x3ff60e / CONTROL_UNIT_HDD_D and 0xc5500 / FUNCTION_RESTRICTION. The strings are confirmed as displayed observations; their technical cause and relationship to HDD partitions, datasets or HNAV-to-HN+ barriers remain TO_VERIFY."
 }
