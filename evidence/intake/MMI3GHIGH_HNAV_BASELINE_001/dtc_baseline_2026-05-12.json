@@ -1,0 +1,90 @@
+{
+  "dtcBaselineId": "HNAV-DTC-20260512-001",
+  "campaignId": "C-004",
+  "baselineId": "HNAV-8T1035664F-K0257-D1",
+  "capturedAt": "2026-05-12T19:00:02+02:00",
+  "sourceTool": "VCDS AKP 25.3.1.1 / HEX-V2",
+  "sourceFile": "PRIVATE_RAW_AUTOSCAN_2026-05-12; public extract autoscan_sanitized_extract_2026-05-12.md",
+  "status": "PARTIAL",
+  "modules": [
+    {
+      "address": "19",
+      "moduleName": "CAN Gateway / J533",
+      "partNumber": "8T0 907 468 AJ",
+      "dtcs": [
+        {
+          "code": "01044",
+          "description": "Control module incorrectly coded",
+          "status": "Present in historical scan",
+          "frequency": 1,
+          "priority": "1",
+          "severity": "UNKNOWN",
+          "notes": "Observation only. Coding value is intentionally not published and no correction is authorized."
+        },
+        {
+          "code": "00459",
+          "description": "Front display and control unit J523 — no signal/communication",
+          "status": "Present in historical scan",
+          "frequency": 1,
+          "priority": "2",
+          "severity": "UNKNOWN",
+          "notes": "Freeze-frame payload omitted from public record."
+        }
+      ],
+      "notes": "Historical DTC block; not a current-state diagnosis."
+    },
+    {
+      "address": "5F",
+      "moduleName": "Information Electronics / J794",
+      "partNumber": "8T1 035 664 F",
+      "dtcs": [
+        {
+          "code": "03276",
+          "description": "Software version management check",
+          "status": "Present in historical scan",
+          "frequency": 1,
+          "priority": "6",
+          "severity": "UNKNOWN",
+          "notes": "Does not by itself establish the correct SVM or firmware procedure."
+        },
+        {
+          "code": "03157",
+          "description": "Functionality limited due to communication disruption",
+          "status": "Present in historical scan",
+          "frequency": 10,
+          "priority": "6",
+          "severity": "UNKNOWN",
+          "notes": "Does not identify the failed dependency or MOST member by itself."
+        },
+        {
+          "code": "02452",
+          "description": "Rear left display unit Y22 — no signal/communication",
+          "status": "Present in historical scan",
+          "frequency": 1,
+          "priority": "5",
+          "severity": "UNKNOWN",
+          "notes": "No root-cause conclusion is made."
+        }
+      ],
+      "notes": "Historical 5F DTC context. Coding and raw freeze-frame bitfields omitted."
+    },
+    {
+      "address": "6C",
+      "moduleName": "Rear View Camera",
+      "partNumber": "8T0 907 441 C",
+      "dtcs": [
+        {
+          "code": "03006",
+          "description": "Rear view camera system not calibrated",
+          "status": "Present in historical scan",
+          "frequency": 1,
+          "priority": "2",
+          "severity": "UNKNOWN",
+          "notes": "This record does not authorize calibration or coding changes."
+        }
+      ],
+      "notes": "Included only as MMI/parking dependency context."
+    }
+  ],
+  "notes": "Public DTC baseline is intentionally limited to 19/5F/6C. It omits personal identifiers, serials, coding, WSC, VCID and unrelated safety-module DTCs. A fresh current DTC-before scan remains required before any controlled experiment."
+}

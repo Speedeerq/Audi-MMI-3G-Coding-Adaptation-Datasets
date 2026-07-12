@@ -5,11 +5,15 @@
   "address": "5F",
   "moduleName": "Information Electronics / J794",
   "partNumber": "8T1 035 664 F",
-  "component": "Audi MMI 3G High / HNAV",
-  "softwareVersion": "HNav_EU_K0257_5_D1",
-  "sourceTool": "Prior user-supplied engineering-menu screenshot discussions",
-  "sourceFile": "PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
+  "component": "H-BN-NA H52",
+  "softwareVersion": "0187",
+  "hardwareVersion": "8T1 035 664 B",
+  "codingPresent": true,
+  "codingValueStored": false,
+  "sourceTool": "VCDS AKP 25.3.1.1 / HEX-V2",
+  "sourceFile": "autoscan_sanitized_extract_2026-05-12.md",
+  "capturedAt": "2026-05-12T19:00:02+02:00",
   "sanitized": true,
-  "evidenceStatus": "PARTIAL",
-  "notes": "Recovered screen readings include Variant 9307, RadioUnit 9471, MU 0187 and Sample d1. Original screenshots and capture timestamp are not attached. Sample d1 is not proven to be equivalent to hwSample."
+  "evidenceStatus": "CAPTURED",
+  "notes": "Diagnostic identity is captured for this scan. The engineering-menu firmware train HNav_EU_K0257_5_D1, Variant 9307, RadioUnit 9471 and Sample d1 remain PARTIAL because original screenshots are not attached."
 }
