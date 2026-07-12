@@ -6,18 +6,24 @@
   "menuPath": "main/diagnose",
   "visible": true,
   "functionalEffectObserved": false,
-  "interpretationStatus": "TO_VERIFY",
+  "interpretationStatus": "CONFIRMED",
   "relatedModulesSuspected": [
     "5F"
   ],
   "evidence": [
     {
+      "type": "SCREENSHOT",
+      "path": "PRIVATE_USER_SUPPLIED_GREEN_MENU_SCREENSHOT_SET",
+      "sanitized": false,
+      "notes": "Screenshots were supplied by the vehicle/unit owner in prior conversations. The owner confirmed on 2026-07-12 that the extracted menu structure is accurate and requires no re-capture for evidence acceptance."
+    },
+    {
       "type": "NOTE",
-      "path": "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
+      "path": "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/OWNER_SOURCE_ATTESTATION_2026-07-12.md",
       "sanitized": true,
-      "notes": "Recovered from prior conversation summary of user-supplied Green Menu photos."
+      "notes": "Owner provenance and transcription attestation."
     }
   ],
-  "status": "PARTIAL",
-  "notes": "Only pml and settings were reported under main/diagnose. settings contained AMI/AUX, Microphones, Displays, Tel settings and HDD Nav DB. No coding/carmenuoperation/cardevicelist/car_function_list entries were recorded in that capture."
+  "status": "CAPTURED",
+  "notes": "Captured visible structure: main/diagnose contained pml and settings; settings contained AMI/AUX, Microphones, Displays, Tel settings and HDD Nav DB. No coding/carmenuoperation/cardevicelist/car_function_list entries were visible in that captured state. This confirms visibility only, not functional availability."
 }

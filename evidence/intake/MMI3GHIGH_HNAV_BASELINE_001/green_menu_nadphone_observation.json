@@ -13,12 +13,18 @@
   ],
   "evidence": [
     {
+      "type": "SCREENSHOT",
+      "path": "PRIVATE_USER_SUPPLIED_GREEN_MENU_NADPHONE_SCREENSHOT",
+      "sanitized": false,
+      "notes": "The owner confirmed on 2026-07-12 that the displayed NADPhone value was transcribed accurately and requires no re-capture for evidence acceptance."
+    },
+    {
       "type": "NOTE",
-      "path": "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
+      "path": "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/OWNER_SOURCE_ATTESTATION_2026-07-12.md",
       "sanitized": true,
-      "notes": "Recovered from prior conversation summary of a Green Menu screenshot."
+      "notes": "Owner provenance and transcription attestation."
     }
   ],
-  "status": "PARTIAL",
-  "notes": "The NADPhone version column displayed $ERROR$. This does not prove the cause, module presence or telephone functionality."
+  "status": "CAPTURED",
+  "notes": "The NADPhone version column displayed $ERROR$. The displayed value is captured; the cause, module presence and telephone functionality remain UNKNOWN."
 }
