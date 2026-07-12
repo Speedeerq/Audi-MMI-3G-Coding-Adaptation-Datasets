@@ -1,6 +1,6 @@
 {
   "evidencePackId": "MMI3GHIGH_HNAV_BASELINE_001",
-  "scope": "Sanitized identity, historical Auto-Scan and UI-observation intake for Audi MMI 3G High HNAV baseline HNAV-8T1035664F-K0257-D1.",
+  "scope": "Sanitized identity, historical Auto-Scan, Gateway Installation List and UI-observation intake for Audi MMI 3G High HNAV baseline HNAV-8T1035664F-K0257-D1.",
   "campaignId": "C-004",
   "baselineId": "HNAV-8T1035664F-K0257-D1",
   "status": "PARTIAL",
@@ -30,6 +30,17 @@
       "requiredBefore": "Network and module-context review",
       "sanitized": true,
       "notes": "A reviewed public-safe summary and extract are attached. The raw full scan remains private and this historical scan does not replace a fresh pre-experiment scan."
+    },
+    {
+      "evidenceId": "HNAV-EV-014",
+      "name": "Gateway Installation List reconstructed from photographed VCDS screens",
+      "targetFile": "gateway_installation_list_reconstructed_2026-07-10.md",
+      "sourceFile": "EP001_GATEWAY_INSTALLATION_LIST_SCREENSHOT_INTAKE.md",
+      "status": "PARTIAL",
+      "risk": "MEDIUM",
+      "requiredBefore": "Installed-versus-possible address and infotainment dependency review",
+      "sanitized": true,
+      "notes": "Three photographed VCDS list pages were identified and a complete address 01-8C transcription exists. This is visual reconstructed evidence, not a native VCDS export. No checkbox or list write is authorized."
     },
     {
       "evidenceId": "HNAV-EV-003",
@@ -133,6 +144,8 @@
   ],
   "blockedClaims": [
     "The 5F diagnostic identity applies unchanged outside the 2026-05-12 scan context.",
+    "The reconstructed Gateway Installation List is a native VCDS export or proves physical module presence.",
+    "An unchecked Installation List address proves that related hardware is physically absent.",
     "The engineering-menu firmware train, Variant, RadioUnit or Sample is confirmed by the Auto-Scan.",
     "Sample d1 is proven to be equivalent to hwSample.",
     "The historical Auto-Scan represents the current pre-experiment state.",
@@ -143,5 +156,5 @@
     "Dataset, parameterization, emergency update or SWDL operations are safe.",
     "HNAV to HN+ conversion feasibility or barrier location is established."
   ],
-  "notes": "The package now contains a directly sourced sanitized historical Auto-Scan summary and DTC extract. It remains PARTIAL because original Red/Green Menu images, a fresh current scan, coding backup, adaptation map and recovery assets are still missing."
+  "notes": "The package now contains a directly sourced sanitized historical Auto-Scan summary, DTC extract and a reconstructed visual Gateway Installation List. It remains PARTIAL because a fresh current scan, a native/direct Installation List export or new screenshots, original Red/Green Menu images, coding backup, adaptation map and recovery assets are still missing."
 }
