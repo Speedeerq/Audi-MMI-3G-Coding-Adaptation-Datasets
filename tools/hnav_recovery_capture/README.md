@@ -9,6 +9,7 @@ collect_capture.ps1
 validate_capture_output.ps1
 SESSION_NOTES_TEMPLATE.md
 SD_PACKAGE_WORKFLOW.md
+LOCAL_TOOLING_DRY_RUN.md
 THIRD_PARTY_NOTICES.md
 ```
 
@@ -62,6 +63,24 @@ NO HDD/EEPROM/NOR WRITE
 NO AUTORUN INCLUDED
 NO SD FORMAT OR ERASE
 ```
+
+## Local dry run before real media
+
+Before using a real SD card, complete:
+
+```text
+LOCAL_TOOLING_DRY_RUN.md
+```
+
+The procedure validates:
+
+- PowerShell parser compatibility,
+- package staging on an isolated temporary drive,
+- preservation of a pre-existing sentinel file,
+- refusal to overwrite an existing package,
+- synthetic report validation,
+- private result collection,
+- absence of destructive storage commands.
 
 ## Staging example
 
