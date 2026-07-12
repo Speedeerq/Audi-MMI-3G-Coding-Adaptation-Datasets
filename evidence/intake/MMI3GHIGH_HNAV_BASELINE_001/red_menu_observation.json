@@ -1,0 +1,23 @@
+{
+  "observationId": "HNAV-UI-RED-001",
+  "campaignId": "C-004",
+  "baselineId": "HNAV-8T1035664F-K0257-D1",
+  "area": "Red/engineering identity information recovered from prior screenshot discussions",
+  "menuPath": "Engineering identity/version pages; exact page path not preserved",
+  "visible": true,
+  "functionalEffectObserved": false,
+  "interpretationStatus": "TO_VERIFY",
+  "relatedModulesSuspected": [
+    "5F"
+  ],
+  "evidence": [
+    {
+      "type": "NOTE",
+      "path": "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
+      "sanitized": true,
+      "notes": "Recovered from prior conversation summaries. Original screenshot files are not attached to this repository record."
+    }
+  ],
+  "status": "PARTIAL",
+  "notes": "Recovered readings: HNav_EU_K0257_5_D1, Variant 9307, RadioUnit 9471, MU 0187, Sample d1. The original images and capture timestamp are missing. Sample d1 must not be treated as proven hwSample equivalence."
+}

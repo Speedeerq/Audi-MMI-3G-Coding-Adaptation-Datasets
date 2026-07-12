@@ -1,0 +1,23 @@
+{
+  "observationId": "HNAV-UI-GREEN-001",
+  "campaignId": "C-004",
+  "baselineId": "HNAV-8T1035664F-K0257-D1",
+  "area": "Green Menu structure",
+  "menuPath": "main/diagnose",
+  "visible": true,
+  "functionalEffectObserved": false,
+  "interpretationStatus": "TO_VERIFY",
+  "relatedModulesSuspected": [
+    "5F"
+  ],
+  "evidence": [
+    {
+      "type": "NOTE",
+      "path": "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
+      "sanitized": true,
+      "notes": "Recovered from prior conversation summary of user-supplied Green Menu photos."
+    }
+  ],
+  "status": "PARTIAL",
+  "notes": "Only pml and settings were reported under main/diagnose. settings contained AMI/AUX, Microphones, Displays, Tel settings and HDD Nav DB. No coding/carmenuoperation/cardevicelist/car_function_list entries were recorded in that capture."
+}
