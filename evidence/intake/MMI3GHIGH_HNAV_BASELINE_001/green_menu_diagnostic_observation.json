@@ -1,0 +1,23 @@
+{
+  "observationId": "HNAV-UI-GREEN-DIAG-001",
+  "campaignId": "C-004",
+  "baselineId": "HNAV-8T1035664F-K0257-D1",
+  "area": "Green Menu diagnostic observations",
+  "menuPath": "Green Menu diagnostic page; exact path not preserved",
+  "visible": true,
+  "functionalEffectObserved": false,
+  "interpretationStatus": "TO_VERIFY",
+  "relatedModulesSuspected": [
+    "5F"
+  ],
+  "evidence": [
+    {
+      "type": "NOTE",
+      "path": "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
+      "sanitized": true,
+      "notes": "Recovered from a prior conversation interpretation of user-supplied Green Menu photos."
+    }
+  ],
+  "status": "PARTIAL",
+  "notes": "Recovered visible entries: 0x3ff60e / CONTROL_UNIT_HDD_D and 0xc5500 / FUNCTION_RESTRICTION. These are observations only and are not mapped to a confirmed fault cause."
+}

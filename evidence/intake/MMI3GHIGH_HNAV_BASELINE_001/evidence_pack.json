@@ -13,45 +13,78 @@
       "evidenceId": "HNAV-EV-002",
       "name": "Controller identification assembled from project notes",
       "targetFile": "controller_identification.json",
-      "sourceFile": "RAW_SOURCE_NOT_ATTACHED",
+      "sourceFile": "PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
       "status": "PARTIAL",
       "risk": "LOW",
       "requiredBefore": "Controller identity claim review",
       "sanitized": true,
-      "notes": "Part number and software identifiers are recorded, but no raw diagnostic export, screenshot or original capture timestamp is attached."
+      "notes": "Part number and software identifiers are supported by recovered prior-chat screenshot readings, but the original screenshot files and original capture timestamp are not attached."
     },
     {
       "evidenceId": "HNAV-EV-001",
       "name": "Full Auto-Scan before changes",
       "targetFile": "autoscan_before_sanitized.txt",
-      "sourceFile": "TO_CAPTURE",
-      "status": "TO_CAPTURE",
+      "sourceFile": "EXTERNAL_USER_FILE_AVAILABLE_SANITIZATION_PENDING",
+      "status": "PARTIAL",
       "risk": "MEDIUM",
       "requiredBefore": "Network and module-context review",
       "sanitized": false,
-      "notes": "Capture read-only and sanitize before publication."
+      "notes": "A prior uploaded Auto-Scan exists outside this branch, but a sanitized repository copy has not been reviewed or attached."
     },
     {
       "evidenceId": "HNAV-EV-003",
       "name": "Red Engineering Menu identification",
-      "targetFile": "red_menu_identification.md",
-      "sourceFile": "TO_CAPTURE",
-      "status": "TO_CAPTURE",
+      "targetFile": "red_menu_observation.json",
+      "sourceFile": "PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
+      "status": "PARTIAL",
       "risk": "MEDIUM",
       "requiredBefore": "Software train and variant corroboration",
-      "sanitized": false,
-      "notes": "Identity pages only; no update, emergency or SWDL actions."
+      "sanitized": true,
+      "notes": "Recovered prior-chat readings exist, but the original image files and exact menu path are not attached. No update, emergency or SWDL action is authorized."
+    },
+    {
+      "evidenceId": "HNAV-EV-009",
+      "name": "Green Menu structure observation",
+      "targetFile": "green_menu_structure_observation.json",
+      "sourceFile": "PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
+      "status": "PARTIAL",
+      "risk": "LOW",
+      "requiredBefore": "Green Menu structure review",
+      "sanitized": true,
+      "notes": "Recovered from prior user-supplied screenshot discussions. Visibility does not confirm function."
+    },
+    {
+      "evidenceId": "HNAV-EV-011",
+      "name": "Green Menu diagnostic fault observations",
+      "targetFile": "green_menu_diagnostic_observation.json",
+      "sourceFile": "PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
+      "status": "PARTIAL",
+      "risk": "MEDIUM",
+      "requiredBefore": "HDD and function-restriction interpretation",
+      "sanitized": true,
+      "notes": "Recovered display strings are observations only and do not establish root cause."
+    },
+    {
+      "evidenceId": "HNAV-EV-012",
+      "name": "Green Menu NADPhone version observation",
+      "targetFile": "green_menu_nadphone_observation.json",
+      "sourceFile": "PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
+      "status": "PARTIAL",
+      "risk": "LOW",
+      "requiredBefore": "Telephone/NADPhone context review",
+      "sanitized": true,
+      "notes": "The recovered $ERROR$ display does not prove module presence, failure mode or telephone functionality."
     },
     {
       "evidenceId": "HNAV-EV-006",
       "name": "DTC baseline before changes",
       "targetFile": "dtc_before_sanitized.txt",
-      "sourceFile": "TO_CAPTURE",
-      "status": "TO_CAPTURE",
+      "sourceFile": "EXTERNAL_USER_FILE_AVAILABLE_SANITIZATION_PENDING",
+      "status": "PARTIAL",
       "risk": "HIGH",
       "requiredBefore": "Fault attribution or controlled testing",
       "sanitized": false,
-      "notes": "Do not clear DTCs before capture."
+      "notes": "Prior Auto-Scan material contains DTC context, but a sanitized baseline file has not been reviewed or attached to this branch."
     },
     {
       "evidenceId": "HNAV-EV-004",
@@ -90,10 +123,13 @@
   "blockedClaims": [
     "Controller identity is confirmed.",
     "Software train, variant, RadioUnit, MU version or sample is confirmed.",
+    "Sample d1 is proven to be equivalent to hwSample.",
+    "Green Menu visibility proves feature availability or functionality.",
+    "Green Menu diagnostic strings establish a confirmed root cause.",
     "Coding or adaptation behavior is confirmed.",
     "Security Access is known, valid or required for a specific operation.",
     "Dataset, parameterization, emergency update or SWDL operations are safe.",
     "HNAV to HN+ conversion feasibility or barrier location is established."
   ],
-  "notes": "This package records a real project unit context but remains PARTIAL until raw read-only evidence is attached and reviewed."
+  "notes": "This package records a real project unit context and recovered prior-chat screenshot observations, but remains PARTIAL until original images, sanitized diagnostic exports and timestamps are attached and reviewed."
 }

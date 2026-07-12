@@ -1,15 +1,15 @@
 {
-  "recordId": "HNAV-CTRL-5F-001",
+  "recordId": "HNAV-CTRL-001",
   "campaignId": "C-004",
   "baselineId": "HNAV-8T1035664F-K0257-D1",
   "address": "5F",
-  "moduleName": "Information Electronics",
+  "moduleName": "Information Electronics / J794",
   "partNumber": "8T1 035 664 F",
-  "component": "Audi MMI 3G High HNAV",
+  "component": "Audi MMI 3G High / HNAV",
   "softwareVersion": "HNav_EU_K0257_5_D1",
-  "sourceTool": "Project notes supplied by unit owner",
-  "sourceFile": "RAW_SOURCE_NOT_ATTACHED",
+  "sourceTool": "Prior user-supplied engineering-menu screenshot discussions",
+  "sourceFile": "PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
   "sanitized": true,
   "evidenceStatus": "PARTIAL",
-  "notes": "Additional observed identifiers from project notes: Variant 9307; RadioUnit 9471; MU 0187; Sample d1. No raw diagnostic export, screenshot, coding value, VIN or original capture timestamp is attached. Treat every identifier as pending corroboration."
+  "notes": "Recovered screen readings include Variant 9307, RadioUnit 9471, MU 0187 and Sample d1. Original screenshots and capture timestamp are not attached. Sample d1 is not proven to be equivalent to hwSample."
 }

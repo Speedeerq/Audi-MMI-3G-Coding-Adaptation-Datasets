@@ -1,0 +1,24 @@
+{
+  "observationId": "HNAV-UI-GREEN-PHONE-001",
+  "campaignId": "C-004",
+  "baselineId": "HNAV-8T1035664F-K0257-D1",
+  "area": "Green Menu NADPhone version display",
+  "menuPath": "Green Menu version information; exact path not preserved",
+  "visible": true,
+  "functionalEffectObserved": false,
+  "interpretationStatus": "UNKNOWN",
+  "relatedModulesSuspected": [
+    "5F",
+    "77"
+  ],
+  "evidence": [
+    {
+      "type": "NOTE",
+      "path": "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/PRIOR_CHAT_SCREENSHOT_RECOVERY.md",
+      "sanitized": true,
+      "notes": "Recovered from prior conversation summary of a Green Menu screenshot."
+    }
+  ],
+  "status": "PARTIAL",
+  "notes": "The NADPhone version column displayed $ERROR$. This does not prove the cause, module presence or telephone functionality."
+}
