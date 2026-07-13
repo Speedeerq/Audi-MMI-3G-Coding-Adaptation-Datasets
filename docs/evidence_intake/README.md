@@ -34,11 +34,12 @@ It does not:
 
 ## Recommended reading order
 
+Start here, then read:
+
 1. `schemas/README.md`
 2. `templates/evidence_intake/README.md`
 3. `validation/evidence_intake/README.md`
 4. `docs/evidence_intake_execution/README.md`
-5. `docs/evidence_intake/README.md`
 
 ## Operator flow summary
 

@@ -106,6 +106,8 @@ Zebrać bazowy obraz sieci pojazdu: obecność modułów, listę instalacyjną G
 | `network_dependency_notes.md` | TO CAPTURE |
 | `photo_index.md` | TO CAPTURE |
 
+`gateway_installation_list.md` is a separate sanitized evidence attachment indexed by `evidence_pack`. A `module_dependency` record does not replace the Installation List.
+
 ## Zdjęcia do wykonania
 
 | Photo | Required | Notes |
