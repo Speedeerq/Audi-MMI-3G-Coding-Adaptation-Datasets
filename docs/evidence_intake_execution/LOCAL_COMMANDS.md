@@ -44,6 +44,24 @@ Expected clean output:
 
 If any file is listed, stop and review the change before continuing.
 
+## Symmetric pre/post dry-run state
+
+Run the same block immediately before and immediately after a no-commit dry run:
+
+```powershell
+git status --short
+git rev-parse HEAD
+git rev-parse origin/main
+```
+
+Compare the two recorded outputs. They should allow the operator to confirm:
+
+- no working-tree changes were introduced,
+- the local `HEAD` did not change,
+- the observed `origin/main` did not change during the dry run.
+
+These repository-state checks do not prove or accept any technical claim.
+
 ## 5. Inspect recent commits
 
 ```powershell
