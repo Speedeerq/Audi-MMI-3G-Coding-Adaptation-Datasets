@@ -1,16 +1,19 @@
 # HNAV Recovery Asset Catalog — 2026-07-12
 
+Updated by the variant-aware hardware/source audit on 2026-07-14.
+
 ## Scope
 
 This catalog separates:
 
 - evidence already supplied by the unit owner,
-- read-only recovery tools located in public sources,
+- host-side preparation tooling,
+- target-side script candidates that still require compatibility review,
 - assets that still have to be captured from the target unit,
 - assets that must come from the exact original firmware package,
 - assets that require bench access.
 
-It does not authorize a write operation.
+It does not authorize a write operation or physical target execution.
 
 ## A. Owner-supplied assets already available
 
@@ -25,11 +28,34 @@ It does not authorize a write operation.
 | Red Menu readings | `CAPTURED` | train/variant/MU visible-state reference | displayed `Sample d1` is not proven `/etc/hwSample` |
 | Green Menu readings | `CAPTURED` | visible UI/diagnostic-state reference | no root-cause proof |
 
-## B. Public read-only tooling accepted for preparation
+## B. Public references and preparation tooling
 
-### B1. Variant and storage inventory
+### B1. Runtime-family reference
 
-Source class:
+Primary community reference:
+
+```text
+DrGER2/MMI3G-Info
+reviewed revision: 2d6f0e419cfd22c7daf3b38fac0418c99a0e0de0
+reviewed script version: v260103
+```
+
+Accepted use:
+
+- MMI3GB/MMI3GH/MMI3GP handling differences,
+- runtime process and mount references,
+- filesystem-visible train, variant and `hwSample` reporting design,
+- HDD and partition-inventory reference.
+
+Limitation:
+
+```text
+COMMUNITY SOURCE — NOT OEM DOCUMENTATION
+VARIANT-SPECIFIC
+TARGET EVIDENCE REMAINS REQUIRED
+```
+
+### B2. SD builder and inventory implementation reference
 
 ```text
 dspl1236/MMI3G-Toolkit
@@ -37,7 +63,15 @@ reviewed revision: 7b25fa945e72343474b5f184aa12d0ea06162c8f
 licence: MIT
 ```
 
-The reviewed `variant-dump` design reads:
+Accepted host-side roles:
+
+- automated SD payload assembly,
+- `copie_scr.sh` launcher encoding,
+- module packaging,
+- implementation reference for read-only inventory design,
+- offline firmware and metadata research.
+
+The reviewed `variant-dump` design attempts to read:
 
 - software train,
 - MU software version,
@@ -51,9 +85,7 @@ The reviewed `variant-dump` design reads:
 - FSC file presence,
 - persistence directory inventory.
 
-It writes the report to the SD card and does not install to flash.
-
-Repository-local reduced profile:
+Repository-local reduced script candidate:
 
 ```text
 tools/hnav_recovery_capture/read_only_hnav_inventory.sh
@@ -61,9 +93,17 @@ tools/hnav_recovery_capture/read_only_hnav_inventory.sh
 
 The local profile deliberately excludes credentials, VIN content, passwords, private keys and coding values.
 
-### B2. Persistence snapshot
+Status split:
 
-The reviewed public `persistence-dump` script can copy state from:
+```text
+HOST-SIDE STAGING/COLLECTION/VALIDATION: PASS
+TARGET-SIDE LAUNCHER/INTERPRETER/PATH COMPATIBILITY: TO VERIFY
+PHYSICAL TARGET EXECUTION: BLOCKED PENDING VARIANT VALIDATION
+```
+
+### B3. Persistence snapshot
+
+A reviewed public `persistence-dump` design can copy state from paths such as:
 
 ```text
 /HBpersistence
@@ -76,13 +116,15 @@ Use classification:
 
 ```text
 PRIVATE RECOVERY ASSET ONLY
+PATHS: VARIANT / TO VERIFY
 DO NOT COMMIT RAW OUTPUT
 SANITIZATION REQUIRED BEFORE ANY SUMMARY IS PUBLISHED
+EXECUTION REQUIRES SEPARATE REVIEW
 ```
 
-Reason: persistence can contain identifiers, activation data, pairing data and other sensitive state.
+Persistence may contain identifiers, activation data, pairing data and other sensitive state.
 
-### B3. HDD imaging
+### B4. HDD imaging
 
 Accepted tool class:
 
@@ -138,11 +180,18 @@ metainfo2.txt
 preUpdateScript / postUpdateScript / finalScript
 ```
 
-This is a software-layout reference. It is not a recovery package for the target HNAV unit and must never be flashed to it on the basis of this catalog.
+Classification:
+
+```text
+BUILD-SPECIFIC SOFTWARE-LAYOUT REFERENCE
+NOT GLOBAL HN+ HARDWARE EVIDENCE
+NOT A RECOVERY PACKAGE FOR TARGET HNAV
+NOT AUTHORIZED FOR TARGET WRITE
+```
 
 ### C2. HN+ hardware-sample directory reference
 
-The public HN+ package analysis maps payload directories such as:
+A public HN+ package analysis maps payload directories such as:
 
 ```text
 31 = C1
@@ -152,7 +201,7 @@ The public HN+ package analysis maps payload directories such as:
 62 = F2
 ```
 
-These values are package target variants. They do not prove the target HNAV unit's `/etc/hwSample`.
+These values are package target variants. They do not prove the target HNAV unit's `/etc/hwSample` or a global HN+ architecture.
 
 ### C3. EU HN+ package lead
 
@@ -177,17 +226,19 @@ NOT A RECOVERY ASSET
 
 | Required asset | State | Why required |
 |---|---|---|
-| Read-only `/etc/hwSample` capture | `TO_CAPTURE` | distinguishes displayed Sample from actual hardware-sample file |
-| QNX train/MU/variant inventory from filesystem | `TO_CAPTURE` | corroborates Red Menu and package eligibility context |
-| HDD geometry and partition table | `TO_CAPTURE` | enables HNAV/HN+ layout comparison |
-| Full target HDD image + mapfile + hashes | `TO_CAPTURE` | storage rollback and forensic comparison |
-| Sanitized/private persistence snapshot | `TO_CAPTURE` | configuration rollback/diff support |
-| Full current 5F adaptation map | `TO_CAPTURE IF WRITE PROPOSED` | adaptation rollback |
+| Read-only `/etc/hwSample` capture | `BLOCKED PENDING EXECUTION-PATH REVIEW` | distinguishes displayed Sample from actual hardware-sample file |
+| QNX train/MU/variant inventory from filesystem | `BLOCKED PENDING EXECUTION-PATH REVIEW` | corroborates Red Menu and package eligibility context |
+| Target CPU/QNX/endianness evidence | `TO VERIFY` | prevents transfer of another build's architecture |
+| Target SD controller, launcher, interpreter and mount path | `TO VERIFY` | required before any SD payload execution |
+| HDD geometry and partition table | `TO CAPTURE AFTER SAFE METHOD APPROVAL` | enables HNAV/HN+ layout comparison |
+| Full target HDD image + mapfile + hashes | `TO CAPTURE ON BENCH` | storage rollback and forensic comparison |
+| Sanitized/private persistence snapshot | `TO CAPTURE AFTER SCRIPT REVIEW` | configuration rollback/diff support |
+| Full current 5F adaptation map | `TO CAPTURE IF WRITE PROPOSED` | adaptation rollback |
 | Exact original HNAV K0257 firmware package | `NOT LOCATED` | same-train emergency/firmware recovery source |
 | Original HNAV package `metainfo2.txt` | `NOT LOCATED` | target eligibility/layout comparison |
 | Original HNAV IPL/IFS/FPGA/emergency images | `NOT LOCATED` | NOR recovery and HN+/HNAV comparison |
-| Target EEPROM image | `TO_CAPTURE ON BENCH` | identity/configuration rollback |
-| Target NOR flash image | `TO_CAPTURE ON BENCH` | full flash rollback beyond package-level recovery |
+| Target EEPROM image | `TO CAPTURE ON BENCH` | identity/configuration rollback |
+| Target NOR flash image | `TO CAPTURE ON BENCH` | full flash rollback beyond package-level recovery |
 | Proven restore test on spare/bench unit | `BLOCKED` | validates that backups are operational rather than archival only |
 
 ## E. EEPROM/NOR acceptance requirements
@@ -206,7 +257,9 @@ An EEPROM or NOR backup is accepted only when all conditions are met:
 
 ```text
 EXISTING DIAGNOSTIC/CONFIG EVIDENCE: AVAILABLE
-READ-ONLY INVENTORY TOOLING: READY
+HOST-SIDE STAGING/COLLECTION TOOLING: PASS
+TARGET-SIDE INVENTORY COMPATIBILITY: TO VERIFY
+TARGET PHYSICAL EXECUTION: BLOCKED PENDING VARIANT VALIDATION
 HDD/EEPROM/NOR ROLLBACK ASSETS: NOT YET CAPTURED
 EXACT TARGET SAME-TRAIN RECOVERY PACKAGE: NOT LOCATED
 RECOVERY READINESS: PARTIAL / NOT PROVEN
