@@ -1,5 +1,21 @@
 # Third-Party Notices
 
+## DrGER2/MMI3G-Info
+
+Runtime-family distinctions and the source-priority policy reference:
+
+```text
+Project: MMI3G-Info
+Author: DrGER2
+Reviewed revision: 2d6f0e419cfd22c7daf3b38fac0418c99a0e0de0
+Reviewed script version: v260103
+Use: primary community runtime and family-difference reference
+```
+
+No DrGER2 source code is copied into this tool directory by this notice. The reference is used to review MMI3GB/MMI3GH/MMI3GP distinctions, runtime paths, processes, mounts and target compatibility assumptions.
+
+The project is a community source, not official Audi, Volkswagen or Harman/Becker documentation. Exact target-unit and applicable OEM evidence remain higher authority.
+
 ## MMI3G-Toolkit
 
 Portions of the research approach and known read-only filesystem paths used by `read_only_hnav_inventory.sh` are informed by:
@@ -39,4 +55,4 @@ SOFTWARE.
 
 ## Excluded source functionality
 
-No firmware patching, CRC bypass, FSC bypass, credential extraction or persistent modification code from the upstream project is included in this tool directory.
+No firmware patching, CRC bypass, FSC bypass, credential extraction or persistent modification code from the upstream projects is included in this tool directory.

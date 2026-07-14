@@ -13,15 +13,30 @@ LOCAL_TOOLING_DRY_RUN.md
 THIRD_PARTY_NOTICES.md
 ```
 
-## Target-side inventory tool
+## Status split
 
-`read_only_hnav_inventory.sh` is designed to:
+```text
+HOST-SIDE POWERSHELL PARSER: PASS
+HOST-SIDE STAGING DRY RUN: PASS
+HOST-SIDE OVERWRITE REFUSAL: PASS
+HOST-SIDE COLLECTION/VALIDATION: PASS
+TARGET-SIDE SCRIPT COMPATIBILITY: TO VERIFY
+TARGET-SIDE EXECUTION: BLOCKED PENDING VARIANT VALIDATION
+```
+
+Host-side PASS does not prove that the target HNav build provides the expected launcher, interpreter, commands, paths or removable-media mount point.
+
+## Target-side inventory script candidate
+
+`read_only_hnav_inventory.sh` is designed to attempt to:
 
 - capture filesystem-visible HNAV identity,
 - record `/etc/hwSample`, train, MU version and platform files,
 - record HDD geometry/partition table, mounts and free space,
 - inventory FSC and persistence locations without copying their contents,
-- write the report only below the supplied SD-card package path.
+- write the report only below a supplied removable-media package path.
+
+For target unit `8T1 035 664 F` / `HNav_EU_K0257_5_D1`, the required interpreter, command set, launcher and SD path remain `TO VERIFY`.
 
 ## Windows staging and collection tools
 
@@ -51,18 +66,20 @@ Performs structural validation of a collected report. It verifies expected headi
 
 A structural PASS does not prove that every target command produced complete data; the report still requires technical review.
 
-## Safety status
+## Static safety status
+
+Static review and the host-side dry run support:
 
 ```text
-READ-ONLY TARGET ACCESS
-SD OUTPUT ONLY
-NO CODING/ADAPTATION WRITE
-NO SWDL
-NO REMOUNT
-NO HDD/EEPROM/NOR WRITE
+NO CODING/ADAPTATION WRITE IN INCLUDED SCRIPT
+NO SWDL IN INCLUDED SCRIPT
+NO REMOUNT COMMAND IN INCLUDED SCRIPT
+NO HDD/EEPROM/NOR WRITE IN INCLUDED SCRIPT
 NO AUTORUN INCLUDED
 NO SD FORMAT OR ERASE
 ```
+
+The statement `SD OUTPUT ONLY` is valid only after the supplied target path has been independently confirmed as removable media on the exact unit.
 
 ## Local dry run before real media
 
@@ -96,9 +113,27 @@ Replace `X:` only after confirming the SD-card drive letter.
 
 The package intentionally does not include `copie_scr.sh`, a firmware update package, an emergency-update path or any persistent launcher.
 
-Running the QNX inventory script is a physical-unit action and must be performed deliberately after the exact execution path and SD mount point are reviewed. The repository does not claim the tool has been executed on the target unit.
+Running the QNX inventory script is a physical-unit action and remains blocked until all of the following are resolved for the exact target:
 
-See `SD_PACKAGE_WORKFLOW.md` and complete `SESSION_NOTES_TEMPLATE.md`.
+```text
+launcher process
+launcher script path
+script interpreter
+required command availability
+SD controller and mount path
+output path confirmed as removable media
+```
+
+Future automated autorun delivery should use an audited MMI3G-Toolkit builder/encoder workflow rather than a manually constructed launcher, but only after target-family and train compatibility are established.
+
+Do not substitute an unreviewed `copie_scr.sh`, emergency-update package, SWDL package or persistent installer to obtain execution.
+
+See `SD_PACKAGE_WORKFLOW.md`, complete `SESSION_NOTES_TEMPLATE.md`, and follow:
+
+```text
+01_MMI_3G_HIGH/OFFLINE_RESEARCH/HNAV_TO_HNPLUS/SOURCE_AUTHORITY_AND_VARIANT_POLICY.md
+01_MMI_3G_HIGH/OFFLINE_RESEARCH/HNAV_TO_HNPLUS/HARDWARE_MATRIX_AUDIT_2026-07-14.md
+```
 
 ## Data handling
 
@@ -115,7 +150,13 @@ Do not publish:
 
 ## Third-party basis
 
-The identification and storage paths are informed by the MIT-licensed `variant-dump` implementation in `dspl1236/MMI3G-Toolkit`, reviewed at revision:
+Primary community runtime reference:
+
+```text
+DrGER2/MMI3G-Info
+```
+
+The identification and storage paths in the script candidate are also informed by the MIT-licensed `variant-dump` implementation in `dspl1236/MMI3G-Toolkit`, reviewed at revision:
 
 ```text
 7b25fa945e72343474b5f184aa12d0ea06162c8f

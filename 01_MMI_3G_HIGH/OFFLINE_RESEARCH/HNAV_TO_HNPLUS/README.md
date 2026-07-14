@@ -31,25 +31,48 @@ Source intake:
 evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/
 ```
 
+## Source and claim policy
+
+All hardware, runtime and package claims follow:
+
+```text
+SOURCE_AUTHORITY_AND_VARIANT_POLICY.md
+```
+
+Required claim statuses:
+
+```text
+CONFIRMED
+VARIANT
+TO VERIFY
+HYPOTHESIS
+UNKNOWN
+BLOCKED
+```
+
+`DrGER2/MMI3G-Info` is the primary community runtime reference for this research. It is not OEM documentation, and target-unit or applicable OEM evidence remains higher authority.
+
 ## Research files
 
 | File | Purpose |
 |---|---|
+| `SOURCE_AUTHORITY_AND_VARIANT_POLICY.md` | Defines source hierarchy, claim requirements and variant-transfer restrictions |
+| `HARDWARE_MATRIX_AUDIT_2026-07-14.md` | Reclassifies global hardware claims and records the target HNav unknowns |
 | `HYPOTHESIS_MATRIX.md` | Separates each possible barrier and defines evidence needed to support or reject it |
 | `EXPERIMENT_MATRIX.md` | Orders read-only analysis and later controlled experiments by risk and dependency |
 | `FIELD_CAPTURE_HANDOFF.md` | Defines the original evidence-capture handoff |
 | `RECOVERY_ASSET_CATALOG_2026-07-12.md` | Catalogues existing, public-source and missing recovery assets |
-| `HNPLUS_REFERENCE_SELECTION_2026-07-12.md` | Defines the correct HN+ comparison class and donor acceptance rules |
+| `HNPLUS_REFERENCE_SELECTION_2026-07-12.md` | Defines the HN+ software-comparison candidate and donor acceptance rules |
 | `HNPLUS_REFERENCE_INTAKE_TEMPLATE.md` | Template for a future physical HN+ reference package |
 | `WRITE_OPERATION_BACKUP_MATRIX_2026-07-12.md` | Defines mandatory backups for each proposed write operation |
 | `PUBLIC_SOURCE_INTAKE_REVIEW_2026-07-12.md` | Reviews external tools and sources, including safety and licence boundaries |
-| `SAFE_READ_ONLY_DUMP_PROFILE.md` | Defines the approved read-only recovery inventory profile |
+| `SAFE_READ_ONLY_DUMP_PROFILE.md` | Defines the proposed read-only recovery inventory profile and its validation boundary |
 | `EXPERIMENT_ENTRY_GATE_REASSESSMENT_RECOVERY_RESEARCH_2026-07-12.md` | Reassesses X1–X7 after the source search |
 
-Supporting tool:
+Supporting host-side tooling and target-side script candidate:
 
 ```text
-tools/hnav_recovery_capture/read_only_hnav_inventory.sh
+tools/hnav_recovery_capture/
 ```
 
 ## Evidence model
@@ -64,6 +87,8 @@ The project keeps these concepts separate:
 
 No single firmware filename, UI field, EEPROM byte, partition name or package check is sufficient on its own.
 
+Evidence from one build or unit is not automatically evidence for every BNav, HNav, HN+, HN+R or RNS-850 variant.
+
 ## Entry boundary
 
 Allowed:
@@ -71,28 +96,37 @@ Allowed:
 - read-only controller and menu capture,
 - private immutable backups,
 - board and storage inventory,
+- build-specific offline firmware analysis,
 - offline file and metadata comparison,
 - checksum and provenance recording,
-- preparation of a matched HN+ reference package.
+- preparation of a matched HN+ physical-reference intake package,
+- host-side staging, collection and structural-validation dry runs.
 
-Blocked:
+Blocked or gated:
 
+- physical execution of the target-side inventory script until the exact launcher, interpreter, commands and SD mount path are reviewed for the target,
 - HN+ firmware write attempts,
-- EEPROM edits,
+- EEPROM or NOR writes,
 - IPL or bootloader replacement,
 - HDD repartitioning or restoration to the vehicle unit,
+- EFS or HMI binary replacement,
+- region conversion,
 - update eligibility or integrity bypass,
+- FSC signature-bypass deployment,
 - emergency-update experiments,
 - dataset or parameterization writes,
-- any claim that the conversion is possible or impossible.
+- any claim that the HNAV-to-HN+ conversion is possible or impossible.
 
 ## Current decision
 
 ```text
-X0 BASELINE EVIDENCE: PASS
-X1 RECOVERY TOOLING/CATALOG: PARTIAL READY
-X2 HN+ SOFTWARE REFERENCE CLASS: IDENTIFIED
-X2 MATCHED PHYSICAL HN+ DATASET: MISSING
+X0 BASELINE DIAGNOSTIC EVIDENCE: PASS
+HOST-SIDE SD STAGING/COLLECTION TOOLING: PASS
+TARGET-SIDE SCRIPT COMPATIBILITY: TO VERIFY
+TARGET PHYSICAL EXECUTION: BLOCKED PENDING VARIANT VALIDATION
+HN+ GLOBAL HARDWARE ARCHITECTURE: VARIANT / TO VERIFY
+HN+ AU3G 9498 SOFTWARE-COMPARISON CANDIDATE: IDENTIFIED
+MATCHED PHYSICAL HN+ DATASET: MISSING
 CONTROLLED WRITE EXPERIMENT ENTRY: BLOCKED
 TECHNICAL CLAIM PROMOTION: BLOCKED
 ```
