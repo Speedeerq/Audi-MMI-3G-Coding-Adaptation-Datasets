@@ -2,15 +2,30 @@
 
 ## Purpose
 
-Collect the minimum filesystem-visible data needed to advance recovery planning and HNAV/HN+ comparison without writing to the unit or collecting credentials.
+Define a proposed minimum filesystem-visible data set for recovery planning and HNAV/HN+ comparison without collecting credentials or intentionally writing to target filesystems.
 
-Tool:
+Tool candidate:
 
 ```text
 tools/hnav_recovery_capture/read_only_hnav_inventory.sh
 ```
 
-## Data collected
+## Current status
+
+```text
+HOST-SIDE SCRIPT PACKAGING: PASS
+HOST-SIDE COLLECTION/VALIDATION: PASS
+TARGET-SIDE INTERPRETER: TO VERIFY
+TARGET-SIDE COMMAND AVAILABILITY: TO VERIFY
+TARGET SD MOUNT/EXECUTION PATH: TO VERIFY
+PHYSICAL TARGET EXECUTION: BLOCKED PENDING VARIANT VALIDATION
+```
+
+The script has not been proven compatible with target unit `8T1 035 664 F` running `HNav_EU_K0257_5_D1`.
+
+## Proposed data collection
+
+When supported by the exact target build, the script attempts to record:
 
 - software train from `/dev/shmem/sw_trainname.txt`,
 - MU software version,
@@ -23,6 +38,8 @@ tools/hnav_recovery_capture/read_only_hnav_inventory.sh
 - FSC directory filenames and sizes only,
 - top-level persistence directory inventory,
 - checksums of selected non-secret identity/config files.
+
+Every path and command above is `TO VERIFY` for the target until confirmed by target evidence or an exact matching source.
 
 ## Data deliberately excluded
 
@@ -38,17 +55,17 @@ tools/hnav_recovery_capture/read_only_hnav_inventory.sh
 - private keys,
 - FSC file contents,
 - persistence file contents,
-- any write or mount-remount command.
+- any target filesystem remount or intended target write.
 
-## Write analysis
+## Static write analysis
 
-The script performs filesystem writes only to the user-provided SD-card output directory:
+Static review shows that the script directs its report to the user-supplied removable-media path:
 
 ```text
 <SDPATH>/var/hnav-recovery/<timestamp>/
 ```
 
-It does not:
+It does not intentionally:
 
 - write to `/HBpersistence`,
 - write to `/mnt/efs-system`,
@@ -58,6 +75,30 @@ It does not:
 - change coding or adaptation,
 - remount filesystems,
 - erase, restore or repartition the HDD.
+
+This static result does not prove that `SDPATH` resolves to removable media on the target. That execution path must be established without guessing.
+
+## Target compatibility gate
+
+Before physical execution, record and review:
+
+```text
+family: HNav / MMI 3G High
+unit part number: 8T1 035 664 F
+hardware identifier: 8T1 035 664 B
+train: HNav_EU_K0257_5_D1
+variant: 9307
+actual hwSample: TO CAPTURE
+launcher process: TO VERIFY
+launcher script path: TO VERIFY
+script interpreter: TO VERIFY
+SD controller: TO VERIFY
+SD mount path: TO VERIFY
+required commands: TO VERIFY
+output path resolved to removable media: TO VERIFY
+```
+
+No `copie_scr.sh`, emergency-update package, SWDL package or persistent launcher may be substituted merely to bypass this gate.
 
 ## Output classification
 
@@ -74,26 +115,34 @@ Before repository intake:
 5. record provenance and tool revision,
 6. commit only a sanitized report.
 
-## External-tool decisions
+## External-source decisions
 
 | Tool/module | Decision |
 |---|---|
-| MMI3G-Toolkit `variant-dump` | Approved read-only reference |
+| DrGER2/MMI3G-Info | Primary community runtime and family-difference reference |
+| MMI3G-Toolkit builder/encoder | Accepted host-side payload transport reference |
+| MMI3G-Toolkit `variant-dump` | Read-only implementation reference; target compatibility still reviewed separately |
 | MMI3G-Toolkit `persistence-dump` | Private-only, additional review before execution |
-| MMI3G-Toolkit full `system-info` | Rejected unmodified because it collects credentials/secrets |
+| Full credential-oriented information modules | Rejected unmodified because of privacy scope |
 | Firmware patch/repack/CRC-bypass modules | Excluded from recovery capture |
 | FSC/nav activation bypass modules | Excluded |
 
 ## Acceptance criteria
 
-A capture is valid when:
+A future physical capture is valid only when:
 
 ```text
+target execution prerequisites reviewed: YES
+launcher and interpreter confirmed for exact target: YES
+SD output path confirmed as removable media: YES
 report created on SD: YES
 unit flash writes: NONE
 actual hwSample readable: YES/NO recorded
 HDD partition table readable: YES/NO recorded
+unsupported commands and failures retained in report: YES
 source script SHA/revision recorded: YES
 raw output private: YES
 sanitized summary reviewed separately: YES
 ```
+
+A host-side structural PASS does not satisfy the target compatibility gate.
