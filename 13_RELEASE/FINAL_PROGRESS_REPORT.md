@@ -1,4 +1,14 @@
-# Final Progress Report — MMI 3G High Offline Research Package
+# Final Progress Report — MMI 3G Domain Knowledge Repository
+
+## Current governance status
+
+```text
+REPORT_DATE=2026-09-04
+REPOSITORY=Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets
+AUTHORITY_ROLE=DOMAIN_KNOWLEDGE_AUTHORITY
+STATUS=ACTIVE
+ITEM_LEVEL_RECONCILIATION=PENDING
+```
 
 ## Navigation
 
@@ -6,127 +16,154 @@
 |---|---|
 | Repository navigation | [../NAVIGATION.md](../NAVIGATION.md) |
 | Root README | [../README.md](../README.md) |
+| Authority model | [../00_PROJECT/AUTHORITY_MODEL.md](../00_PROJECT/AUTHORITY_MODEL.md) |
+| Governance sync | [../00_PROJECT/GOVERNANCE_SYNC_2026-09-04.md](../00_PROJECT/GOVERNANCE_SYNC_2026-09-04.md) |
+| Governance sync release report | [GOVERNANCE_SYNC_REPORT_2026-09-04.md](GOVERNANCE_SYNC_REPORT_2026-09-04.md) |
 | Roadmap | [../ROADMAP.md](../ROADMAP.md) |
 | Changelog | [../CHANGELOG.md](../CHANGELOG.md) |
 | MMI 3G High index | [../01_MMI_3G_HIGH/MMI_3G_HIGH_INDEX.md](../01_MMI_3G_HIGH/MMI_3G_HIGH_INDEX.md) |
 | Offline research layer | [../01_MMI_3G_HIGH/OFFLINE_RESEARCH/README.md](../01_MMI_3G_HIGH/OFFLINE_RESEARCH/README.md) |
 | Evidence pack checklist | [EVIDENCE_PACK_CHECKLIST.md](EVIDENCE_PACK_CHECKLIST.md) |
 | Compatibility matrix | [../12_COMPATIBILITY/MMI_3G_HIGH_COMPATIBILITY_MATRIX.md](../12_COMPATIBILITY/MMI_3G_HIGH_COMPATIBILITY_MATRIX.md) |
-| Light research shell | [../11_LIGHT_CODING/LIGHT_CODING_RESEARCH_OVERVIEW.md](../11_LIGHT_CODING/LIGHT_CODING_RESEARCH_OVERVIEW.md) |
-
-## Project
-
-| Field | Value |
-|---|---|
-| Repository | `Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets` |
-| Project | Audi MMI 3G High Coding / Adaptation / Dataset Research |
-| Report scope | Offline stages not requiring user input |
-| Report status | 🟠 TO VERIFY |
-| Evidence state | Waiting for vehicle evidence |
 
 ## Executive summary
 
-The repository has been expanded with an offline research layer for MMI 3G High.
+The repository was originally built as a conservative offline research package with evidence gates, source review rules, compatibility matrices, test templates and blocked-item tracking.
 
-This work prepares structure, matrices, evidence gates, source review rules, blocked-item tracking, release criteria and a dedicated evidence-pack checklist. It does not add confirmed technical values.
+On 2026-09-04 the project owner confirmed that technical data published in this repository are real and verified project data. The repository is therefore formally established as the AudiMMI `DOMAIN_KNOWLEDGE_AUTHORITY` for Audi MMI 3G technical knowledge.
 
-## Important safety statement
+This governance decision supersedes the former repository-level statement that the project is merely "waiting for evidence" or that no verified technical data exist.
 
-This repository still does not contain confirmed:
+It does **not** mechanically convert every historical per-record `TO VERIFY`, `UNKNOWN`, `Pending`, `HYPOTHESIS` or `VARIANT` label to `CONFIRMED`. Those labels remain subject to record-level evidence/provenance and variant-scope reconciliation.
 
-- byte/bit meanings,
-- adaptation values,
-- Security Access values,
-- binary datasets,
-- coding instructions,
-- retrofit instructions.
+## Authority topology
 
-All offline material remains `⚫ UNKNOWN`, `🔴 HYPOTHESIS` or `🟠 TO VERIFY` until evidence exists.
-
-## Completed stages
-
-| Area | File | Status | Evidence Required | Risk | Next Action |
-|---|---|---|---|---|---|
-| Module Dependency Matrix | [../01_MMI_3G_HIGH/OFFLINE_RESEARCH/MODULE_DEPENDENCY_MATRIX.md](../01_MMI_3G_HIGH/OFFLINE_RESEARCH/MODULE_DEPENDENCY_MATRIX.md) | 🟠 TO VERIFY | Auto-Scan, Gateway list, module context | HIGH | use for evidence planning |
-| CAR Menu Dependency Matrix | [../01_MMI_3G_HIGH/OFFLINE_RESEARCH/CAR_MENU_DEPENDENCY_MATRIX.md](../01_MMI_3G_HIGH/OFFLINE_RESEARCH/CAR_MENU_DEPENDENCY_MATRIX.md) | 🟠 TO VERIFY | UI evidence, module context, DTC context | HIGH | capture read-only menu evidence later |
-| Audio / MOST Dependency Matrix | [../01_MMI_3G_HIGH/OFFLINE_RESEARCH/AUDIO_MOST_DEPENDENCY_MATRIX.md](../01_MMI_3G_HIGH/OFFLINE_RESEARCH/AUDIO_MOST_DEPENDENCY_MATRIX.md) | 🟠 TO VERIFY | UI evidence, audio/MOST context, DTC context | HIGH | capture source and module evidence later |
-| Light Research Shell | [../11_LIGHT_CODING/LIGHT_CODING_RESEARCH_OVERVIEW.md](../11_LIGHT_CODING/LIGHT_CODING_RESEARCH_OVERVIEW.md) | 🟠 TO VERIFY | BCM/J519, Gateway, MMI UI, DTC context | HIGH | use as evidence shell only |
-| Compatibility Matrix | [../12_COMPATIBILITY/MMI_3G_HIGH_COMPATIBILITY_MATRIX.md](../12_COMPATIBILITY/MMI_3G_HIGH_COMPATIBILITY_MATRIX.md) | 🟠 TO VERIFY | HW/SW/market/equipment evidence | MEDIUM/HIGH | add evidence-backed variant profiles later |
-| Source Review Queue | [../01_MMI_3G_HIGH/OFFLINE_RESEARCH/SOURCE_REVIEW_QUEUE.md](../01_MMI_3G_HIGH/OFFLINE_RESEARCH/SOURCE_REVIEW_QUEUE.md) | ⚫ UNKNOWN | external sources to review | MEDIUM/HIGH | populate only with reviewed sources |
-| Evidence Case Library | [../01_MMI_3G_HIGH/OFFLINE_RESEARCH/TEST_CASE_LIBRARY.md](../01_MMI_3G_HIGH/OFFLINE_RESEARCH/TEST_CASE_LIBRARY.md) | 🟠 TO VERIFY | evidence per case | HIGH | use as review-case templates |
-| Blocked Items Register | [../01_MMI_3G_HIGH/OFFLINE_RESEARCH/BLOCKED_ITEMS_REGISTER.md](../01_MMI_3G_HIGH/OFFLINE_RESEARCH/BLOCKED_ITEMS_REGISTER.md) | 🟠 TO VERIFY | evidence to unblock | HIGH | keep blocked until proof |
-| Evidence Pack Checklist | [EVIDENCE_PACK_CHECKLIST.md](EVIDENCE_PACK_CHECKLIST.md) | 🟠 TO VERIFY | future evidence files/photos/logs | MEDIUM | use when collecting evidence |
-| Final Structure Index | [../01_MMI_3G_HIGH/MMI_3G_HIGH_INDEX.md](../01_MMI_3G_HIGH/MMI_3G_HIGH_INDEX.md) | 🟠 TO VERIFY | evidence state updates | LOW | maintain as repo map |
-| Roadmap Update | [../ROADMAP.md](../ROADMAP.md) | 🟠 TO VERIFY | project progress review | LOW | update per milestone |
-| Changelog Update | [../CHANGELOG.md](../CHANGELOG.md) | 🟠 TO VERIFY | commit history | LOW | update per stage |
-
-## Created / updated directories
-
-| Directory | Status | Purpose |
+| Level | Repository | Canonical responsibility |
 |---|---|---|
-| [../01_MMI_3G_HIGH/OFFLINE_RESEARCH/](../01_MMI_3G_HIGH/OFFLINE_RESEARCH/) | 🟢 STRUCTURE READY | offline research layer |
-| [../11_LIGHT_CODING/](../11_LIGHT_CODING/) | 🟢 STRUCTURE READY | lighting-related evidence shell |
-| [../12_COMPATIBILITY/](../12_COMPATIBILITY/) | 🟢 STRUCTURE READY | compatibility matrix |
-| [../13_RELEASE/](../13_RELEASE/) | 🟢 STRUCTURE READY | reports and release artifacts |
+| Vehicle Evidence Authority | `Speedeerq/audi-a4-b8-master-workshop-manual` | Concrete vehicle/session evidence and temporal observations |
+| Domain Knowledge Authority | `Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets` | Verified MMI 3G semantics, variants, compatibility and domain provenance |
+| Platform Consumer / Normalization | `Speedeerq/remote-automotive-diagnostics-platform` | Schemas, capture, normalization, validation, orchestration and service logic |
 
-## What can continue without user input
+The repositories remain independent and must preserve provenance when referencing one another.
 
-| Area | File | Status | Evidence Required | Risk | Next Action |
-|---|---|---|---|---|---|
-| Documentation QA | all Markdown files | 🟠 TO VERIFY | none | LOW | normalize headings/tables |
-| Cross-linking | [../NAVIGATION.md](../NAVIGATION.md) | 🟢 DONE | none | LOW | maintain as files change |
-| Release checklist | [EVIDENCE_PACK_CHECKLIST.md](EVIDENCE_PACK_CHECKLIST.md) | 🟢 DONE | none | LOW | maintain as evidence model changes |
-| Source queue structure | [../01_MMI_3G_HIGH/OFFLINE_RESEARCH/SOURCE_REVIEW_QUEUE.md](../01_MMI_3G_HIGH/OFFLINE_RESEARCH/SOURCE_REVIEW_QUEUE.md) | ⚫ UNKNOWN | none until sources provided | LOW | add empty review IDs |
-| CSV/JSON mirror planning | future files | ⚫ UNKNOWN | none | LOW | define schema only |
+## Repository strengths already established
 
-## What requires user-provided evidence
+The existing repository architecture remains valid and useful:
 
-| Required evidence | Unlocks | Status |
-|---|---|---|
-| Full Auto-Scan | baseline and module context | 🟠 TO CAPTURE |
-| Red Menu photos | provisional SW/MU identity | 🟠 TO CAPTURE |
-| MMI version screen | provisional version identity | 🟠 TO CAPTURE |
-| controller identification | unit profile verification | 🟠 TO CAPTURE |
-| original backup data | future behavior review | 🟠 TO CAPTURE |
-| adaptation map/export | adaptation review | 🟠 TO CAPTURE |
-| DTC baseline | fault attribution | 🟠 TO CAPTURE |
-| Gateway installation list | module dependency review | 🟠 TO CAPTURE |
-| MOST/audio baseline | audio dependency review | 🟠 TO CAPTURE |
+- evidence-first research method,
+- explicit UNKNOWN / HYPOTHESIS / TO VERIFY / VARIANT / CONFIRMED states,
+- HW/SW/market/equipment variant awareness,
+- rollback and DTC context requirements,
+- controlled handling of Security Access,
+- dataset provenance/checksum requirements,
+- module dependency matrices,
+- compatibility matrices,
+- evidence pack checklist,
+- blocked-item and risk registers,
+- release gate structure,
+- offline source review workflow.
 
-## Blocked areas
+The governance sync changes the authority framing, not these safety principles.
 
-| Area | File | Status | Evidence Required | Risk | Next Action |
-|---|---|---|---|---|---|
-| Long Coding behavior | [../01_MMI_3G_HIGH/MMI_3G_HIGH_LONG_CODING.md](../01_MMI_3G_HIGH/MMI_3G_HIGH_LONG_CODING.md) | 🔴 BLOCKED | original data, DTC context, rollback record | HIGH | wait for evidence |
-| Adaptation behavior | [../01_MMI_3G_HIGH/MMI_3G_HIGH_ADAPTATIONS.md](../01_MMI_3G_HIGH/MMI_3G_HIGH_ADAPTATIONS.md) | 🔴 BLOCKED | adaptation map, DTC context, rollback record | HIGH | wait for evidence |
-| Security Access | [../01_MMI_3G_HIGH/MMI_3G_HIGH_SECURITY_ACCESS.md](../01_MMI_3G_HIGH/MMI_3G_HIGH_SECURITY_ACCESS.md) | 🔴 BLOCKED | operation-specific proof and risk review | HIGH/CRITICAL | do not publish values |
-| Dataset metadata as usable data | [../01_MMI_3G_HIGH/MMI_3G_HIGH_DATASETS.md](../01_MMI_3G_HIGH/MMI_3G_HIGH_DATASETS.md) | 🔴 BLOCKED | source, checksum, compatibility, backup | CRITICAL | keep metadata-only |
-| Gateway dependency confirmation | [../01_MMI_3G_HIGH/OFFLINE_RESEARCH/MODULE_DEPENDENCY_MATRIX.md](../01_MMI_3G_HIGH/OFFLINE_RESEARCH/MODULE_DEPENDENCY_MATRIX.md) | 🔴 BLOCKED | Gateway list and module context | HIGH | wait for scan |
-| Audio/MOST confirmation | [../01_MMI_3G_HIGH/OFFLINE_RESEARCH/AUDIO_MOST_DEPENDENCY_MATRIX.md](../01_MMI_3G_HIGH/OFFLINE_RESEARCH/AUDIO_MOST_DEPENDENCY_MATRIX.md) | 🔴 BLOCKED | audio/MOST context | HIGH | wait for evidence |
-| Light dependency confirmation | [../11_LIGHT_CODING/](../11_LIGHT_CODING/) | 🔴 BLOCKED | BCM/Gateway/MMI evidence | HIGH | wait for evidence |
+## Historical offline package
 
-## Risk summary
+The former offline-research milestone remains historically valid as a repository-development stage. It established:
 
-| Risk | Area | Current handling |
-|---|---|---|
-| Unsupported technical claims | all | release gate + status policy |
-| Unsafe generalization | compatibility/module matrices | variant/evidence requirements |
-| Missing rollback context | future behavior review | blocked until recorded |
-| Missing DTC context | fault attribution | blocked until baseline |
-| Source quality | external/community data | source review protocol and queue |
-| High-risk module dependencies | Gateway, MOST, light, dataset | blocked until evidence |
-
-## Recommended next commands
-
-| Command | Purpose |
+| Area | Historical deliverable |
 |---|---|
-| `DODAJ CSV JSON SCHEMA` | prepare non-operational table schemas for future exports |
-| `DODAJ PUBLIC README QA` | polish README for public portfolio safety |
-| `PRZETWÓRZ RED MENU FALLBACK` | use later when photos are available |
-| `WKLEJ AUTOSCAN HNAV` | use later when Auto-Scan is available |
+| Module dependencies | MMI/module dependency matrix shell |
+| CAR menu dependencies | CAR menu dependency matrix |
+| Audio/MOST | Audio/MOST dependency matrix |
+| Light research | Lighting-related evidence shell |
+| Compatibility | MMI 3G High compatibility matrix |
+| Source intake | Source review protocol and queue |
+| Evidence cases | Test case library |
+| Blocked items | Blocked-item register |
+| Release governance | Evidence pack checklist and release gate |
+
+Those artifacts must now be reconciled against the verified project data and current authority model rather than treated as proof that the repository contains no verified data.
+
+## Item-level reconciliation requirement
+
+Next controlled workstream:
+
+```text
+AUDIMMI-MMI3G-KB-RECONCILE-001
+```
+
+Required outputs:
+
+1. inventory every technical finding currently published;
+2. assign stable finding IDs;
+3. map each finding to its evidence/provenance;
+4. preserve exact HW/SW/market/equipment scope;
+5. reconcile stale historical statuses;
+6. separate general domain semantics from vehicle-specific observations;
+7. identify direct matches to Remote Platform open gaps;
+8. prepare a downstream reference/import manifest without raw-evidence duplication.
+
+Recommended stable finding ID patterns:
+
+```text
+MMI3G-COD-<MODULE>-<NNNN>
+MMI3G-ADP-<MODULE>-<NNNN>
+MMI3G-SA-<MODULE>-<NNNN>
+MMI3G-DSET-<NNNN>
+MMI3G-VAR-<NNNN>
+MMI3G-COMPAT-<NNNN>
+MMI3G-DEP-<NNNN>
+```
+
+## Protected open questions
+
+The repository-level authority decision does not automatically close the following open questions:
+
+| Question | State after governance sync |
+|---|---|
+| Variant `9307` filesystem identity mapping | BLOCKED / TO_VERIFY |
+| 5F `E1 -> E3` functional bit semantics | TO_VERIFY |
+| J285 channel `73`, value `1` exact language mapping | TO_VERIFY |
+| 0BK adaptation/fill health thresholds | TO_VERIFY |
+| Airbag B1024 physical root cause | DEFERRED / outside automatic MMI3G closure |
+
+Closure requires a direct, scope-compatible domain finding with recoverable provenance.
+
+## Downstream contract
+
+`Speedeerq/remote-automotive-diagnostics-platform` should consume this repository as:
+
+```text
+upstream_role=DOMAIN_KNOWLEDGE_AUTHORITY
+```
+
+Minimum provenance retained downstream:
+
+```text
+source_repository
+source_commit_sha
+source_path or stable_finding_id
+source_authority_role
+variant_scope
+status
+supporting_evidence_refs
+consumed_at
+```
+
+## Safety state
+
+```text
+DATABASE_MODIFIED=false
+SECRETS_MODIFIED=false
+DEPLOYMENT_PERFORMED=false
+VEHICLE_STATE_MODIFIED=false
+REPOSITORIES_MERGED=false
+RAW_EVIDENCE_DUPLICATED=false
+AUTO_CLOSE_REMOTE_GAPS=false
+AUTO_PROMOTE_HISTORICAL_STATUS=false
+```
 
 ## Final decision
 
-Offline research structure is ready, cross-linked and supported by an evidence-pack checklist.
+The repository is no longer classified as merely an offline shell waiting for evidence.
 
-The repository is prepared to receive evidence but remains intentionally conservative. No confirmed technical values have been added.
+It is an active AudiMMI MMI 3G domain knowledge authority with a conservative evidence model. The next task is controlled item-level reconciliation, not repository merging and not blind status promotion.
