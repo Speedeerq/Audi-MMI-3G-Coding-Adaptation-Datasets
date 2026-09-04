@@ -1,0 +1,109 @@
+{
+  "manifestId": "AUDIMMI-MMI3G-REMOTE-REF-20260904",
+  "workstream": "AUDIMMI-MMI3G-KB-RECONCILE-001",
+  "sourceRepository": "Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets",
+  "sourceAuthorityRole": "DOMAIN_KNOWLEDGE_AUTHORITY",
+  "sourceCommitSha": "69f542fcbe490d4f6c4ba1023d0fc45c4683af19",
+  "sourceRegistry": "01_MMI_3G_HIGH/FINDINGS/FINDING_REGISTRY_V1.json",
+  "consumerRepository": "Speedeerq/remote-automotive-diagnostics-platform",
+  "consumerObservedHead": "a85874aa51163c2c6bd6d00e4a767268983dfd78",
+  "consumerRole": "PLATFORM_CONSUMER_NORMALIZATION",
+  "mode": "REFERENCE_ONLY_FAIL_CLOSED",
+  "rawEvidenceCopied": false,
+  "automaticPromotionAllowed": false,
+  "automaticGapClosureAllowed": false,
+  "requiredProvenanceFields": [
+    "source_repository",
+    "source_commit_sha",
+    "stable_finding_id",
+    "source_authority_role",
+    "variant_scope",
+    "claim_status",
+    "supporting_evidence_refs",
+    "consumed_at"
+  ],
+  "eligibleReferences": [
+    {
+      "findingId": "MMI3G-ID-5F-0001",
+      "consumerUse": "5F identity corroboration",
+      "promotion": "scoped reference only"
+    },
+    {
+      "findingId": "MMI3G-VAR-HNAV-0001",
+      "consumerUse": "HNAV displayed train/Variant/RadioUnit/MU/Sample identity",
+      "promotion": "scoped reference only; no filesystem identity mapping"
+    },
+    {
+      "findingId": "MMI3G-OBS-GREEN-0001",
+      "consumerUse": "Green Menu captured visibility state",
+      "promotion": "observation only"
+    },
+    {
+      "findingId": "MMI3G-OBS-GREEN-0002",
+      "consumerUse": "displayed diagnostic-string evidence",
+      "promotion": "observation only; interpretation remains TO VERIFY"
+    },
+    {
+      "findingId": "MMI3G-OBS-GREEN-0003",
+      "consumerUse": "NADPhone displayed-value evidence",
+      "promotion": "observation only; interpretation remains UNKNOWN"
+    },
+    {
+      "findingId": "MMI3G-DEP-GW-0001",
+      "consumerUse": "historical photographed Gateway checkbox context",
+      "promotion": "visual state only; no physical-presence inference"
+    }
+  ],
+  "gapReview": [
+    {
+      "gapId": "GAP-006",
+      "remoteSource": "02_ANALYSIS/VARIANT_9307_GAP.md",
+      "domainMatch": "PARTIAL_SUPPORT_ONLY",
+      "domainFindingIds": ["MMI3G-VAR-HNAV-0001"],
+      "result": "BLOCKED_MAPPING_NOT_PROVEN",
+      "missingEvidence": [
+        "target filesystem filenames matching /etc/pci-3g_*.cfg",
+        "target /etc/hwSample if present",
+        "same-unit reproducible co-attribution between filesystem identity and displayed Variant"
+      ]
+    },
+    {
+      "gapId": "REMOTE-5F-E1-E3-SEMANTICS",
+      "remoteSource": "02_ANALYSIS/MMI_5F_CODING_TRANSITION_ANALYSIS.md",
+      "domainMatch": "NO_DIRECT_MATCH",
+      "domainFindingIds": [],
+      "result": "TO_VERIFY",
+      "missingEvidence": ["direct evidence-backed semantic assignment for the E1 -> E3 / XOR 0x02 transition in matched 5F variant scope"]
+    },
+    {
+      "gapId": "REMOTE-J285-CH73-LANG",
+      "remoteSource": "02_ANALYSIS/J285_J527_READONLY_BASELINE_20260903.md",
+      "domainMatch": "NO_DIRECT_MATCH",
+      "domainFindingIds": [],
+      "result": "TO_VERIFY",
+      "missingEvidence": ["authoritative or controlled variant-scoped mapping of J285 channel 73 raw value 1 to exact language"]
+    },
+    {
+      "gapId": "REMOTE-0BK-FILL-THRESHOLDS",
+      "remoteSource": "02_ANALYSIS/TCM_02_READONLY_BASELINE_20260903.md",
+      "domainMatch": "OUT_OF_DOMAIN_NO_MATCH",
+      "domainFindingIds": [],
+      "result": "TO_VERIFY",
+      "missingEvidence": ["authoritative exact 0BK/AL551 variant threshold reference"]
+    },
+    {
+      "gapId": "REMOTE-AIRBAG-B1024-ROOT-CAUSE",
+      "domainMatch": "OUT_OF_SCOPE",
+      "domainFindingIds": [],
+      "result": "DEFERRED",
+      "missingEvidence": ["vehicle-specific physical diagnostic evidence outside MMI3G domain"]
+    }
+  ],
+  "safety": {
+    "databaseModified": false,
+    "secretsModified": false,
+    "deploymentPerformed": false,
+    "vehicleStateModified": false,
+    "remoteRepositoryModified": false
+  }
+}
