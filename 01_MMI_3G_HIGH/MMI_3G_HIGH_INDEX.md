@@ -8,72 +8,134 @@
 | Root README | [../README.md](../README.md) |
 | Authority model | [../00_PROJECT/AUTHORITY_MODEL.md](../00_PROJECT/AUTHORITY_MODEL.md) |
 | Governance sync | [../00_PROJECT/GOVERNANCE_SYNC_2026-09-04.md](../00_PROJECT/GOVERNANCE_SYNC_2026-09-04.md) |
+| Canonical findings | [FINDINGS/README.md](FINDINGS/README.md) |
+| Machine-readable registry | [FINDINGS/FINDING_REGISTRY_V1.json](FINDINGS/FINDING_REGISTRY_V1.json) |
+| Remote reference manifest | [../00_PROJECT/REMOTE_PLATFORM_REFERENCE_MANIFEST_2026-09-04.json](../00_PROJECT/REMOTE_PLATFORM_REFERENCE_MANIFEST_2026-09-04.json) |
+| Reconciliation report | [../13_RELEASE/RECONCILIATION_REPORT_2026-09-04.md](../13_RELEASE/RECONCILIATION_REPORT_2026-09-04.md) |
 | Roadmap | [../ROADMAP.md](../ROADMAP.md) |
 | Changelog | [../CHANGELOG.md](../CHANGELOG.md) |
 | Offline research layer | [OFFLINE_RESEARCH/README.md](OFFLINE_RESEARCH/README.md) |
-| Final progress report | [../13_RELEASE/FINAL_PROGRESS_REPORT.md](../13_RELEASE/FINAL_PROGRESS_REPORT.md) |
 
-## Purpose
+## Current state
 
-This index maps the current MMI 3G High research structure, evidence state and blocked areas.
+```text
+AUTHORITY_ROLE=DOMAIN_KNOWLEDGE_AUTHORITY
+WORKSTREAM=AUDIMMI-MMI3G-KB-RECONCILE-001
+REGISTRY=AUDIMMI-MMI3G-FINDINGS-V1
+RECONCILIATION_STATUS=PASS_WITH_OPEN_GAPS
+TOTAL_FINDINGS=11
+```
 
-Repository governance was synchronized on 2026-09-04: this repository is the AudiMMI `DOMAIN_KNOWLEDGE_AUTHORITY`, and technical data already published here are accepted by project-owner decision as verified project data. Historical per-file labels such as `TO VERIFY`, `UNKNOWN` or `Pending` are not automatically promoted; they require item-level reconciliation against evidence/provenance and variant scope.
+Repository governance was synchronized on 2026-09-04. The first controlled item-level reconciliation is now implemented on the reconciliation branch.
 
-Therefore this index must be read as a mixed governance state: repository authority is established, while some historical record statuses remain intentionally unreconciled.
+Repository authority and item-level claim status remain separate. Historical labels are not mass-promoted; only records with direct accepted evidence and explicit scope are normalized into the canonical candidate registry.
+
+## Canonical reconciled findings
+
+### Target HNAV
+
+| Finding ID | Area | Current status | Scope boundary |
+|---|---|---|---|
+| `MMI3G-ID-5F-0001` | 5F identity | `CONFIRMED` | historical 2026-05-12 diagnostic session |
+| `MMI3G-VAR-HNAV-0001` | HNAV train / Variant / RadioUnit / MU / Sample | `CONFIRMED` | displayed/transcribed target-unit identity only |
+| `MMI3G-OBS-GREEN-0001` | Green Menu structure | `CONFIRMED` | visibility only |
+| `MMI3G-OBS-GREEN-0002` | Green diagnostic strings | observation `CONFIRMED`; interpretation `TO VERIFY` | root cause/function unresolved |
+| `MMI3G-OBS-GREEN-0003` | NADPhone `$ERROR$` | observation `CONFIRMED`; interpretation `UNKNOWN` | cause/module/function unresolved |
+| `MMI3G-DEP-GW-0001` | photographed Gateway Installation List | observation `CONFIRMED`; interpretation `VARIANT` | checkbox state is not physical-presence proof |
+
+### HN+ build-specific
+
+| Finding ID | Area | Status | Scope |
+|---|---|---|---|
+| `MMI3G-VAR-HNPLUS-0001` | Renesas SH7785 / SH4A main CPU | `CONFIRMED` | MMI3GP `MU9411 K0942_4`, source directory `41` only |
+| `MMI3G-VAR-HNPLUS-0002` | QNX 6.3.2 | `CONFIRMED` | same build only |
+| `MMI3G-VAR-HNPLUS-0003` | 32-bit little-endian SH4 executables | `CONFIRMED` | analyzed image only |
+| `MMI3G-VAR-HNPLUS-0004` | `proc_scriptlauncher` / `copie_scr.sh` runtime evidence | `VARIANT` | reviewed runtime only |
+| `MMI3G-VAR-HNPLUS-0005` | software-visible EIDE/HDD and SD-controller classes | `VARIANT` | reviewed runtime only |
+
+HN+ build-specific findings must not be projected onto the target HNav unit without exact matching evidence.
+
+## Vehicle-scoped evidence retained separately
+
+The registry references but does not convert into global domain semantics:
+
+```text
+HNAV-AUTOSCAN-20260512-001
+HNAV-DTC-20260512-001
+```
+
+Vehicle/session facts, DTC presence and reachability remain vehicle-scoped evidence.
 
 ## Core research files
 
-| Area | File | Historical status | Evidence/reconciliation requirement | Risk | Next action |
-|---|---|---|---|---|---|
-| Overview | [MMI_3G_HIGH_OVERVIEW.md](MMI_3G_HIGH_OVERVIEW.md) | 🟠 TO VERIFY | reconcile against current verified baseline/provenance | MEDIUM | item-level reconciliation |
-| Long Coding | [MMI_3G_HIGH_LONG_CODING.md](MMI_3G_HIGH_LONG_CODING.md) | ⚫ UNKNOWN / mixed | reconcile published findings individually | HIGH | assign finding IDs and evidence refs |
-| Adaptations | [MMI_3G_HIGH_ADAPTATIONS.md](MMI_3G_HIGH_ADAPTATIONS.md) | ⚫ UNKNOWN / mixed | reconcile published findings individually | HIGH | assign finding IDs and evidence refs |
-| Security Access | [MMI_3G_HIGH_SECURITY_ACCESS.md](MMI_3G_HIGH_SECURITY_ACCESS.md) | ⚫ UNKNOWN / mixed | operation-specific evidence required | HIGH/CRITICAL | keep unproven values blocked |
-| Datasets | [MMI_3G_HIGH_DATASETS.md](MMI_3G_HIGH_DATASETS.md) | ⚫ UNKNOWN / mixed | source/checksum/variant provenance | CRITICAL | reconcile metadata only unless binary source is controlled |
-| Green Menu | [MMI_3G_HIGH_GREEN_MENU.md](MMI_3G_HIGH_GREEN_MENU.md) | ⚫ UNKNOWN / mixed | reconcile read-only observations | HIGH | item-level reconciliation |
-| Red Menu | [MMI_3G_HIGH_RED_MENU.md](MMI_3G_HIGH_RED_MENU.md) | 🟠 TO VERIFY / mixed | reconcile identity evidence | MEDIUM/HIGH | item-level reconciliation |
-| Audio Sources | [MMI_3G_HIGH_AUDIO_SOURCES.md](MMI_3G_HIGH_AUDIO_SOURCES.md) | 🟠 TO VERIFY / mixed | preserve MOST/audio variant scope | HIGH | item-level reconciliation |
-| CAR Menu | [MMI_3G_HIGH_CAR_MENU.md](MMI_3G_HIGH_CAR_MENU.md) | 🟠 TO VERIFY / mixed | preserve module/equipment scope | HIGH | item-level reconciliation |
-| Test Matrix | [MMI_3G_HIGH_TEST_MATRIX.md](MMI_3G_HIGH_TEST_MATRIX.md) | 🟠 TO VERIFY / mixed | map tests to stable findings | HIGH | normalize evidence links |
+| Area | File | Historical state | Reconciliation handling |
+|---|---|---|---|
+| Overview | [MMI_3G_HIGH_OVERVIEW.md](MMI_3G_HIGH_OVERVIEW.md) | mixed / historical | use registry for current promoted findings |
+| Long Coding | [MMI_3G_HIGH_LONG_CODING.md](MMI_3G_HIGH_LONG_CODING.md) | mostly UNKNOWN/TO VERIFY | no semantic promotion without direct evidence |
+| Adaptations | [MMI_3G_HIGH_ADAPTATIONS.md](MMI_3G_HIGH_ADAPTATIONS.md) | mostly UNKNOWN/TO VERIFY | no semantic promotion without direct evidence |
+| Security Access | [MMI_3G_HIGH_SECURITY_ACCESS.md](MMI_3G_HIGH_SECURITY_ACCESS.md) | blocked/mixed | unverified values remain blocked |
+| Datasets | [MMI_3G_HIGH_DATASETS.md](MMI_3G_HIGH_DATASETS.md) | blocked/mixed | metadata and semantics remain source/variant gated |
+| Green Menu | [MMI_3G_HIGH_GREEN_MENU.md](MMI_3G_HIGH_GREEN_MENU.md) | historical mixed state | exact accepted observations normalized in registry |
+| Red Menu | [MMI_3G_HIGH_RED_MENU.md](MMI_3G_HIGH_RED_MENU.md) | historical mixed state | exact identity tuple normalized in registry |
+| Audio Sources | [MMI_3G_HIGH_AUDIO_SOURCES.md](MMI_3G_HIGH_AUDIO_SOURCES.md) | TO VERIFY / mixed | preserve MOST/audio variant scope |
+| CAR Menu | [MMI_3G_HIGH_CAR_MENU.md](MMI_3G_HIGH_CAR_MENU.md) | TO VERIFY / mixed | no generic dependency promotion |
+| Test Matrix | [MMI_3G_HIGH_TEST_MATRIX.md](MMI_3G_HIGH_TEST_MATRIX.md) | historical | evidence/test records remain inputs to findings |
 
-## Baseline files
+## Baseline authority
 
-| Area | File | Historical status | Reconciliation requirement | Risk | Next action |
-|---|---|---|---|---|---|
-| HNAV baseline index | [BASELINES/HNAV_8T1035664F_K0257_D1/README.md](BASELINES/HNAV_8T1035664F_K0257_D1/README.md) | 🟠 TO VERIFY | reconcile against current evidence authority | MEDIUM | normalize provenance |
-| Unit profile | [BASELINES/HNAV_8T1035664F_K0257_D1/UNIT_PROFILE.md](BASELINES/HNAV_8T1035664F_K0257_D1/UNIT_PROFILE.md) | 🟠 TO VERIFY | historical status drift; reconcile fields individually | MEDIUM | link evidence/commit refs |
-| Evidence index | [BASELINES/HNAV_8T1035664F_K0257_D1/EVIDENCE_INDEX.md](BASELINES/HNAV_8T1035664F_K0257_D1/EVIDENCE_INDEX.md) | 🟠 TO VERIFY | normalize source references | MEDIUM | provenance pass |
-| Coding backup | [BASELINES/HNAV_8T1035664F_K0257_D1/CODING_BACKUP.md](BASELINES/HNAV_8T1035664F_K0257_D1/CODING_BACKUP.md) | 🟠 TO CAPTURE / historical | reconcile current canonical source | HIGH | provenance pass |
-| Adaptation map | [BASELINES/HNAV_8T1035664F_K0257_D1/ADAPTATION_MAP.md](BASELINES/HNAV_8T1035664F_K0257_D1/ADAPTATION_MAP.md) | 🟠 TO CAPTURE / historical | reconcile current canonical source | HIGH | provenance pass |
-| DTC baseline | [BASELINES/HNAV_8T1035664F_K0257_D1/DTC_BASELINE.md](BASELINES/HNAV_8T1035664F_K0257_D1/DTC_BASELINE.md) | 🟠 TO CAPTURE / historical | reconcile current canonical source | HIGH | provenance pass |
-| Test plan | [BASELINES/HNAV_8T1035664F_K0257_D1/TEST_PLAN.md](BASELINES/HNAV_8T1035664F_K0257_D1/TEST_PLAN.md) | 🟠 TO VERIFY | preserve as plan/history; do not treat as evidence itself | HIGH | link completed tests where available |
-| No Auto-Scan fallback | [BASELINES/HNAV_8T1035664F_K0257_D1/NO_AUTOSCAN_FALLBACK.md](BASELINES/HNAV_8T1035664F_K0257_D1/NO_AUTOSCAN_FALLBACK.md) | 🟠 TO VERIFY | retain as fallback method | MEDIUM | no automatic promotion |
+Target baseline:
 
-## Offline research files
+```text
+HNAV-8T1035664F-K0257-D1
+```
 
-| Area | File | Status | Evidence required | Risk | Next action |
-|---|---|---|---|---|---|
-| Offline index | [OFFLINE_RESEARCH/README.md](OFFLINE_RESEARCH/README.md) | 🟠 TO VERIFY | none for structure | LOW | maintain index |
-| Backlog | [OFFLINE_RESEARCH/RESEARCH_BACKLOG.md](OFFLINE_RESEARCH/RESEARCH_BACKLOG.md) | 🟠 TO VERIFY | evidence to close items | MEDIUM | reconcile against current knowledge |
-| Hypotheses | [OFFLINE_RESEARCH/HYPOTHESIS_REGISTER.md](OFFLINE_RESEARCH/HYPOTHESIS_REGISTER.md) | 🔴 HYPOTHESIS | proof per item | MEDIUM/HIGH | keep separate from facts |
-| Evidence queue | [OFFLINE_RESEARCH/EVIDENCE_QUEUE.md](OFFLINE_RESEARCH/EVIDENCE_QUEUE.md) | 🟠 TO VERIFY | actual files/photos/logs | MEDIUM | reconcile consumed evidence |
-| Module dependencies | [OFFLINE_RESEARCH/MODULE_DEPENDENCY_MATRIX.md](OFFLINE_RESEARCH/MODULE_DEPENDENCY_MATRIX.md) | 🟠 TO VERIFY | scan/UI/module context | HIGH | promote only scoped verified relations |
-| CAR menu dependencies | [OFFLINE_RESEARCH/CAR_MENU_DEPENDENCY_MATRIX.md](OFFLINE_RESEARCH/CAR_MENU_DEPENDENCY_MATRIX.md) | 🟠 TO VERIFY | UI + module context | HIGH | promote only scoped verified relations |
-| Audio/MOST dependencies | [OFFLINE_RESEARCH/AUDIO_MOST_DEPENDENCY_MATRIX.md](OFFLINE_RESEARCH/AUDIO_MOST_DEPENDENCY_MATRIX.md) | 🟠 TO VERIFY | UI + audio/MOST context | HIGH | promote only scoped verified relations |
-| Source review | [OFFLINE_RESEARCH/SOURCE_REVIEW_PROTOCOL.md](OFFLINE_RESEARCH/SOURCE_REVIEW_PROTOCOL.md) | 🟠 TO VERIFY | source context | MEDIUM/HIGH | retain as intake policy |
-| Source queue | [OFFLINE_RESEARCH/SOURCE_REVIEW_QUEUE.md](OFFLINE_RESEARCH/SOURCE_REVIEW_QUEUE.md) | ⚫ UNKNOWN | sources to review | MEDIUM/HIGH | reconcile reviewed sources |
-| Risk register | [OFFLINE_RESEARCH/RISK_REGISTER.md](OFFLINE_RESEARCH/RISK_REGISTER.md) | 🟠 TO VERIFY | evidence per risk | HIGH | maintain release blockers |
-| Release gate | [OFFLINE_RESEARCH/RELEASE_GATE.md](OFFLINE_RESEARCH/RELEASE_GATE.md) | 🟠 TO VERIFY | evidence completeness | HIGH | use before public operational guidance |
-| Evidence case library | [OFFLINE_RESEARCH/TEST_CASE_LIBRARY.md](OFFLINE_RESEARCH/TEST_CASE_LIBRARY.md) | 🟠 TO VERIFY | evidence per case | HIGH | use as review templates |
-| Blocked items | [OFFLINE_RESEARCH/BLOCKED_ITEMS_REGISTER.md](OFFLINE_RESEARCH/BLOCKED_ITEMS_REGISTER.md) | 🟠 TO VERIFY | evidence to unblock | HIGH | reconcile against current verified findings |
+Accepted baseline observations include:
 
-## Related areas
+```text
+5F SW part: 8T1 035 664 F
+5F HW identifier: 8T1 035 664 B
+component: H-BN-NA H52
+software level: 0187
+train: HNav_EU_K0257_5_D1
+Variant: 9307
+RadioUnit: 9471
+MU: 0187
+Sample: d1
+```
 
-| Area | File/folder | Status | Evidence required | Risk | Next action |
-|---|---|---|---|---|---|
-| Light research | [../11_LIGHT_CODING/LIGHT_CODING_RESEARCH_OVERVIEW.md](../11_LIGHT_CODING/LIGHT_CODING_RESEARCH_OVERVIEW.md) | 🟠 TO VERIFY | BCM/Gateway/MMI evidence | HIGH | scoped reconciliation only |
-| Compatibility | [../12_COMPATIBILITY/MMI_3G_HIGH_COMPATIBILITY_MATRIX.md](../12_COMPATIBILITY/MMI_3G_HIGH_COMPATIBILITY_MATRIX.md) | 🟠 TO VERIFY | variant evidence | MEDIUM/HIGH | reconcile evidence-backed baselines |
-| Final report | [../13_RELEASE/FINAL_PROGRESS_REPORT.md](../13_RELEASE/FINAL_PROGRESS_REPORT.md) | governance sync pending in historical report | repository state | LOW | supersede stale offline-only framing |
+Canonical supporting records include:
+
+- [BASELINES/HNAV_8T1035664F_K0257_D1/OWNER_ATTESTATION_BASELINE_REVIEW_2026-07-12.md](BASELINES/HNAV_8T1035664F_K0257_D1/OWNER_ATTESTATION_BASELINE_REVIEW_2026-07-12.md)
+- `evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/OWNER_SOURCE_ATTESTATION_2026-07-12.md`
+- `evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/red_menu_observation.json`
+- `evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/controller_identification.json`
+
+`Sample d1` is not automatically `/etc/hwSample`. Displayed `Variant 9307` is not automatically the suffix of `/etc/pci-3g_9307.cfg`.
+
+## Offline and research records
+
+The following directories remain valid as research/history inputs:
+
+- [OFFLINE_RESEARCH/](OFFLINE_RESEARCH/)
+- [BASELINES/](BASELINES/)
+- `../evidence/intake/`
+- `../09_TEST_LOGS/`
+- `../schemas/`
+- `../validation/`
+
+Where a historical document conflicts only in workflow status with a later accepted owner-attestation record, the later explicit acceptance controls source-confirmation status. Technical interpretation boundaries remain unchanged unless separately proven.
+
+## Remote Platform gap reconciliation
+
+| Gap | Match | Decision |
+|---|---|---|
+| Variant `9307` filesystem identity mapping | `PARTIAL_SUPPORT_ONLY` | remains `BLOCKED` |
+| 5F `E1 -> E3` functional bit semantics | `NO_DIRECT_MATCH` | remains `TO_VERIFY` |
+| J285 channel `73`, value `1` exact language mapping | `NO_DIRECT_MATCH` | remains `TO_VERIFY` |
+| 0BK adaptation/fill health thresholds | `OUT_OF_DOMAIN_NO_MATCH` | remains `TO_VERIFY` |
+| Airbag B1024 physical root cause | `OUT_OF_SCOPE` | remains `DEFERRED` |
+
+`GAP-006` receives partial support because the displayed target value `Variant 9307` is confirmed. The required filesystem co-attribution is still absent, so no direct `9307 -> MMI3G_HIGH` mapping is allowed.
 
 ## Evidence authority boundary
 
@@ -84,27 +146,15 @@ Speedeerq/audi-a4-b8-master-workshop-manual
 ROLE=VEHICLE_EVIDENCE_AUTHORITY
 ```
 
-This repository owns the domain interpretation layer. Downstream Remote Platform consumption must preserve repository/commit/finding provenance.
-
-## Protected open questions
-
-The following are not closed by the repository-level authority decision alone:
-
-- Variant `9307` filesystem identity mapping,
-- 5F `E1 -> E3` functional bit semantics,
-- J285 channel `73`, value `1` exact language mapping,
-- 0BK adaptation/fill health thresholds.
-
-A direct scoped domain finding is required before downstream closure.
+This repository owns scoped MMI3G domain findings. Downstream Remote Platform consumption must preserve repository/commit/finding provenance and must not duplicate raw vehicle evidence.
 
 ## Current decision
 
-The MMI 3G High repository is an active domain knowledge authority.
-
-Next workstream:
-
 ```text
-AUDIMMI-MMI3G-KB-RECONCILE-001
+AUDIMMI-MMI3G-KB-RECONCILE-001=IMPLEMENTED_CANDIDATE
+RESULT=PASS_WITH_OPEN_GAPS
+AUTO_CLOSE_REMOTE_GAPS=false
+WRITE_AUTHORIZATION=false
 ```
 
-It will reconcile historical item-level statuses, assign stable finding IDs, map provenance and identify exact matches to Remote Platform gaps without duplicating raw vehicle evidence.
+Next gate: review the stacked reconciliation PR. After review PASS, integrate only the reference/provenance contract downstream; do not auto-close unresolved technical gaps.
