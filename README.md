@@ -1,12 +1,14 @@
 # Audi MMI 3G Coding / Adaptation / Dataset Research
 
-> Evidence-based research repository for Audi MMI 3G High coding, adaptations, Security Access, datasets, hidden functions, test evidence, and cross-module dependencies.
+> Evidence-based domain knowledge authority for Audi MMI 3G High coding, adaptations, Security Access, datasets, hidden functions, test evidence, and cross-module dependencies.
 
 ## Navigation
 
 | Area | Link |
 |---|---|
 | Repository navigation map | [NAVIGATION.md](NAVIGATION.md) |
+| Authority model | [00_PROJECT/AUTHORITY_MODEL.md](00_PROJECT/AUTHORITY_MODEL.md) |
+| Governance sync | [00_PROJECT/GOVERNANCE_SYNC_2026-09-04.md](00_PROJECT/GOVERNANCE_SYNC_2026-09-04.md) |
 | Evidence intake workflow | [docs/evidence_intake/README.md](docs/evidence_intake/README.md) |
 | Roadmap | [ROADMAP.md](ROADMAP.md) |
 | Changelog | [CHANGELOG.md](CHANGELOG.md) |
@@ -21,7 +23,7 @@
 
 ## Project purpose
 
-This repository is designed as an evidence-based research dataset for Audi MMI 3G systems.
+This repository is the AudiMMI domain knowledge authority for Audi MMI 3G coding, adaptation and dataset research.
 
 Primary focus:
 
@@ -30,83 +32,97 @@ Primary focus:
 3. Audi MMI 3G+
 4. Related VAG/Audi modules connected to infotainment, lighting, gateway, audio, camera, cluster, and vehicle configuration.
 
-The goal is not to publish a quick coding guide.  
-The goal is to document **what is known, what is unknown, what is variant-dependent, and how each finding can be verified safely**.
+The repository stores verified domain knowledge, research records, variant constraints, compatibility rules and evidence-linked findings. It is not a blind coding guide and it is not the canonical store for raw evidence from a specific vehicle.
+
+## Authority boundary
+
+The AudiMMI architecture uses three separate authority layers:
+
+| Layer | Repository | Canonical responsibility |
+|---|---|---|
+| Vehicle Evidence Authority | `Speedeerq/audi-a4-b8-master-workshop-manual` | Raw and normalized evidence tied to a specific vehicle/session: Auto-Scans, blockmaps, adaptation maps, screenshots, timestamps and vehicle-specific observations |
+| Domain Knowledge Authority | `Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets` | Verified MMI 3G semantics, coding/adaptation findings, dataset knowledge, variant rules, compatibility constraints and research provenance |
+| Platform Consumer / Normalization | `Speedeerq/remote-automotive-diagnostics-platform` | Evidence schemas, capture contracts, normalization, validation, orchestration and downstream service logic |
+
+No repository may silently replace the authority of another layer. Cross-repository consumption must preserve source repository, commit SHA and evidence/finding provenance.
+
+Full contract: [00_PROJECT/AUTHORITY_MODEL.md](00_PROJECT/AUTHORITY_MODEL.md).
 
 ## Current repository phase
 
-Current phase: **v0.3.5 — Offline research package complete / waiting for evidence**.
+Current phase: **Governance synchronized / domain knowledge authority established**.
 
-No confirmed MMI 3G High byte/bit/adaptation/Security Access/dataset values are included.
+Important distinction:
+
+- data already published in this repository are treated as verified domain data under the repository owner's project decision;
+- individual files may still carry historical `TO VERIFY`, `UNKNOWN`, `Pending` or similar labels that predate this governance decision;
+- those stale labels must be reconciled record-by-record against the actual evidence/provenance before being promoted in bulk;
+- absence of a currently indexed finding for a specific semantic question does not prove or disprove that semantic question.
+
+Therefore this governance sync changes the repository's role and authority status, but does not fabricate missing byte/bit/channel mappings or close unrelated open gaps automatically.
 
 ## Scope
 
-The repository will document:
+The repository documents:
 
 | Area | Description | Status policy |
 |---|---|---|
-| Long Coding | Byte/bit mapping, labels, observed effects, dependencies, rollback paths | Every byte/bit must have a status |
-| Adaptations | Channels, values, defaults, observed effects, Security Access requirements | Every channel must have evidence |
+| Long Coding | Byte/bit mapping, labels, observed effects, dependencies, rollback paths | Every byte/bit must retain variant and provenance scope |
+| Adaptations | Channels, values, defaults, observed effects, Security Access requirements | Every promoted channel must retain evidence/provenance |
 | Security Access | Login requirements, verified use cases, risk classification | No guessing allowed |
-| Datasets | Address/function/value mapping, source, checksum notes, backup requirements | No binary datasets without source |
-| Green Menu / Red Menu | Hidden engineering menus, observed functions, dependencies | Unknown options must be marked |
-| Light Coding | BCM/J519, DRL, CH/LH, market/equipment light context, front/rear lamps | High-risk areas require evidence and release gate review |
+| Datasets | Address/function/value mapping, source, checksum notes, backup requirements | No binary dataset publication without controlled source/provenance |
+| Green Menu / Red Menu | Hidden engineering menus, observed functions, dependencies | Unknown options must remain explicitly unknown |
+| Light Coding | BCM/J519, DRL, CH/LH, market/equipment light context, front/rear lamps | High-risk areas require evidence and release-gate review |
 | Compatibility | HW/SW version, market, PR-code and equipment dependencies | Variant matrix required |
-| Test Logs | Controlled experiments and rollback verification | Required for confirmation |
+| Test Logs | Controlled experiments and rollback verification | Required for technical promotion where applicable |
 
 ## Supported systems
 
 | System | Priority | Repository status |
 |---|---:|---|
-| MMI 3G High | P0 | Offline research structure ready / waiting for evidence |
-| MMI 3G Basic | P2 | Placeholder only |
-| MMI 3G+ | P3 | Placeholder only |
+| MMI 3G High | P0 | Active domain knowledge baseline |
+| MMI 3G Basic | P2 | Limited / expand only with evidence-backed records |
+| MMI 3G+ | P3 | Limited / expand only with evidence-backed records |
 
-Related modules planned for cross-reference:
-
-| Address | Module |
-|---:|---|
-| 5F | Information Electronics |
-| 56 | Radio |
-| 07 | Control Head |
-| 09 | Central Electrics / BCM / J519 |
-| 17 | Instrument Cluster |
-| 19 | CAN Gateway |
-| 46 | Central Convenience |
-| 47 | Sound System |
-| 6C | Rear View Camera |
-| 10 | Park Assist |
-| 55 | Headlight Range |
+Related modules include `5F`, `56`, `07`, `09`, `17`, `19`, `46`, `47`, `6C`, `10` and `55` where they materially affect MMI behavior.
 
 ## Information status legend
 
-Every claim must use one of the following statuses:
+Historical and current research records use status labels such as:
 
 | Status | Meaning | Usage rule |
 |---|---|---|
-| 🟢 CONFIRMED | Confirmed by test, documentation, log, or repeatable evidence | Safe to reference with evidence |
+| 🟢 CONFIRMED | Confirmed by controlled evidence for the stated scope | Safe to reference only with its scope and provenance |
 | 🟡 VARIANT | Depends on HW/SW/market/equipment/PR-codes | Must document variant conditions |
-| 🟠 TO VERIFY | Likely, but not sufficiently confirmed | Requires test before use |
-| 🔴 HYPOTHESIS | Research hypothesis only | Do not apply without controlled test |
-| ⚫ UNKNOWN | Function currently unknown | Must include a test plan or open question |
+| 🟠 TO VERIFY | Record requires evidence reconciliation or additional proof | Do not generalize |
+| 🔴 HYPOTHESIS | Research hypothesis only | Do not apply as instruction |
+| ⚫ UNKNOWN | Function currently unresolved | Must remain unresolved until evidence exists |
 
-Full definition: [00_PROJECT/STATUS_LEGEND.md](00_PROJECT/STATUS_LEGEND.md)
+Repository-level authority does not convert every historical item to `CONFIRMED`. Status promotion remains item-specific.
 
 ## Safety warning
 
 This repository must not be used as a blind-click coding list.
 
-Before any technical claim can be promoted, the repository must capture relevant evidence such as:
+Before applying any vehicle-state change, the target vehicle must be identified with sufficient evidence, including controller identity, software context, current state, variant/market context and rollback capability appropriate to the operation.
 
-1. full Auto-Scan,
-2. original backup data,
-3. adaptation export where applicable,
-4. controller identification,
-5. software version,
-6. DTC context,
-7. rollback evidence where applicable.
+Detailed rules: [00_PROJECT/SAFETY_RULES.md](00_PROJECT/SAFETY_RULES.md).
 
-Detailed rules: [00_PROJECT/SAFETY_RULES.md](00_PROJECT/SAFETY_RULES.md)
+## Cross-repository consumption rule
+
+Any downstream system consuming a technical finding from this repository should retain at minimum:
+
+```text
+source_repository
+source_commit_sha
+finding_id or source_path
+variant_scope
+status
+supporting_evidence_ref(s)
+consumed_at
+```
+
+Remote Platform must reference this repository as `DOMAIN_KNOWLEDGE_AUTHORITY`; it must not silently fork or duplicate the domain knowledge as a second source of truth.
 
 ## Repository layout
 
@@ -132,22 +148,16 @@ Audi-MMI-3G-Coding-Adaptation-Datasets/
 └── ROADMAP.md
 ```
 
-## How to submit new observations
+## Governance state
 
-A new observation should include:
+The repository role is now formally:
 
-| Required item | Description |
-|---|---|
-| System | MMI 3G High / Basic / Plus |
-| Vehicle | Model, year, market |
-| Controller | Address and controller name |
-| Part number | Hardware/software identification |
-| SW version | Software train/version |
-| Original value | Original data where relevant |
-| Modified value | Only when controlled evidence exists |
-| Effect | What changed in vehicle/MMI behavior |
-| DTC context | Before/after where relevant |
-| Evidence | Logs, screenshots, photos |
-| Rollback result | Whether original behavior returned where applicable |
+```text
+AUTHORITY_ROLE=DOMAIN_KNOWLEDGE_AUTHORITY
+AUTHORITY_DOMAIN=AUDI_MMI_3G
+VEHICLE_SPECIFIC_RAW_EVIDENCE_OWNER=Speedeerq/audi-a4-b8-master-workshop-manual
+DOWNSTREAM_PLATFORM=Speedeerq/remote-automotive-diagnostics-platform
+AUTO_CLOSE_REMOTE_GAPS=false
+```
 
-Submissions without evidence stay `🟠 TO VERIFY`, `🔴 HYPOTHESIS`, or `⚫ UNKNOWN`.
+See [00_PROJECT/GOVERNANCE_SYNC_2026-09-04.md](00_PROJECT/GOVERNANCE_SYNC_2026-09-04.md) for the bounded synchronization decision.
