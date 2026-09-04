@@ -2,7 +2,49 @@
 
 All notable changes to this project will be documented in this file.
 
-This project uses evidence-based technical documentation. A version may contain research structure without confirmed technical findings.
+This project uses evidence-based technical documentation. Repository authority and individual finding status are separate concepts: a repository may be an authoritative domain source while specific historical records still require item-level reconciliation.
+
+## [0.4.0] - 2026-09-04
+
+### Governance
+
+- Established `Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets` as `DOMAIN_KNOWLEDGE_AUTHORITY` for Audi MMI 3G technical knowledge.
+- Established the three-level AudiMMI authority model:
+  - `Speedeerq/audi-a4-b8-master-workshop-manual` → `VEHICLE_EVIDENCE_AUTHORITY`
+  - `Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets` → `DOMAIN_KNOWLEDGE_AUTHORITY`
+  - `Speedeerq/remote-automotive-diagnostics-platform` → `PLATFORM_CONSUMER_NORMALIZATION`
+- Added cross-repository provenance requirements and stable finding-ID policy.
+- Corrected stale repository-level `waiting for evidence` / offline-shell framing.
+
+### Added
+
+- `00_PROJECT/AUTHORITY_MODEL.md`
+- `00_PROJECT/GOVERNANCE_SYNC_2026-09-04.md`
+- `13_RELEASE/GOVERNANCE_SYNC_REPORT_2026-09-04.md`
+
+### Updated
+
+- `README.md`
+- `00_PROJECT/PROJECT_BRIEF.md`
+- `01_MMI_3G_HIGH/MMI_3G_HIGH_INDEX.md`
+- `13_RELEASE/FINAL_PROGRESS_REPORT.md`
+- `ROADMAP.md`
+
+### Safety / scope
+
+- No bulk `TO VERIFY -> CONFIRMED` promotion.
+- No new byte/bit meanings.
+- No new adaptation values.
+- No new Security Access values.
+- No new binary datasets.
+- No Remote Platform gap auto-closure.
+- No raw vehicle-evidence duplication.
+- No repository merge.
+- No database, secrets, deployment or vehicle-state mutation.
+
+### Next
+
+- Start `AUDIMMI-MMI3G-KB-RECONCILE-001` for finding inventory, stable IDs, evidence/provenance mapping, variant-scope normalization and item-level status reconciliation.
 
 ## [0.3.8] - 2026-07-10
 
@@ -228,4 +270,7 @@ This project uses evidence-based technical documentation. A version may contain 
 
 ### Planned
 
-- Add first evidence-backed MMI 3G High baseline from Auto-Scan, coding backup and adaptation map.
+- Execute `AUDIMMI-MMI3G-KB-RECONCILE-001`.
+- Reconcile historical per-record statuses against actual evidence/provenance.
+- Assign stable finding IDs and variant scope.
+- Identify direct evidence-backed matches to open Remote Platform gaps without duplicating raw vehicle evidence.
