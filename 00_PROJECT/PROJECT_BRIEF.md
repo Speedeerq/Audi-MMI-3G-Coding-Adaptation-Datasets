@@ -10,9 +10,22 @@ Repository name:
 Audi-MMI-3G-Coding-Adaptation-Datasets
 ```
 
+## Canonical authority role
+
+```text
+AUTHORITY_ROLE=DOMAIN_KNOWLEDGE_AUTHORITY
+AUTHORITY_DOMAIN=AUDI_MMI_3G
+STATUS=ACTIVE
+EFFECTIVE_DATE=2026-09-04
+```
+
+This repository is the canonical AudiMMI domain knowledge authority for verified MMI 3G technical knowledge. It is not the canonical raw-evidence store for a specific vehicle and it is not the downstream Remote Platform source of truth for platform schemas.
+
+The full cross-repository ownership contract is defined in [AUTHORITY_MODEL.md](AUTHORITY_MODEL.md).
+
 ## Research objective
 
-Build a structured, evidence-based repository documenting configuration behavior of Audi MMI 3G systems and related control modules.
+Build and maintain a structured, evidence-based repository documenting configuration behavior of Audi MMI 3G systems and related control modules.
 
 The project is focused on:
 
@@ -25,7 +38,9 @@ The project is focused on:
 - cross-module dependencies,
 - lighting configuration,
 - safe test protocols,
-- rollback and evidence.
+- rollback and evidence,
+- variant-aware compatibility,
+- stable provenance for downstream consumers.
 
 ## Non-goals
 
@@ -35,17 +50,19 @@ This repository is not:
 |---|---|
 | A blind coding guide | Unknown or variant-dependent settings can cause faults |
 | A login/code dump | Security Access must be contextual and verified |
-| A binary dataset repository | Source, legality and checksum must be controlled |
+| An uncontrolled binary dataset repository | Source, legality and checksum must be controlled |
 | A retrofit promise list | Equipment, market and software variants matter |
-| A shortcut around diagnostics | Every change needs pre/post evidence |
+| A shortcut around diagnostics | Every target vehicle still requires identification and pre/post evidence appropriate to the operation |
+| A raw vehicle evidence repository | Vehicle/session evidence belongs to the Vehicle Evidence Authority |
+| A duplicate Remote Platform knowledge store | Downstream consumers must preserve provenance instead of forking the source of truth |
 
 ## Primary research target
 
 | System | Priority | Notes |
 |---|---:|---|
-| Audi MMI 3G High | P0 | First active research target |
-| Audi MMI 3G Basic | P2 | Later phase |
-| Audi MMI 3G+ | P3 | Later phase |
+| Audi MMI 3G High | P0 | Primary active domain baseline |
+| Audi MMI 3G Basic | P2 | Limited / expand with evidence-backed records |
+| Audi MMI 3G+ | P3 | Limited / expand with evidence-backed records |
 
 ## Related modules
 
@@ -67,58 +84,88 @@ This repository is not:
 
 | Principle | Rule |
 |---|---|
-| Evidence first | A claim without evidence is not confirmed |
+| Evidence first | A technical claim must retain evidence/provenance appropriate to its scope |
 | Variant awareness | HW/SW/market/equipment may change behavior |
-| Safety before testing | Backup and rollback are mandatory |
+| Safety before testing | Backup and rollback are mandatory where a controlled mutation is performed |
 | Unknowns are documented | Unknown bits/channels are not ignored |
-| No false certainty | Status must reflect evidence quality |
-| Reproducibility | Tests must be repeatable by another researcher |
-| Traceability | Every result links to test ID or source |
+| No false certainty | Status must reflect evidence quality and variant scope |
+| Reproducibility | Tests should be repeatable by another researcher |
+| Traceability | Every promoted result links to a test ID, evidence reference or authoritative source |
+| Authority separation | Vehicle evidence, domain knowledge and platform normalization remain separate sources of truth |
 
 ## Information status requirement
 
-Every item must be marked as:
+Historical and current entries may use:
 
 | Status | Meaning |
 |---|---|
-| 🟢 CONFIRMED | Confirmed by evidence |
+| 🟢 CONFIRMED | Confirmed for the stated evidence/variant scope |
 | 🟡 VARIANT | Confirmed only for specific variants |
-| 🟠 TO VERIFY | Likely but not sufficiently verified |
+| 🟠 TO VERIFY | Requires record-level reconciliation or additional proof |
 | 🔴 HYPOTHESIS | Research hypothesis |
 | ⚫ UNKNOWN | Function unknown |
 
+Repository-level status `DOMAIN_KNOWLEDGE_AUTHORITY` does not automatically promote every historical item. Item-level promotion remains evidence- and scope-specific.
+
 ## Evidence requirements
 
-Minimum evidence for a `🟢 CONFIRMED` coding/adaptation finding:
+For a newly promoted `🟢 CONFIRMED` coding/adaptation finding, retain as applicable:
 
 1. controller address,
 2. controller part number,
 3. software version,
-4. vehicle model/year/market,
+4. vehicle/model/market or equivalent variant scope,
 5. original value,
-6. modified value,
+6. modified value where a controlled test occurred,
 7. observed effect,
-8. DTC before/after,
-9. rollback result,
-10. linked test log or source.
+8. DTC before/after where relevant,
+9. rollback result where relevant,
+10. linked test log/source/evidence reference,
+11. source repository and commit provenance where evidence is external to this repository.
+
+Existing published project data are accepted as verified domain data by project-owner decision dated 2026-09-04. Historical per-record labels that conflict with that project decision must be reconciled individually rather than changed mechanically.
+
+## Cross-repository architecture
+
+```text
+Vehicle Evidence Authority
+Speedeerq/audi-a4-b8-master-workshop-manual
+        |
+        | vehicle/session observations
+        v
+Remote Platform
+Speedeerq/remote-automotive-diagnostics-platform
+        ^
+        | verified domain findings
+        |
+Domain Knowledge Authority
+Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets
+```
+
+The repositories remain independent.
 
 ## Project operating mode
 
 Current stage:
 
 ```text
-Foundation / Repository Architecture
+Governance synchronized / domain authority active / item-level reconciliation pending
 ```
 
-Next stage starts only after command:
+Current controlled next stage:
 
 ```text
-ROZPOCZNIJ MMI 3G HIGH
+AUDIMMI-MMI3G-KB-RECONCILE-001
 ```
 
-Expected next output:
+Expected outputs:
 
-- create MMI 3G High research file shell,
-- add templates,
-- keep technical content empty or explicitly unknown unless evidence exists,
-- do not invent bytes, bits, logins or dataset addresses.
+- inventory existing technical findings,
+- stable finding IDs,
+- evidence/provenance mapping,
+- variant-scope normalization,
+- reconciliation of stale item-level statuses,
+- direct-match assessment against open Remote Platform gaps,
+- downstream reference/import manifest without raw-evidence duplication.
+
+Do not invent bytes, bits, logins, channel meanings, dataset addresses or compatibility claims that are not directly supported by a verified record.

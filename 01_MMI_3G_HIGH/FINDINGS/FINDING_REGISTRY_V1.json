@@ -1,0 +1,249 @@
+{
+  "registryId": "AUDIMMI-MMI3G-FINDINGS-V1",
+  "workstream": "AUDIMMI-MMI3G-KB-RECONCILE-001",
+  "repository": "Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets",
+  "sourceCommitSha": "69f542fcbe490d4f6c4ba1023d0fc45c4683af19",
+  "authorityRole": "DOMAIN_KNOWLEDGE_AUTHORITY",
+  "generatedAt": "2026-09-04",
+  "policy": {
+    "repositoryAuthorityDoesNotImplyGlobalClaim": true,
+    "preserveVariantScope": true,
+    "preserveObservationVsInterpretation": true,
+    "autoCloseDownstreamGaps": false,
+    "rawVehicleEvidenceDuplicated": false
+  },
+  "findings": [
+    {
+      "findingId": "MMI3G-ID-5F-0001",
+      "category": "IDENTITY",
+      "title": "HNAV target 5F diagnostic identity",
+      "claimStatus": "CONFIRMED",
+      "evidenceState": "CAPTURED",
+      "scope": "HNAV-8T1035664F-K0257-D1; Audi A4 B8 MY2012; historical scan 2026-05-12",
+      "value": {
+        "address": "5F",
+        "module": "Information Electronics / J794",
+        "softwarePartNumber": "8T1 035 664 F",
+        "hardwareIdentifier": "8T1 035 664 B",
+        "component": "H-BN-NA H52",
+        "softwareLevel": "0187"
+      },
+      "sourcePaths": [
+        "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/controller_identification.json",
+        "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/autoscan_summary_2026-05-12.json",
+        "01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/AUTOSCAN_INTAKE_REVIEW_2026-07-12.md",
+        "01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/OWNER_ATTESTATION_BASELINE_REVIEW_2026-07-12.md"
+      ],
+      "semanticBoundary": "Confirmed for the captured diagnostic session only; no coding/adaptation semantics or later unchanged state are inferred."
+    },
+    {
+      "findingId": "MMI3G-VAR-HNAV-0001",
+      "category": "VARIANT_IDENTITY",
+      "title": "HNAV Red Engineering Menu identity tuple",
+      "claimStatus": "CONFIRMED",
+      "evidenceState": "CAPTURED",
+      "scope": "HNAV-8T1035664F-K0257-D1; exact displayed/transcribed target-unit observation",
+      "value": {
+        "mmiFamily": "Audi MMI 3G High / HNAV",
+        "softwareTrain": "HNav_EU_K0257_5_D1",
+        "variant": "9307",
+        "radioUnit": "9471",
+        "mu": "0187",
+        "sample": "d1"
+      },
+      "sourcePaths": [
+        "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/red_menu_observation.json",
+        "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/OWNER_SOURCE_ATTESTATION_2026-07-12.md",
+        "01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/OWNER_ATTESTATION_BASELINE_REVIEW_2026-07-12.md"
+      ],
+      "semanticBoundary": "Variant 9307 is confirmed as a displayed identity value. It is not proven equivalent to a /etc/pci-3g_<ID>.cfg suffix. Sample d1 is not proven equivalent to /etc/hwSample."
+    },
+    {
+      "findingId": "MMI3G-OBS-GREEN-0001",
+      "category": "UI_OBSERVATION",
+      "title": "HNAV Green Menu visible structure",
+      "claimStatus": "CONFIRMED",
+      "evidenceState": "CAPTURED",
+      "scope": "HNAV-8T1035664F-K0257-D1; captured target-unit Green Menu state only",
+      "value": {
+        "menuPath": "main/diagnose",
+        "visibleEntries": ["pml", "settings/AMI/AUX", "settings/Microphones", "settings/Displays", "settings/Tel settings", "settings/HDD Nav DB"],
+        "notVisibleInCapturedState": ["coding", "carmenuoperation", "cardevicelist", "car_function_list"]
+      },
+      "sourcePaths": [
+        "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/green_menu_structure_observation.json",
+        "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/OWNER_SOURCE_ATTESTATION_2026-07-12.md"
+      ],
+      "semanticBoundary": "Visibility/non-visibility is confirmed only for the captured state; functional availability is not inferred."
+    },
+    {
+      "findingId": "MMI3G-OBS-GREEN-0002",
+      "category": "UI_OBSERVATION",
+      "title": "HNAV Green Menu diagnostic strings",
+      "claimStatus": "CONFIRMED",
+      "interpretationStatus": "TO VERIFY",
+      "evidenceState": "CAPTURED",
+      "scope": "HNAV-8T1035664F-K0257-D1; captured Green Menu diagnostic display only",
+      "value": ["0x3ff60e / CONTROL_UNIT_HDD_D", "0xc5500 / FUNCTION_RESTRICTION"],
+      "sourcePaths": [
+        "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/green_menu_diagnostic_observation.json",
+        "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/OWNER_SOURCE_ATTESTATION_2026-07-12.md"
+      ],
+      "semanticBoundary": "Displayed strings are confirmed; root cause, HDD/dataset meaning and HNAV-to-HN+ relevance remain TO VERIFY."
+    },
+    {
+      "findingId": "MMI3G-OBS-GREEN-0003",
+      "category": "UI_OBSERVATION",
+      "title": "HNAV NADPhone version display",
+      "claimStatus": "CONFIRMED",
+      "interpretationStatus": "UNKNOWN",
+      "evidenceState": "CAPTURED",
+      "scope": "HNAV-8T1035664F-K0257-D1; captured Green Menu version display only",
+      "value": "$ERROR$",
+      "sourcePaths": [
+        "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/green_menu_nadphone_observation.json",
+        "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/OWNER_SOURCE_ATTESTATION_2026-07-12.md"
+      ],
+      "semanticBoundary": "Displayed value is confirmed; cause, module presence and telephone functionality remain UNKNOWN."
+    },
+    {
+      "findingId": "MMI3G-DEP-GW-0001",
+      "category": "DEPENDENCY_CONTEXT",
+      "title": "Gateway Installation List photographed state",
+      "claimStatus": "CONFIRMED",
+      "interpretationStatus": "VARIANT",
+      "evidenceState": "CAPTURED",
+      "scope": "HNAV-8T1035664F-K0257-D1; owner-accepted photographed VCDS Installation List state",
+      "value": {
+        "visibleAddresses": 57,
+        "checked": 25,
+        "unchecked": 32,
+        "mmiRelevantChecked": ["10", "19", "47", "55", "56", "5F", "6C"],
+        "mmiRelevantUnchecked": ["07", "0E", "37", "57", "5C", "65", "67", "69", "6D", "77", "7F"]
+      },
+      "sourcePaths": [
+        "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/gateway_installation_list_reconstructed_2026-07-10.md",
+        "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/OWNER_SOURCE_ATTESTATION_2026-07-12.md",
+        "01_MMI_3G_HIGH/BASELINES/HNAV_8T1035664F_K0257_D1/OWNER_ATTESTATION_BASELINE_REVIEW_2026-07-12.md"
+      ],
+      "semanticBoundary": "Checkbox state is confirmed as photographed/transcribed; it does not prove physical hardware presence/absence, operability, coding correctness or current state."
+    },
+    {
+      "findingId": "MMI3G-VAR-HNPLUS-0001",
+      "category": "BUILD_SPECIFIC_HARDWARE",
+      "title": "HN+ MU9411 K0942_4 / 41 main CPU",
+      "claimStatus": "CONFIRMED",
+      "evidenceState": "REPOSITORY_ACCEPTED_BUILD_SPECIFIC_REFERENCE",
+      "scope": "HN+ / MMI3GP; MU9411 K0942_4; source variant/sample directory 41",
+      "value": "Renesas SH7785 / SH4A",
+      "sourcePaths": [
+        "01_MMI_3G_HIGH/OFFLINE_RESEARCH/HNAV_TO_HNPLUS/HARDWARE_MATRIX_AUDIT_2026-07-14.md",
+        "01_MMI_3G_HIGH/OFFLINE_RESEARCH/HNAV_TO_HNPLUS/PUBLIC_SOURCE_INTAKE_REVIEW_2026-07-12.md"
+      ],
+      "semanticBoundary": "Build-specific only; must not be generalized to all HN+ or to target HNav 8T1 035 664 F."
+    },
+    {
+      "findingId": "MMI3G-VAR-HNPLUS-0002",
+      "category": "BUILD_SPECIFIC_OS",
+      "title": "HN+ MU9411 K0942_4 / 41 QNX version",
+      "claimStatus": "CONFIRMED",
+      "evidenceState": "REPOSITORY_ACCEPTED_BUILD_SPECIFIC_REFERENCE",
+      "scope": "HN+ / MMI3GP; MU9411 K0942_4; source variant/sample directory 41",
+      "value": "QNX 6.3.2",
+      "sourcePaths": ["01_MMI_3G_HIGH/OFFLINE_RESEARCH/HNAV_TO_HNPLUS/HARDWARE_MATRIX_AUDIT_2026-07-14.md"],
+      "semanticBoundary": "Build-specific only."
+    },
+    {
+      "findingId": "MMI3G-VAR-HNPLUS-0003",
+      "category": "BUILD_SPECIFIC_BINARY_FORMAT",
+      "title": "HN+ MU9411 K0942_4 analyzed executable architecture",
+      "claimStatus": "CONFIRMED",
+      "evidenceState": "REPOSITORY_ACCEPTED_BUILD_SPECIFIC_REFERENCE",
+      "scope": "HN+ / MMI3GP; MU9411 K0942_4; analyzed source image only",
+      "value": "32-bit little-endian SH4 executables",
+      "sourcePaths": ["01_MMI_3G_HIGH/OFFLINE_RESEARCH/HNAV_TO_HNPLUS/HARDWARE_MATRIX_AUDIT_2026-07-14.md"],
+      "semanticBoundary": "Applies only to the analyzed source image."
+    },
+    {
+      "findingId": "MMI3G-VAR-HNPLUS-0004",
+      "category": "BUILD_SPECIFIC_RUNTIME",
+      "title": "HN+ MU9411 K0942_4 runtime launcher evidence",
+      "claimStatus": "VARIANT",
+      "evidenceState": "REPOSITORY_ACCEPTED_BUILD_SPECIFIC_REFERENCE",
+      "scope": "HN+ / MMI3GP; MU9411 K0942_4; source variant/sample directory 41",
+      "value": ["proc_scriptlauncher", "copie_scr.sh runtime path evidence"],
+      "sourcePaths": [
+        "01_MMI_3G_HIGH/OFFLINE_RESEARCH/HNAV_TO_HNPLUS/HARDWARE_MATRIX_AUDIT_2026-07-14.md",
+        "01_MMI_3G_HIGH/OFFLINE_RESEARCH/HNAV_TO_HNPLUS/PUBLIC_SOURCE_INTAKE_REVIEW_2026-07-12.md"
+      ],
+      "semanticBoundary": "Does not confirm the same launcher, mount path, interpreter or payload compatibility on target HNav."
+    },
+    {
+      "findingId": "MMI3G-VAR-HNPLUS-0005",
+      "category": "BUILD_SPECIFIC_STORAGE",
+      "title": "HN+ MU9411 K0942_4 software-visible storage classes",
+      "claimStatus": "VARIANT",
+      "evidenceState": "REPOSITORY_ACCEPTED_BUILD_SPECIFIC_REFERENCE",
+      "scope": "HN+ / MMI3GP; MU9411 K0942_4; reviewed runtime",
+      "value": ["EIDE/HDD class", "SD-card controller class"],
+      "sourcePaths": ["01_MMI_3G_HIGH/OFFLINE_RESEARCH/HNAV_TO_HNPLUS/HARDWARE_MATRIX_AUDIT_2026-07-14.md"],
+      "semanticBoundary": "Software-visible classes for this runtime only; block-device and mount paths must not be transferred to another family."
+    }
+  ],
+  "vehicleEvidenceLinks": [
+    {
+      "recordId": "HNAV-AUTOSCAN-20260512-001",
+      "sourcePath": "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/autoscan_summary_2026-05-12.json",
+      "authorityDisposition": "VEHICLE_SCOPED_REFERENCE",
+      "note": "Historical module reachability/identity context; not promoted into global domain semantics."
+    },
+    {
+      "recordId": "HNAV-DTC-20260512-001",
+      "sourcePath": "evidence/intake/MMI3GHIGH_HNAV_BASELINE_001/dtc_baseline_2026-05-12.json",
+      "authorityDisposition": "VEHICLE_SCOPED_REFERENCE",
+      "note": "Historical DTC observations only; no root-cause semantics promoted."
+    }
+  ],
+  "downstreamGapReconciliation": [
+    {
+      "gapId": "GAP-006",
+      "topic": "Variant 9307 filesystem identity mapping",
+      "matchStatus": "PARTIAL_SUPPORT_ONLY",
+      "supportingFindingIds": ["MMI3G-VAR-HNAV-0001"],
+      "decision": "REMAINS_BLOCKED",
+      "reason": "Displayed Variant 9307 is confirmed for the HNAV baseline, but no direct filesystem identity co-attribution exists. /etc/hwSample is not captured and equivalence to /etc/pci-3g_<ID>.cfg is not proven."
+    },
+    {
+      "gapId": "REMOTE-5F-E1-E3-SEMANTICS",
+      "topic": "5F E1 -> E3 functional bit semantics",
+      "matchStatus": "NO_DIRECT_MATCH",
+      "supportingFindingIds": [],
+      "decision": "REMAINS_TO_VERIFY",
+      "reason": "The accepted HNAV evidence package intentionally does not publish coding values or byte/bit semantics. No domain finding assigns meaning to XOR 0x02."
+    },
+    {
+      "gapId": "REMOTE-J285-CH73-LANG",
+      "topic": "J285 adaptation channel 73 value 1 exact language mapping",
+      "matchStatus": "NO_DIRECT_MATCH",
+      "supportingFindingIds": [],
+      "decision": "REMAINS_TO_VERIFY",
+      "reason": "No J285 channel-73 language-value semantic finding is present in the MMI3G domain repository."
+    },
+    {
+      "gapId": "REMOTE-0BK-FILL-THRESHOLDS",
+      "topic": "0BK / AL551 adaptation and fill health thresholds",
+      "matchStatus": "OUT_OF_DOMAIN_NO_MATCH",
+      "supportingFindingIds": [],
+      "decision": "REMAINS_TO_VERIFY",
+      "reason": "The MMI3G domain repository contains no authoritative 0BK/AL551 health-threshold finding."
+    },
+    {
+      "gapId": "REMOTE-AIRBAG-B1024-ROOT-CAUSE",
+      "topic": "Airbag B1024 physical root cause",
+      "matchStatus": "OUT_OF_SCOPE",
+      "supportingFindingIds": [],
+      "decision": "REMAINS_DEFERRED",
+      "reason": "Outside MMI3G domain authority."
+    }
+  ]
+}
