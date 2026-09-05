@@ -4,6 +4,58 @@ All notable changes to this project will be documented in this file.
 
 This project uses evidence-based technical documentation. Repository authority and individual finding status are separate concepts: a repository may be an authoritative domain source while specific historical records still require item-level reconciliation.
 
+## [0.4.1] - 2026-09-04
+
+### Reconciliation
+
+- Implemented candidate workstream `AUDIMMI-MMI3G-KB-RECONCILE-001`.
+- Added canonical machine-readable finding registry candidate with 11 scoped findings:
+  - 6 target-HNAV identity/UI/dependency findings,
+  - 5 HN+ build-specific hardware/runtime findings.
+- Separated observation truth from interpretation truth where required.
+- Preserved historical Auto-Scan and DTC records as vehicle-scoped references rather than global MMI semantics.
+- Added fail-closed direct-match review against current Remote Platform gaps.
+
+### Added
+
+- `schemas/finding_registry.schema.json`
+- `01_MMI_3G_HIGH/FINDINGS/FINDING_REGISTRY_V1.json`
+- `01_MMI_3G_HIGH/FINDINGS/README.md`
+- `00_PROJECT/REMOTE_PLATFORM_REFERENCE_MANIFEST_2026-09-04.json`
+- `13_RELEASE/RECONCILIATION_REPORT_2026-09-04.md`
+
+### Updated
+
+- `00_PROJECT/AUTHORITY_MODEL.md`
+- `README.md`
+- `01_MMI_3G_HIGH/MMI_3G_HIGH_INDEX.md`
+- `ROADMAP.md`
+
+### Remote Platform gap review
+
+| Gap | Match | Decision |
+|---|---|---|
+| Variant `9307` filesystem identity | `PARTIAL_SUPPORT_ONLY` | remains `BLOCKED` |
+| 5F `E1 -> E3` functional bit semantics | `NO_DIRECT_MATCH` | remains `TO_VERIFY` |
+| J285 ch73 value `1` exact language mapping | `NO_DIRECT_MATCH` | remains `TO_VERIFY` |
+| 0BK / AL551 adaptation/fill health thresholds | `OUT_OF_DOMAIN_NO_MATCH` | remains `TO_VERIFY` |
+| Airbag B1024 physical root cause | `OUT_OF_SCOPE` | remains `DEFERRED` |
+
+### Safety / scope
+
+- No raw vehicle-evidence duplication.
+- No Remote Platform repository mutation.
+- No automatic downstream claim promotion.
+- No downstream gap auto-closure.
+- No coding/adaptation/Security Access/DTC-clear/firmware/dataset vehicle operation.
+- No database, secret or deployment mutation.
+
+### Next
+
+- Review the stacked reconciliation PR against the governance branch.
+- After review PASS, consider a separate downstream Remote Platform reference/provenance integration workstream.
+- Keep existing Remote Platform PR #1 blockers independent until separately corrected.
+
 ## [0.4.0] - 2026-09-04
 
 ### Governance
@@ -270,7 +322,6 @@ This project uses evidence-based technical documentation. Repository authority a
 
 ### Planned
 
-- Execute `AUDIMMI-MMI3G-KB-RECONCILE-001`.
-- Reconcile historical per-record statuses against actual evidence/provenance.
-- Assign stable finding IDs and variant scope.
-- Identify direct evidence-backed matches to open Remote Platform gaps without duplicating raw vehicle evidence.
+- Review the stacked reconciliation PR.
+- After review PASS, define a bounded Remote Platform reference/provenance integration unit without duplicating domain or raw vehicle evidence.
+- Expand the finding registry only from exact evidence-backed records.

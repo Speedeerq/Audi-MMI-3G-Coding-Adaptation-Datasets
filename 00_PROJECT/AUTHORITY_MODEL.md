@@ -76,6 +76,12 @@ Owns verified Audi MMI 3G domain knowledge, including where evidence supports it
 
 This repository is authoritative for domain semantics only within the scope stated by each finding. Repository-level authority does not convert every historical record to globally confirmed status.
 
+Canonical reconciled findings are indexed in:
+
+```text
+01_MMI_3G_HIGH/FINDINGS/FINDING_REGISTRY_V1.json
+```
+
 ## Level 3 — Platform Consumer / Normalization Authority
 
 Canonical repository:
@@ -131,16 +137,32 @@ New or reconciled domain findings should receive stable IDs using an area-orient
 Recommended patterns:
 
 ```text
+MMI3G-ID-<MODULE>-<NNNN>
+MMI3G-OBS-<AREA>-<NNNN>
 MMI3G-COD-<MODULE>-<NNNN>
 MMI3G-ADP-<MODULE>-<NNNN>
 MMI3G-SA-<MODULE>-<NNNN>
 MMI3G-DSET-<NNNN>
-MMI3G-VAR-<NNNN>
+MMI3G-VAR-<SCOPE>-<NNNN>
 MMI3G-COMPAT-<NNNN>
-MMI3G-DEP-<NNNN>
+MMI3G-DEP-<SCOPE>-<NNNN>
 ```
 
+Namespace intent:
+
+- `ID` — exact controller/unit identity finding;
+- `OBS` — observed UI/runtime value whose technical interpretation may be separate;
+- `COD` — coding semantics;
+- `ADP` — adaptation semantics;
+- `SA` — Security Access context;
+- `DSET` — dataset metadata/semantics;
+- `VAR` — HW/SW/train/build-specific variant finding;
+- `COMPAT` — compatibility rule;
+- `DEP` — module/dependency context.
+
 A finding ID must not imply a higher evidence status than the record actually has.
+
+Observation truth and interpretation truth must be represented independently when they differ. A visible value may be `CONFIRMED` while its root cause or function remains `TO VERIFY` or `UNKNOWN`.
 
 ## Authority precedence
 
@@ -177,11 +199,13 @@ J285 channel 73 value 1 -> exact language mapping
 0BK adaptation/fill health thresholds
 ```
 
+The 2026-09-04 reconciliation review found only partial support for the Variant 9307 gap and no direct match for the remaining questions. Their downstream statuses remain open.
+
 Each requires a direct evidence-backed finding before downstream status promotion.
 
 ## Safety boundary
 
-No authority-layer change authorizes:
+No authority-layer or finding-registry change authorizes:
 
 - vehicle coding,
 - adaptation writes,

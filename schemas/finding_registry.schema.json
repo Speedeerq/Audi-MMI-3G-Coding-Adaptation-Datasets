@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://audimmi.pl/schemas/mmi3g-finding-registry-v1.schema.json",
+  "title": "AudiMMI MMI3G Finding Registry V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "registryId",
+    "workstream",
+    "repository",
+    "sourceCommitSha",
+    "authorityRole",
+    "generatedAt",
+    "policy",
+    "findings",
+    "vehicleEvidenceLinks",
+    "downstreamGapReconciliation"
+  ],
+  "properties": {
+    "registryId": {"type": "string", "minLength": 1},
+    "workstream": {"type": "string", "const": "AUDIMMI-MMI3G-KB-RECONCILE-001"},
+    "repository": {"type": "string", "const": "Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets"},
+    "sourceCommitSha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "authorityRole": {"type": "string", "const": "DOMAIN_KNOWLEDGE_AUTHORITY"},
+    "generatedAt": {"type": "string", "format": "date"},
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repositoryAuthorityDoesNotImplyGlobalClaim",
+        "preserveVariantScope",
+        "preserveObservationVsInterpretation",
+        "autoCloseDownstreamGaps",
+        "rawVehicleEvidenceDuplicated"
+      ],
+      "properties": {
+        "repositoryAuthorityDoesNotImplyGlobalClaim": {"type": "boolean", "const": true},
+        "preserveVariantScope": {"type": "boolean", "const": true},
+        "preserveObservationVsInterpretation": {"type": "boolean", "const": true},
+        "autoCloseDownstreamGaps": {"type": "boolean", "const": false},
+        "rawVehicleEvidenceDuplicated": {"type": "boolean", "const": false}
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "findingId",
+          "category",
+          "title",
+          "claimStatus",
+          "evidenceState",
+          "scope",
+          "sourcePaths",
+          "semanticBoundary"
+        ],
+        "properties": {
+          "findingId": {"type": "string", "pattern": "^MMI3G-[A-Z0-9-]+-[0-9]{4}$"},
+          "category": {"type": "string", "minLength": 1},
+          "title": {"type": "string", "minLength": 1},
+          "claimStatus": {"type": "string", "enum": ["CONFIRMED", "VARIANT", "TO VERIFY", "HYPOTHESIS", "UNKNOWN", "BLOCKED"]},
+          "interpretationStatus": {"type": "string", "enum": ["CONFIRMED", "VARIANT", "TO VERIFY", "HYPOTHESIS", "UNKNOWN", "BLOCKED"]},
+          "evidenceState": {"type": "string", "minLength": 1},
+          "scope": {"type": "string", "minLength": 1},
+          "value": {},
+          "sourcePaths": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+          "semanticBoundary": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "vehicleEvidenceLinks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["recordId", "sourcePath", "authorityDisposition", "note"],
+        "properties": {
+          "recordId": {"type": "string", "minLength": 1},
+          "sourcePath": {"type": "string", "minLength": 1},
+          "authorityDisposition": {"type": "string", "const": "VEHICLE_SCOPED_REFERENCE"},
+          "note": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "downstreamGapReconciliation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["gapId", "topic", "matchStatus", "supportingFindingIds", "decision", "reason"],
+        "properties": {
+          "gapId": {"type": "string", "minLength": 1},
+          "topic": {"type": "string", "minLength": 1},
+          "matchStatus": {"type": "string", "enum": ["DIRECT_MATCH", "PARTIAL_SUPPORT_ONLY", "NO_DIRECT_MATCH", "OUT_OF_DOMAIN_NO_MATCH", "OUT_OF_SCOPE"]},
+          "supportingFindingIds": {"type": "array", "items": {"type": "string"}},
+          "decision": {"type": "string", "minLength": 1},
+          "reason": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}
