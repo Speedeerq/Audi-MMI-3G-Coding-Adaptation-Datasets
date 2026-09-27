@@ -8,7 +8,7 @@
 |---|---|
 | Repository navigation map | [NAVIGATION.md](NAVIGATION.md) |
 | Authority model | [00_PROJECT/AUTHORITY_MODEL.md](00_PROJECT/AUTHORITY_MODEL.md) |
-| Governance sync | [00_PROJECT/GOVERNANCE_SYNC_2026-09-04.md](00_PROJECT/GOVERNANCE_SYNC_2026-09-04.md) |
+| Governance sync | [00_PROJECT/GOVERNANCE_SYNC_2026-09-28.md](00_PROJECT/GOVERNANCE_SYNC_2026-09-28.md) |
 | Canonical finding registry | [01_MMI_3G_HIGH/FINDINGS/README.md](01_MMI_3G_HIGH/FINDINGS/README.md) |
 | Machine-readable findings | [01_MMI_3G_HIGH/FINDINGS/FINDING_REGISTRY_V1.json](01_MMI_3G_HIGH/FINDINGS/FINDING_REGISTRY_V1.json) |
 | Remote Platform reference manifest | [00_PROJECT/REMOTE_PLATFORM_REFERENCE_MANIFEST_2026-09-04.json](00_PROJECT/REMOTE_PLATFORM_REFERENCE_MANIFEST_2026-09-04.json) |
@@ -40,9 +40,10 @@ The AudiMMI architecture uses three separate authority layers:
 
 | Layer | Repository | Canonical responsibility |
 |---|---|---|
-| Vehicle Evidence Authority | `Speedeerq/audi-a4-b8-master-workshop-manual` | Raw and normalized evidence tied to a specific vehicle/session: Auto-Scans, blockmaps, adaptation maps, screenshots, timestamps and vehicle-specific observations |
-| Domain Knowledge Authority | `Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets` | Verified MMI 3G semantics, identity/variant findings, coding/adaptation knowledge, dataset knowledge, compatibility constraints and research provenance |
-| Platform Consumer / Normalization | `Speedeerq/remote-automotive-diagnostics-platform` | Evidence schemas, capture contracts, normalization, validation, orchestration and downstream service logic |
+| Canonical Core | `Speedeerq/audimmi-web` | Canonical Case/Vehicle/Evidence/review semantics and reviewed technical-rule authority |
+| Vehicle Project Evidence Source | `Speedeerq/audi-a4-b8-master-workshop-manual` | Evidence/provenance for the specific A4 B8 project; not generic AudiMMI evidence authority |
+| Domain Knowledge Authority | `Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets` | Scoped reviewed MMI 3G semantics, identity/variant findings, coding/adaptation knowledge and research provenance |
+| Platform Consumer / Normalization | `Speedeerq/remote-automotive-diagnostics-platform` | Capture/evidence schemas, normalization, validation and orchestration; not canonical Core technical truth |
 
 No repository may silently replace the authority of another layer. Cross-repository consumption must preserve source repository, commit SHA and evidence/finding provenance.
 
@@ -203,7 +204,8 @@ Audi-MMI-3G-Coding-Adaptation-Datasets/
 ```text
 AUTHORITY_ROLE=DOMAIN_KNOWLEDGE_AUTHORITY
 AUTHORITY_DOMAIN=AUDI_MMI_3G
-VEHICLE_SPECIFIC_RAW_EVIDENCE_OWNER=Speedeerq/audi-a4-b8-master-workshop-manual
+CANONICAL_CORE=Speedeerq/audimmi-web
+A4B8_VEHICLE_PROJECT_SOURCE=Speedeerq/audi-a4-b8-master-workshop-manual
 DOWNSTREAM_PLATFORM=Speedeerq/remote-automotive-diagnostics-platform
 PRESERVE_PROVENANCE=true
 AUTO_PROMOTE_HISTORICAL_STATUS=false

@@ -20,6 +20,8 @@ This file provides cross-links between the main project documents, MMI 3G High r
 | Area | Link |
 |---|---|
 | Project brief | [00_PROJECT/PROJECT_BRIEF.md](00_PROJECT/PROJECT_BRIEF.md) |
+| Authority model | [00_PROJECT/AUTHORITY_MODEL.md](00_PROJECT/AUTHORITY_MODEL.md) |
+| Current governance sync | [00_PROJECT/GOVERNANCE_SYNC_2026-09-28.md](00_PROJECT/GOVERNANCE_SYNC_2026-09-28.md) |
 | Research method | [00_PROJECT/RESEARCH_METHOD.md](00_PROJECT/RESEARCH_METHOD.md) |
 | Status legend | [00_PROJECT/STATUS_LEGEND.md](00_PROJECT/STATUS_LEGEND.md) |
 | Test protocol | [00_PROJECT/TEST_PROTOCOL.md](00_PROJECT/TEST_PROTOCOL.md) |

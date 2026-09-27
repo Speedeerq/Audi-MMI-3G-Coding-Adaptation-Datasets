@@ -7,7 +7,7 @@
 | Repository navigation | [../NAVIGATION.md](../NAVIGATION.md) |
 | Root README | [../README.md](../README.md) |
 | Authority model | [../00_PROJECT/AUTHORITY_MODEL.md](../00_PROJECT/AUTHORITY_MODEL.md) |
-| Governance sync | [../00_PROJECT/GOVERNANCE_SYNC_2026-09-04.md](../00_PROJECT/GOVERNANCE_SYNC_2026-09-04.md) |
+| Governance sync | [../00_PROJECT/GOVERNANCE_SYNC_2026-09-28.md](../00_PROJECT/GOVERNANCE_SYNC_2026-09-28.md) |
 | Canonical findings | [FINDINGS/README.md](FINDINGS/README.md) |
 | Machine-readable registry | [FINDINGS/FINDING_REGISTRY_V1.json](FINDINGS/FINDING_REGISTRY_V1.json) |
 | Remote reference manifest | [../00_PROJECT/REMOTE_PLATFORM_REFERENCE_MANIFEST_2026-09-04.json](../00_PROJECT/REMOTE_PLATFORM_REFERENCE_MANIFEST_2026-09-04.json) |
@@ -139,14 +139,21 @@ Where a historical document conflicts only in workflow status with a later accep
 
 ## Evidence authority boundary
 
-Vehicle/session evidence remains canonical in:
+Canonical Case/Evidence/review semantics are owned by:
+
+```text
+Speedeerq/audimmi-web
+ROLE=CANONICAL_CORE
+```
+
+The A4 B8 repository remains a provenance-bearing source for that specific vehicle project:
 
 ```text
 Speedeerq/audi-a4-b8-master-workshop-manual
-ROLE=VEHICLE_EVIDENCE_AUTHORITY
+ROLE=VEHICLE_PROJECT_SOURCE
 ```
 
-This repository owns scoped MMI3G domain findings. Downstream Remote Platform consumption must preserve repository/commit/finding provenance and must not duplicate raw vehicle evidence.
+This repository owns scoped MMI3G domain findings. Downstream Remote Platform consumption must preserve repository/commit/finding provenance and must not duplicate raw vehicle evidence or create a second Core authority.
 
 ## Current decision
 

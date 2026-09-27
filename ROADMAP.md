@@ -7,7 +7,7 @@
 | Repository navigation | [NAVIGATION.md](NAVIGATION.md) |
 | Root README | [README.md](README.md) |
 | Authority model | [00_PROJECT/AUTHORITY_MODEL.md](00_PROJECT/AUTHORITY_MODEL.md) |
-| Governance sync | [00_PROJECT/GOVERNANCE_SYNC_2026-09-04.md](00_PROJECT/GOVERNANCE_SYNC_2026-09-04.md) |
+| Governance sync | [00_PROJECT/GOVERNANCE_SYNC_2026-09-28.md](00_PROJECT/GOVERNANCE_SYNC_2026-09-28.md) |
 | Canonical findings | [01_MMI_3G_HIGH/FINDINGS/README.md](01_MMI_3G_HIGH/FINDINGS/README.md) |
 | Remote reference manifest | [00_PROJECT/REMOTE_PLATFORM_REFERENCE_MANIFEST_2026-09-04.json](00_PROJECT/REMOTE_PLATFORM_REFERENCE_MANIFEST_2026-09-04.json) |
 | Reconciliation report | [13_RELEASE/RECONCILIATION_REPORT_2026-09-04.md](13_RELEASE/RECONCILIATION_REPORT_2026-09-04.md) |
@@ -28,13 +28,14 @@ Open technical gaps retained
 
 The repository is authoritative for Audi MMI 3G domain knowledge within the scope and provenance of each finding. Historical status text is not mass-promoted; current promoted knowledge is represented by the canonical finding registry candidate.
 
-## Three-level authority model
+## Cross-repository authority model
 
 | Level | Repository | Role |
 |---|---|---|
-| 1 | `Speedeerq/audi-a4-b8-master-workshop-manual` | `VEHICLE_EVIDENCE_AUTHORITY` |
-| 2 | `Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets` | `DOMAIN_KNOWLEDGE_AUTHORITY` |
-| 3 | `Speedeerq/remote-automotive-diagnostics-platform` | `PLATFORM_CONSUMER_NORMALIZATION` |
+| 1 | `Speedeerq/audimmi-web` | `CANONICAL_CORE` |
+| 2 | `Speedeerq/audi-a4-b8-master-workshop-manual` | `VEHICLE_PROJECT_SOURCE` |
+| 3 | `Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets` | `DOMAIN_KNOWLEDGE_AUTHORITY` |
+| 4 | `Speedeerq/remote-automotive-diagnostics-platform` | `PLATFORM_CONSUMER_NORMALIZATION` |
 
 Repositories remain independent. Cross-repository references must preserve provenance.
 
@@ -48,7 +49,7 @@ Repositories remain independent. Cross-repository references must preserve prove
 | M3 | Offline dependency research | Module, CAR, Audio/MOST, source, risk and blocked-item matrices | 🟢 DONE |
 | M4 | Light research shell | BCM/J519/MMI light menu research structure | 🟢 DONE |
 | M5 | Compatibility matrix | HW/SW/market/equipment matrix | 🟢 DONE — historical inputs retained |
-| M6 | Authority model | Formal three-level ownership and provenance contract | 🟢 IMPLEMENTED — PR #14 dependency |
+| M6 | Authority model | Cross-repository Core / vehicle-project / domain / platform ownership and provenance contract | 🟢 RECONCILED 2026-09-28 |
 | M7 | Finding reconciliation | Inventory, stable IDs, evidence refs, variant scope, status normalization | 🟢 IMPLEMENTED CANDIDATE — 11 findings |
 | M8 | Remote gap reconciliation | Match exact domain findings to Remote Platform open gaps | 🟢 COMPLETED FAIL-CLOSED — no gap closed |
 | M9 | Downstream reference manifest | Non-duplicating reference/provenance contract for Remote Platform | 🟢 IMPLEMENTED CANDIDATE |
