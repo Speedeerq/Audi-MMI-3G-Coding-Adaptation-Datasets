@@ -36,14 +36,14 @@ The repository stores verified domain knowledge, research records, variant const
 
 ## Authority boundary
 
-The AudiMMI architecture uses three separate authority layers:
+The AudiMMI architecture uses four distinct authority concerns:
 
 | Layer | Repository | Canonical responsibility |
 |---|---|---|
-| Canonical Core | `Speedeerq/audimmi-web` | Canonical Case/Vehicle/Evidence/review semantics and reviewed technical-rule authority |
-| Vehicle Project Evidence Source | `Speedeerq/audi-a4-b8-master-workshop-manual` | Evidence/provenance for the specific A4 B8 project; not generic AudiMMI evidence authority |
-| Domain Knowledge Authority | `Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets` | Scoped reviewed MMI 3G semantics, identity/variant findings, coding/adaptation knowledge and research provenance |
-| Platform Consumer / Normalization | `Speedeerq/remote-automotive-diagnostics-platform` | Capture/evidence schemas, normalization, validation and orchestration; not canonical Core technical truth |
+| `CANONICAL_CORE` | `Speedeerq/audimmi-web` | Canonical Case/Vehicle/Evidence/review semantics and reviewed technical-rule authority |
+| `VEHICLE_PROJECT_SOURCE` | `Speedeerq/audi-a4-b8-master-workshop-manual` | Evidence/provenance for the specific A4 B8 project; not generic AudiMMI evidence authority |
+| `DOMAIN_KNOWLEDGE_AUTHORITY` | `Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets` | Scoped reviewed MMI 3G semantics, identity/variant findings, coding/adaptation knowledge and research provenance |
+| `PLATFORM_CONSUMER_NORMALIZATION` | `Speedeerq/remote-automotive-diagnostics-platform` | Capture/evidence schemas, normalization, validation and orchestration; not canonical Core technical truth |
 
 No repository may silently replace the authority of another layer. Cross-repository consumption must preserve source repository, commit SHA and evidence/finding provenance.
 
