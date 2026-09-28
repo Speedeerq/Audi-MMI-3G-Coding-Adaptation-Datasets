@@ -53,7 +53,7 @@ This repository is not:
 | An uncontrolled binary dataset repository | Source, legality and checksum must be controlled |
 | A retrofit promise list | Equipment, market and software variants matter |
 | A shortcut around diagnostics | Every target vehicle still requires identification and pre/post evidence appropriate to the operation |
-| A raw vehicle evidence repository | Vehicle/session evidence belongs to the Vehicle Evidence Authority |
+| A canonical cross-product vehicle evidence Core | Canonical Case/Evidence/review semantics belong to `Speedeerq/audimmi-web`; vehicle-project evidence remains provenance-linked input |
 | A duplicate Remote Platform knowledge store | Downstream consumers must preserve provenance instead of forking the source of truth |
 
 ## Primary research target
@@ -91,7 +91,7 @@ This repository is not:
 | No false certainty | Status must reflect evidence quality and variant scope |
 | Reproducibility | Tests should be repeatable by another researcher |
 | Traceability | Every promoted result links to a test ID, evidence reference or authoritative source |
-| Authority separation | Vehicle evidence, domain knowledge and platform normalization remain separate sources of truth |
+| Authority separation | Core semantics, vehicle-project evidence provenance, domain knowledge and platform normalization remain separate authority concerns |
 
 ## Information status requirement
 
@@ -128,18 +128,25 @@ Existing published project data are accepted as verified domain data by project-
 ## Cross-repository architecture
 
 ```text
-Vehicle Evidence Authority
-Speedeerq/audi-a4-b8-master-workshop-manual
+Canonical Core
+Speedeerq/audimmi-web
+        ^
+        | provenance-linked case/evidence intake
         |
-        | vehicle/session observations
+Vehicle Project Evidence Source
+Speedeerq/audi-a4-b8-master-workshop-manual
+
+Domain Knowledge Authority
+Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets
+        |
+        | scoped reviewed findings
         v
 Remote Platform
 Speedeerq/remote-automotive-diagnostics-platform
-        ^
-        | verified domain findings
         |
-Domain Knowledge Authority
-Speedeerq/Audi-MMI-3G-Coding-Adaptation-Datasets
+        | captured/normalized evidence
+        v
+Canonical Core
 ```
 
 The repositories remain independent.

@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 This project uses evidence-based technical documentation. Repository authority and individual finding status are separate concepts: a repository may be an authoritative domain source while specific historical records still require item-level reconciliation.
 
+## [0.4.2] - 2026-09-28
+
+### Governance
+
+- Reconciled the repository with AudiMMI Core Wave 0 authority model.
+- Established `Speedeerq/audimmi-web` as `CANONICAL_CORE` for Case/Evidence/review semantics.
+- Reclassified `Speedeerq/audi-a4-b8-master-workshop-manual` from generic Vehicle Evidence Authority to `VEHICLE_PROJECT_SOURCE` for the specific A4 B8 project.
+- Preserved this repository as `DOMAIN_KNOWLEDGE_AUTHORITY` for scoped MMI 3G semantics.
+- Preserved Remote Diagnostics as `PLATFORM_CONSUMER_NORMALIZATION`.
+- Added `00_PROJECT/GOVERNANCE_SYNC_2026-09-28.md`.
+- No technical finding, coding/adaptation semantic, Security Access value, dataset, compatibility claim or vehicle state was promoted by this governance repair.
+
 ## [0.4.1] - 2026-09-04
 
 ### Reconciliation

@@ -1,52 +1,93 @@
-# AudiMMI Three-Level Authority Model
+# AudiMMI Cross-Repository Authority Model
 
 ## Status
 
 ```text
-MODEL_ID=AUDIMMI-AUTHORITY-MODEL-001
+MODEL_ID=AUDIMMI-AUTHORITY-MODEL-002
 STATUS=ACTIVE
-EFFECTIVE_DATE=2026-09-04
-SCOPE=AudiMMI / Remote Automotive Diagnostics
+EFFECTIVE_DATE=2026-09-28
+SUPERSEDES=AUDIMMI-AUTHORITY-MODEL-001
+SCOPE=AudiMMI Core / Vehicle Project Evidence / MMI 3G Domain Knowledge / Remote Diagnostics
 ```
 
 ## Purpose
 
-This document defines the canonical ownership boundary between vehicle-specific evidence, Audi MMI 3G domain knowledge and the downstream remote diagnostics platform.
+This document defines the current ownership boundary between canonical Core evidence semantics, vehicle-project evidence sources, Audi MMI 3G domain knowledge and the downstream Remote Diagnostics platform.
 
-The repositories remain independent. They must not be merged into one repository and they must not silently duplicate each other's source-of-truth responsibilities.
+It supersedes the 2026-09-04 three-level model that incorrectly treated the single A4 B8 project repository as the generic AudiMMI Vehicle Evidence Authority.
 
-## Level 1 — Vehicle Evidence Authority
+Repositories remain independent and provenance must be preserved.
+
+## Level 1 — Canonical Core Case / Evidence / Review Authority
 
 Canonical repository:
 
 ```text
-Speedeerq/audi-a4-b8-master-workshop-manual
+Speedeerq/audimmi-web
 ```
 
 Role:
 
 ```text
-VEHICLE_EVIDENCE_AUTHORITY
+CANONICAL_CORE
 ```
 
-Owns evidence tied to a concrete vehicle, controller and diagnostic session, including where applicable:
+Owns canonical semantics for:
 
-- Auto-Scan outputs,
+- Case and Vehicle identity,
+- EvidencePackage / EvidenceItem,
+- CandidateFact,
+- DiagnosticObservation,
+- TechnicalReview,
+- VerifiedFact,
+- DiagnosticReviewDecision / ReviewedDiagnosticFinding,
+- reusable technical-rule governance,
+- ServicePath and controlled downstream projections.
+
+Authority invariant:
+
+```text
+CandidateFact != VerifiedFact
+DiagnosticObservation != VerifiedFact
+Correlation != causation
+```
+
+Only the canonical Core review boundary may create Core-reviewed fact authority.
+
+## Level 2 — Vehicle Project Evidence Sources
+
+Examples include:
+
+```text
+Speedeerq/audi-a4-b8-master-workshop-manual
+private AudiMMI case archives
+future vehicle-specific evidence packages
+```
+
+Role:
+
+```text
+VEHICLE_PROJECT_SOURCE
+```
+
+These sources preserve evidence tied to a concrete vehicle/controller/session, such as:
+
+- Auto-Scans,
 - controller identification,
 - blockmaps,
 - adaptation maps,
 - DTC state,
-- Red Menu / Version Information capture,
-- screenshots and photographs,
+- Red/Green Menu capture,
+- screenshots/photos,
 - timestamps,
 - before/after observations,
-- mutation logs,
-- vehicle-specific temporal reconciliation,
-- vehicle-specific evidence grades.
+- vehicle-specific temporal reconciliation.
 
-This layer proves what was observed on the specific vehicle/session. It does not automatically define a global MMI 3G semantic rule.
+A vehicle-project repository is authoritative for its own project evidence provenance. It is **not** the generic cross-product Case/Evidence semantic authority for AudiMMI.
 
-## Level 2 — Domain Knowledge Authority
+Vehicle-project observations enter the canonical Core through provenance-preserving intake/review.
+
+## Level 3 — Domain Knowledge Authority
 
 Canonical repository:
 
@@ -60,29 +101,27 @@ Role:
 DOMAIN_KNOWLEDGE_AUTHORITY
 ```
 
-Owns verified Audi MMI 3G domain knowledge, including where evidence supports it:
+Owns reviewed Audi MMI 3G domain knowledge within the explicit scope of each finding:
 
-- long-coding semantics,
-- adaptation semantics,
+- coding/adaptation semantics,
 - Security Access context,
 - dataset metadata and semantics,
-- Green Menu / Red Menu research,
+- Green/Red Menu research,
 - HW/SW/market/equipment variant constraints,
-- compatibility rules,
+- compatibility findings,
 - cross-module dependencies,
-- finding provenance,
-- controlled test and rollback evidence references,
-- unresolved and variant-dependent domain questions.
+- domain finding provenance,
+- unresolved and variant-dependent research questions.
 
-This repository is authoritative for domain semantics only within the scope stated by each finding. Repository-level authority does not convert every historical record to globally confirmed status.
+Repository-level authority never upgrades an unsupported record or widens its scope.
 
-Canonical reconciled findings are indexed in:
+Canonical findings are indexed in:
 
 ```text
 01_MMI_3G_HIGH/FINDINGS/FINDING_REGISTRY_V1.json
 ```
 
-## Level 3 — Platform Consumer / Normalization Authority
+## Level 4 — Platform Consumer / Capture / Normalization
 
 Canonical repository:
 
@@ -96,24 +135,23 @@ Role:
 PLATFORM_CONSUMER_NORMALIZATION
 ```
 
-Owns downstream platform contracts, including:
+Owns downstream platform/capture contracts:
 
 - evidence schemas,
-- evidence package validation,
+- Evidence Package validation,
 - capture state machines,
 - source profiles,
 - normalization,
 - claim/evidence linking,
 - orchestration,
-- service-path decisions,
-- fail-closed runtime rules,
-- import manifests and provenance contracts.
+- fail-closed platform rules,
+- import/reference manifests and provenance contracts.
 
-It does not become the canonical owner of raw vehicle evidence or Audi MMI 3G technical semantics merely because those records are consumed by the platform.
+It does not become canonical Core authority merely because it captures or consumes evidence. It also does not become the MMI 3G semantic authority merely because it references domain findings.
 
 ## Mandatory provenance contract
 
-Any cross-repository consumption of a domain finding or vehicle observation must preserve sufficient provenance to recover the canonical source.
+Cross-repository consumption must preserve enough provenance to recover the canonical source.
 
 Minimum recommended fields:
 
@@ -122,19 +160,18 @@ source_repository
 source_commit_sha
 source_path or stable_finding_id
 source_authority_role
+case_id / vehicle_project_ref where applicable
 variant_scope
 status
 supporting_evidence_refs
 consumed_at
 ```
 
-When a stable finding ID exists, it should be preferred over a path-only reference.
+Stable finding IDs are preferred over path-only references when available.
 
 ## Stable finding ID policy
 
-New or reconciled domain findings should receive stable IDs using an area-oriented namespace.
-
-Recommended patterns:
+New or reconciled MMI 3G domain findings should use the established area-oriented namespaces:
 
 ```text
 MMI3G-ID-<MODULE>-<NNNN>
@@ -148,49 +185,37 @@ MMI3G-COMPAT-<NNNN>
 MMI3G-DEP-<SCOPE>-<NNNN>
 ```
 
-Namespace intent:
-
-- `ID` — exact controller/unit identity finding;
-- `OBS` — observed UI/runtime value whose technical interpretation may be separate;
-- `COD` — coding semantics;
-- `ADP` — adaptation semantics;
-- `SA` — Security Access context;
-- `DSET` — dataset metadata/semantics;
-- `VAR` — HW/SW/train/build-specific variant finding;
-- `COMPAT` — compatibility rule;
-- `DEP` — module/dependency context.
-
-A finding ID must not imply a higher evidence status than the record actually has.
-
-Observation truth and interpretation truth must be represented independently when they differ. A visible value may be `CONFIRMED` while its root cause or function remains `TO VERIFY` or `UNKNOWN`.
+A finding ID never implies evidence strength above the underlying record.
 
 ## Authority precedence
 
-Authority is contextual, not a single global ranking.
+Authority is contextual.
 
 | Question | Canonical authority |
 |---|---|
-| What was observed on this exact car/session? | Vehicle Evidence Authority |
-| What does this coding/adaptation/dataset mean for the verified MMI variant? | Domain Knowledge Authority |
-| How is evidence packaged, validated and consumed by the remote service? | Platform Consumer / Normalization |
+| What are the canonical Case/Evidence/review semantics? | AudiMMI Core / `audimmi-web` |
+| What was captured in this exact vehicle project/session? | The provenance-linked vehicle-project/private raw evidence source, represented in Core when ingested |
+| What does this MMI 3G coding/adaptation/dataset mean for a stated scope? | MMI 3G Domain Knowledge Authority |
+| How is evidence captured/packaged/normalized in the remote platform? | Remote Diagnostics Platform |
+| Is a reusable technical rule active for downstream qualification? | Core technical governance / approved scoped TechnicalRule |
 
-If two repositories appear to conflict, do not overwrite one with the other. Record the conflict, retain provenance and resolve it at the appropriate authority layer.
+If sources appear to conflict, preserve both records and resolve the conflict at the authority layer that owns the affected question.
 
 ## Gap closure rule
 
-A Remote Platform gap may be closed from this domain repository only when a specific source record directly supports the exact claim and its variant scope matches the target claim.
+A Remote Diagnostics gap may be closed from this domain repository only when a specific finding directly supports the exact claim and its scope matches.
 
 Forbidden shortcuts:
 
-- closing a gap solely because this repository is trusted,
-- inferring a missing byte/bit/channel meaning from neighboring records,
-- promoting a vehicle-specific observation into a global domain rule without appropriate domain evidence,
-- copying a domain value into Remote Platform without source SHA/provenance,
+- closing a gap because the repository is generally trusted;
+- inferring byte/bit/channel meaning from neighboring values;
+- promoting one vehicle observation into a reusable domain rule without domain evidence/review;
+- copying a domain value downstream without source SHA/provenance;
 - treating absence of a finding as evidence of absence.
 
-## Current protected open questions
+## Protected open questions
 
-The authority-model decision does not by itself close currently open technical questions, including:
+This governance repair does not close technical questions such as:
 
 ```text
 Variant 9307 filesystem identity mapping
@@ -199,13 +224,11 @@ J285 channel 73 value 1 -> exact language mapping
 0BK adaptation/fill health thresholds
 ```
 
-The 2026-09-04 reconciliation review found only partial support for the Variant 9307 gap and no direct match for the remaining questions. Their downstream statuses remain open.
-
-Each requires a direct evidence-backed finding before downstream status promotion.
+Each still requires direct evidence-backed review.
 
 ## Safety boundary
 
-No authority-layer or finding-registry change authorizes:
+No authority or finding change authorizes:
 
 - vehicle coding,
 - adaptation writes,
@@ -217,8 +240,6 @@ No authority-layer or finding-registry change authorizes:
 - secret rotation,
 - deployment or publication.
 
-Those remain separately gated operations.
-
 ## Repository separation invariant
 
 ```text
@@ -229,3 +250,5 @@ FAIL_CLOSED_ON_SCOPE_MISMATCH=true
 AUTO_PROMOTE_HISTORICAL_STATUS=false
 AUTO_CLOSE_DOWNSTREAM_GAPS=false
 ```
+
+Historical 2026-09-04 governance/release documents remain historical records and are superseded only where this model explicitly changes authority ownership.
