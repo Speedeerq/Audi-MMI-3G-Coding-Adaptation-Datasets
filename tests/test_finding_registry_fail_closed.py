@@ -106,5 +106,41 @@ class FindingRegistryFailClosedTests(unittest.TestCase):
                 )
 
 
+    def test_10_manifest_cannot_claim_resolved_gap(self):
+        manifest = copy.deepcopy(self.manifest)
+        manifest["gapReview"][0]["result"] = "RESOLVED"
+        with self.assertRaises(ValueError):
+            self.check_both(manifest=manifest)
+
+    def test_11_manifest_cannot_omit_gap_result(self):
+        manifest = copy.deepcopy(self.manifest)
+        del manifest["gapReview"][0]["result"]
+        with self.assertRaises(ValueError):
+            self.check_both(manifest=manifest)
+
+    def test_12_promotion_cannot_claim_global_authority(self):
+        manifest = copy.deepcopy(self.manifest)
+        manifest["eligibleReferences"][0]["promotion"] = "globally confirmed"
+        with self.assertRaises(ValueError):
+            self.check_both(manifest=manifest)
+
+    def test_13_unhashable_domain_references_fail_cleanly(self):
+        manifest = copy.deepcopy(self.manifest)
+        manifest["gapReview"][0]["domainFindingIds"] = [{"findingId": "fake"}]
+        with self.assertRaises(ValueError):
+            self.check_both(manifest=manifest)
+
+    def test_14_unhashable_claim_status_fails_cleanly(self):
+        registry = copy.deepcopy(self.registry)
+        registry["findings"][0]["claimStatus"] = ["CONFIRMED"]
+        with self.assertRaises(ValueError):
+            self.check_both(registry=registry)
+
+    def test_15_directory_is_not_an_evidence_file(self):
+        registry = copy.deepcopy(self.registry)
+        registry["findings"][0]["sourcePaths"] = ["00_PROJECT"]
+        with self.assertRaises(ValueError):
+            self.check_both(registry=registry)
+
 if __name__ == "__main__":
     unittest.main()
