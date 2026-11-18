@@ -1,0 +1,34 @@
+name: MMI3G finding registry QA
+
+on:
+  push:
+    paths:
+      - 'validation/finding_registry/**'
+      - '01_MMI_3G_HIGH/FINDINGS/FINDING_REGISTRY_V1.json'
+      - '00_PROJECT/REMOTE_PLATFORM_REFERENCE_MANIFEST_2026-09-04.json'
+      - 'tests/test_finding_registry_fail_closed.py'
+      - '.github/workflows/mmi3g-finding-registry-qa.yml'
+  pull_request:
+    paths:
+      - 'validation/finding_registry/**'
+      - '01_MMI_3G_HIGH/FINDINGS/FINDING_REGISTRY_V1.json'
+      - '00_PROJECT/REMOTE_PLATFORM_REFERENCE_MANIFEST_2026-09-04.json'
+      - 'tests/test_finding_registry_fail_closed.py'
+      - '.github/workflows/mmi3g-finding-registry-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  finding-registry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Python version
+        run: python3 --version
+      - name: Run fail-closed regression suite
+        run: python3 -m unittest discover -s tests -p 'test_finding_registry_fail_closed.py' -v
+      - name: Validate canonical findings and reference manifest
+        run: python3 validation/finding_registry/validate_finding_registry.py
