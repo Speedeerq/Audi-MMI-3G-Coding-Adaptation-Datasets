@@ -54,8 +54,13 @@ def assert_relative_repo_path(repo_root: Path, raw_path: str, context: str) -> N
         fail(f"absolute path forbidden in {context}: {raw_path}")
     if ".." in path.parts:
         fail(f"path traversal forbidden in {context}: {raw_path}")
-    if not (repo_root / path).exists():
-        fail(f"unresolved source path in {context}: {raw_path}")
+    target = repo_root / path
+    if not target.is_file():
+        fail(f"source must be an existing file in {context}: {raw_path}")
+    try:
+        target.resolve().relative_to(repo_root.resolve())
+    except ValueError:
+        fail(f"source path escapes repository in {context}: {raw_path}")
 
 
 def validate_registry(repo_root: Path, registry: dict[str, Any]) -> set[str]:
@@ -102,10 +107,13 @@ def validate_registry(repo_root: Path, registry: dict[str, Any]) -> set[str]:
         finding_ids.add(finding_id)
 
         claim_status = finding.get("claimStatus")
-        if claim_status not in ALLOWED_STATUSES:
+        if not isinstance(claim_status, str) or claim_status not in ALLOWED_STATUSES:
             fail(f"invalid claimStatus for {finding_id}: {claim_status!r}")
 
-        if "interpretationStatus" in finding and finding["interpretationStatus"] not in ALLOWED_STATUSES:
+        if "interpretationStatus" in finding and (
+            not isinstance(finding["interpretationStatus"], str)
+            or finding["interpretationStatus"] not in ALLOWED_STATUSES
+        ):
             fail(
                 f"invalid interpretationStatus for {finding_id}: "
                 f"{finding['interpretationStatus']!r}"
@@ -157,14 +165,14 @@ def validate_registry(repo_root: Path, registry: dict[str, Any]) -> set[str]:
         seen_gaps.add(gap_id)
 
         match_status = gap.get("matchStatus")
-        if match_status not in ALLOWED_MATCH_STATUSES:
+        if not isinstance(match_status, str) or match_status not in ALLOWED_MATCH_STATUSES:
             fail(f"invalid matchStatus for {gap_id}: {match_status!r}")
 
         refs = gap.get("supportingFindingIds")
         if not isinstance(refs, list):
             fail(f"supportingFindingIds must be an array for {gap_id}")
         for finding_id in refs:
-            if finding_id not in finding_ids:
+            if not isinstance(finding_id, str) or finding_id not in finding_ids:
                 fail(f"unresolved supporting finding reference in {gap_id}: {finding_id}")
 
         decision = gap.get("decision")
@@ -174,7 +182,7 @@ def validate_registry(repo_root: Path, registry: dict[str, Any]) -> set[str]:
         if match_status != "DIRECT_MATCH":
             closure_tokens = {"CLOSED", "CONFIRMED", "RESOLVED"}
             decision_tokens = set(re.split(r"[^A-Z0-9]+", decision.upper()))
-            if closure_tokens & decision_tokens and not decision.upper().startswith("REMAINS_"):
+            if closure_tokens & decision_tokens:
                 fail(f"non-direct gap appears closed: {gap_id} -> {decision}")
 
     return finding_ids
@@ -208,27 +216,76 @@ def validate_reference_manifest(
     eligible = manifest.get("eligibleReferences")
     if not isinstance(eligible, list):
         fail("eligibleReferences must be an array")
+    allowed_promotions = {
+        "scoped reference only",
+        "scoped reference only; no filesystem identity mapping",
+        "observation only",
+        "observation only; interpretation remains TO VERIFY",
+        "observation only; interpretation remains UNKNOWN",
+        "visual state only; no physical-presence inference",
+    }
+    seen_eligible: set[str] = set()
     for index, item in enumerate(eligible):
         if not isinstance(item, dict):
             fail(f"eligibleReferences[{index}] must be an object")
         finding_id = item.get("findingId")
-        if finding_id not in finding_ids:
+        if not isinstance(finding_id, str) or finding_id not in finding_ids:
             fail(f"eligible reference does not resolve: {finding_id}")
+        promotion = item.get("promotion")
+        if not isinstance(promotion, str) or promotion not in allowed_promotions:
+            fail(f"unreviewed promotion claim for {finding_id}: {promotion!r}")
+        if finding_id in seen_eligible:
+            fail(f"duplicate eligible reference: {finding_id}")
+        seen_eligible.add(finding_id)
 
-    registry_gap_ids = {
-        gap["gapId"]
+    registry_gaps = {
+        gap["gapId"]: gap
         for gap in registry.get("downstreamGapReconciliation", [])
-        if isinstance(gap, dict) and isinstance(gap.get("gapId"), str)
     }
-    manifest_gap_ids = {
-        gap["gapId"]
-        for gap in manifest.get("gapReview", [])
-        if isinstance(gap, dict) and isinstance(gap.get("gapId"), str)
-    }
-    if registry_gap_ids != manifest_gap_ids:
+    reviews = manifest.get("gapReview")
+    if not isinstance(reviews, list):
+        fail("gapReview must be an array")
+    seen_review_ids: set[str] = set()
+    for index, review in enumerate(reviews):
+        if not isinstance(review, dict):
+            fail(f"gapReview[{index}] must be an object")
+        gap_id = review.get("gapId")
+        if not isinstance(gap_id, str) or not gap_id:
+            fail(f"invalid gapReview gapId at index {index}")
+        if gap_id in seen_review_ids:
+            fail(f"duplicate gapReview: {gap_id}")
+        seen_review_ids.add(gap_id)
+        source_gap = registry_gaps.get(gap_id)
+        if source_gap is None:
+            fail(f"unknown gapReview: {gap_id}")
+        if review.get("domainMatch") != source_gap["matchStatus"]:
+            fail(f"domain match status mismatch for {gap_id}")
+        refs = review.get("domainFindingIds")
+        if not isinstance(refs, list) or any(not isinstance(ref, str) for ref in refs):
+            fail(f"invalid domain finding references for {gap_id}")
+        if set(refs) != set(source_gap["supportingFindingIds"]):
+            fail(f"domain finding references mismatch for {gap_id}")
+        if len(refs) != len(set(refs)):
+            fail(f"duplicate finding references for {gap_id}")
+        result = review.get("result")
+        if not isinstance(result, str) or not result:
+            fail(f"missing gap result for {gap_id}")
+        if source_gap["matchStatus"] != "DIRECT_MATCH":
+            expected_results = {
+                "REMAINS_BLOCKED": "BLOCKED_MAPPING_NOT_PROVEN",
+                "REMAINS_TO_VERIFY": "TO_VERIFY",
+                "REMAINS_DEFERRED": "DEFERRED",
+            }
+            expected = expected_results.get(source_gap["decision"])
+            if expected is None or result != expected:
+                fail(
+                    f"gap result contradicts canonical decision for {gap_id}: "
+                    f"{result!r} vs {source_gap['decision']!r}"
+                )
+    if seen_review_ids != set(registry_gaps):
         fail(
             "gap-set mismatch between registry and reference manifest: "
-            f"registry={sorted(registry_gap_ids)}, manifest={sorted(manifest_gap_ids)}"
+            f"registry={sorted(registry_gaps)}, manifest={sorted(seen_review_ids)}"
         )
 
     safety = manifest.get("safety")
