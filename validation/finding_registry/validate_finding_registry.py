@@ -54,8 +54,13 @@ def assert_relative_repo_path(repo_root: Path, raw_path: str, context: str) -> N
         fail(f"absolute path forbidden in {context}: {raw_path}")
     if ".." in path.parts:
         fail(f"path traversal forbidden in {context}: {raw_path}")
-    if not (repo_root / path).exists():
+    target = repo_root / path
+    if not target.exists():
         fail(f"unresolved source path in {context}: {raw_path}")
+    try:
+        target.resolve().relative_to(repo_root.resolve())
+    except ValueError:
+        fail(f"source path escapes repository in {context}: {raw_path}")
 
 
 def validate_registry(repo_root: Path, registry: dict[str, Any]) -> set[str]:
@@ -174,7 +179,7 @@ def validate_registry(repo_root: Path, registry: dict[str, Any]) -> set[str]:
         if match_status != "DIRECT_MATCH":
             closure_tokens = {"CLOSED", "CONFIRMED", "RESOLVED"}
             decision_tokens = set(re.split(r"[^A-Z0-9]+", decision.upper()))
-            if closure_tokens & decision_tokens and not decision.upper().startswith("REMAINS_"):
+            if closure_tokens & decision_tokens:
                 fail(f"non-direct gap appears closed: {gap_id} -> {decision}")
 
     return finding_ids
@@ -208,27 +213,48 @@ def validate_reference_manifest(
     eligible = manifest.get("eligibleReferences")
     if not isinstance(eligible, list):
         fail("eligibleReferences must be an array")
+    seen_eligible: set[str] = set()
     for index, item in enumerate(eligible):
         if not isinstance(item, dict):
             fail(f"eligibleReferences[{index}] must be an object")
         finding_id = item.get("findingId")
         if finding_id not in finding_ids:
             fail(f"eligible reference does not resolve: {finding_id}")
+        if finding_id in seen_eligible:
+            fail(f"duplicate eligible reference: {finding_id}")
+        seen_eligible.add(finding_id)
 
-    registry_gap_ids = {
-        gap["gapId"]
+    registry_gaps = {
+        gap["gapId"]: gap
         for gap in registry.get("downstreamGapReconciliation", [])
-        if isinstance(gap, dict) and isinstance(gap.get("gapId"), str)
     }
-    manifest_gap_ids = {
-        gap["gapId"]
-        for gap in manifest.get("gapReview", [])
-        if isinstance(gap, dict) and isinstance(gap.get("gapId"), str)
-    }
-    if registry_gap_ids != manifest_gap_ids:
+    reviews = manifest.get("gapReview")
+    if not isinstance(reviews, list):
+        fail("gapReview must be an array")
+    seen_review_ids: set[str] = set()
+    for index, review in enumerate(reviews):
+        if not isinstance(review, dict):
+            fail(f"gapReview[{index}] must be an object")
+        gap_id = review.get("gapId")
+        if not isinstance(gap_id, str) or not gap_id:
+            fail(f"invalid gapReview gapId at index {index}")
+        if gap_id in seen_review_ids:
+            fail(f"duplicate gapReview: {gap_id}")
+        seen_review_ids.add(gap_id)
+        source_gap = registry_gaps.get(gap_id)
+        if source_gap is None:
+            fail(f"unknown gapReview: {gap_id}")
+        if review.get("domainMatch") != source_gap["matchStatus"]:
+            fail(f"domain match status mismatch for {gap_id}")
+        refs = review.get("domainFindingIds")
+        if not isinstance(refs, list) or set(refs) != set(source_gap["supportingFindingIds"]):
+            fail(f"domain finding references mismatch for {gap_id}")
+        if len(refs) != len(set(refs)):
+            fail(f"duplicate finding references for {gap_id}")
+    if seen_review_ids != set(registry_gaps):
         fail(
             "gap-set mismatch between registry and reference manifest: "
-            f"registry={sorted(registry_gap_ids)}, manifest={sorted(manifest_gap_ids)}"
+            f"registry={sorted(registry_gaps)}, manifest={sorted(seen_review_ids)}"
         )
 
     safety = manifest.get("safety")
